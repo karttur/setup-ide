@@ -8,7 +8,11 @@ image: tropwetlandmap
 
 Remote sensing and spatial data developer guide for global natural resources mapping, inventories and monitoring.
 
-The Geo Imagine Developer blog is maintained by Thomas Gumbricht (Karttur AB) [karttur.com](https://karttur.com/)
+The Geo Imagine Developer blog is maintained by Thomas Gumbricht, Karttur AB.
+
+Link to [Thomas Gumbricht professional resumé](https://karttur.github.io/professional/).
+
+Link to [Karttur AB](https://karttur.com/).
 
 ## Geo Imagine Developer is all about:
 
