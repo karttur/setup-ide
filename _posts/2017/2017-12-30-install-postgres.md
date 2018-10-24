@@ -44,7 +44,7 @@ After having tried all options above, I used the Homebrew alternative for instal
 
 ## Install PostgreSQL using Homebrew
 
-If you do not have Homebrew installed, go the [Homebrew offical homepage](https://grew.sh) and just copy and paste the installation command in a <span class='app'>Terminal</span> window. If you did not have the Xcode command line tool installed, Homebrew will do it for you.
+If you do not have Homebrew installed, go the [Homebrew offical homepage](https://brew.sh) and just copy and paste the installation command in a <span class='app'>Terminal</span> window. If you did not have the Xcode command line tool installed, Homebrew will do it for you.
 
 To install PostgreSQL using Homebrew, start a <span class='app'>Terminal</span> session. Then update your Homebrew library by executing the <span class='app'>Terminal</span> command:
 
