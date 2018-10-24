@@ -2,7 +2,7 @@
 layout: article
 date: "2017-12-30 10:06"
 title: "Install postgreSQL and postGIS"
-modified: 2017-12-30T14:17:25-04:00
+modified: 2017-12-30
 previousurl: setup-ide/install-eclipse
 nexturl: setup-ide/connect-with-psycopg2
 categories: setup-ide
