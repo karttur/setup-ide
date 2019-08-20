@@ -827,3 +827,9 @@ tropwetlandmap:
     caption: Wetlands
     credit: null
     source: null
+TablePlus_connect_postgres:
+    file: TablePlus_connect_postgres.png
+    author: Thomas Gumbricht
+    caption: Setup PostgreSQL connection in TablePlus
+    credit: null
+    source: null

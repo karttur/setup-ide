@@ -1,7 +1,7 @@
 ---
 layout: article
 title: Conda virtual environments
-modified: '2018-10-09 T18:17:25.000Z'
+modified: '2019-08-18T18:17:25.000Z'
 categories: setup-ide
 previousurl: setup-ide/install-anaconda
 nexturl: setup-ide/install-eclipse
@@ -10,15 +10,12 @@ excerpt: "Create Conda environment for Karttur's GeoImagaine project"
 tags:
   - Conda environment
 image: avg-trmm-3b43v7-precip_3B43_trmm_2001-2016_A
-date: '2018-10-09
- T18:17:25.000Z'
+date: '2019-08-18 T18:17:25.000Z'
 comments: true
 share: true
-
 figure1: eclipse_select_import
 figure2: eclipse_import_project_from_file_system_or_archive
 ---
-
 # Introduction
 
 With conda, you can create, update, export and import virtual Python environments that have different versions of Python and/or packages installed in them. If you use [<span class='app'>Eclipse</span>](../install-eclipse) as your Integrated Development Environment (IDE) you can easily reset your Python source to a virtual version created in conda. You can also share an environment by exporting and then importing it.

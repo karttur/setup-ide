@@ -11,6 +11,7 @@ tags: [postgres, postgreSQL, postGIS, Homebrew, pgAdmin 4, Postico, macOS]
 image: std-trmm-3b43v7-precip_3B43_trmm_2001-2016_A
 comments: true
 share: true
+fig1: TablePlus_connect_postgres
 ---
 **Contents**
 	- [Postgres database](#postgres-database)
@@ -352,7 +353,7 @@ There are so far no tables or schemas in the Postgres db cluster, to check that 
 
 ### Install Graphical User Interface
 
-Handling the PostgreSQL database using <span class='app'>psql</span> will become tedious when it grows. Instead you should download a Graphical User Interface (GUI). The primary free alternatives are [pgAdmin](https://www.pgadmin.org) and the light version of [Postico](https://eggerapps.at/postico/). pgAdmin is more comprehensive compared to the (never expiring) trial version of Postico, but Postico feels more modern. Getting tired of both these alternative since I wrote the original post in December 2017, I have now started using [TablePlus](https://tableplus.com) instead.
+Handling the PostgreSQL database using <span class='app'>psql</span> will become tedious when it grows. Instead you should download a Graphical User Interface (GUI). The primary free alternatives are [pgAdmin](https://www.pgadmin.org) and the light version of [Postico](https://eggerapps.at/postico/). pgAdmin is more comprehensive compared to the (never expiring) trial version of Postico, but Postico feels more modern. Getting tired of both these alternative since I wrote the original post in December 2017, I have now (August 2019) started using [TablePlus](https://tableplus.com) instead.
 
 #### Postico
 
@@ -372,7 +373,12 @@ In the window that opens, look for the tab <span class='tab'>Quick links</span> 
 
 #### TablePlus
 
-TablePlus is downloaded as a diskimange <span class='file'>.dmg</span>. Just double click and when the diskimage opens, just drag the <span class='app'>TablePlus</span> to the <span class='file'>/Applications</span> folder.
+TablePlus is downloaded as a diskimange <span class='file'>.dmg</span>. Just double click and when the diskimage opens, just drag the <span class='app'>TablePlus</span> to the <span class='file'>/Applications</span> folder. Connect TablePlus to PostgreSQL as shown in figure 1.
+
+<figure>
+  <img src="{{ site.commonurl }}/images/{{ site.data.images[page.fig1].file }}" alt="image">
+  <figcaption>Figure 1 {{ site.data.images[page.fig1].caption }} </figcaption>
+</figure>
 
 ## Setting up your production database
 

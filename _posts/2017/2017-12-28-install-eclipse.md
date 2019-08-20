@@ -1,7 +1,7 @@
 ---
 layout: article
 title: Setup Eclipse for PyDev
-modified: 2017-12-28T18:17:25.000Z
+modified: 2019-08-17 T18:17:25.000Z
 categories: setup-ide
 previousurl: setup-ide/conda-environ
 nexturl: setup-ide/install-postgres

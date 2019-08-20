@@ -1,7 +1,7 @@
 ---
 layout: article
 title: 'Connect Python and PostgreSQL using psycopg2'
-modified: 2018-01-06T17:17:25.000Z
+modified: 2019-08-20T17:17:25.000Z
 categories: setup-ide
 previousurl: setup-ide/install-postgres
 nexturl: setup-ide/setup-db-karttur
@@ -17,19 +17,44 @@ comments: true
 share: true
 ---
 <script src="https://karttur.github.io/common/assets/js/karttur/togglediv.js"></script>
+
 ## Introduction
 
 In earlier posts I described how to [install Eclipse IDE](../install-eclipse/) for Python development after [installing Anaconda Python](../install-anaconda/) as the Python interpreter, and then I [installed PostgreSQL and PostGIS](../install-postgres/). This post describes how to connect Python with the Postgres server and create a new database in Postgres using Python.
 
-## Install psycopg2
+## Environments and packages
 
-The Anaconda Python distribution contains a lot of Python packages (a package is a self contained collection of python modules [.py files] that performs given tasks). When working with Python you can find packages for almost all your needs, either that can be used out of the box, or after some modification. There is of course a package for connecting Python to Postgres server - <span class='package'>psycopg2</span>. If you installed Anaconda and set up <span class='app'>Eclipse</span> as described in the earlier posts, the Python distribution that <span class='app'>Eclipse</span> uses is under:
+The Anaconda Python distribution contains a lot of Python packages (a package is a self contained collection of python modules [<span class='file'>.py</span> files] that performs given tasks). When working with Python you can find packages for almost all your needs, either that can be used out of the box, or after some modification. There is of course a package for connecting Python to Postgres server - <span class='package'>psycopg2</span>.
 
-<span class='file'>'path'/anaconda2/lib/python2.7</span>
+### Psycopg2 as a package in a virtual environments
 
-where 'path' is the path you choose for installing Anaconda (if you use another python version then 2.7, the version number is different). Your Python path contains a folder called <span class='file'>site-packages</span>. The packages in that folder are available for direct use in the <span class='app'>Eclipse</span> IDE.
+If you followed the post on [Conda virtual environments](../conda-environ) you should have a virtual environment for Python (e.g. geoimagine001) installed on your local machine. And it should include psycopg2 as this package was added to the list of default packages to install with any new virtual environment.
 
-In my Anaconda installation, <span class='package'>psycopg2</span> was not installed under <span class='file'>site-packages</span>, but included as an <span class='file'>.egg</span> file - a kind of package installer. To install <span class='package'>psycopg2</span>, with Anaoconda set up as described in the [earlier post](#), all you have to do to add <span class='package'>psycopg2</span> to your <span class='file'>site-packages</span> is to execute the <span class='app'>Terminal</span> command:
+### Add psycopg2 to a virtual environment
+
+You can install new packages into your environment in the usual way that <span class='terminalapp'>conda</span> packages are installed. Make sure that the environment into which you want to install a package (psycopg2 in this case) is the active environment:
+
+<span class='terminal'>$ conda activate geoimagine001</span>
+
+The terminal prompt should now point at your environment. and you can enter the install command:
+
+<span class='terminal'>(geoimagine001) ... $ conda install -c anaconda psycopg2</span>
+
+or tell <span class='terminalapp'>conda</span> under which environment to install the packages:
+
+<span class='terminal'>(base) ...$ conda install --name geoimagine001 -c anaconda psycopg2</span>
+
+Once the installation is finished you should see the installed packages under the <span class='file'>site-packages</span> path.
+
+### Add psycopg2 to the Anaconda base
+
+If you installed Anaconda and set up <span class='app'>Eclipse</span> as described in the earlier posts, the Python distribution that <span class='app'>Eclipse</span> uses is under:
+
+<span class='file'>'path'/anaconda3/lib/python3.7</span>
+
+where 'path' is the path you choose for installing Anaconda (if you use another python version then 3.7, the version number is different). Your Python path contains a folder called <span class='file'>site-packages</span>. The packages in that folder are available for direct use in the <span class='app'>Eclipse</span> IDE.
+
+In my Anaconda installation, <span class='package'>psycopg2</span> was not installed under <span class='file'>site-packages</span>, but included as an <span class='file'>.egg</span> file - a kind of package installer. To install <span class='package'>psycopg2</span>, with Anaconda set up as described in the [earlier post](../install-anaconda), all you have to do to add <span class='package'>psycopg2</span> to your <span class='file'>site-packages</span> is to execute the <span class='app'>Terminal</span> command:
 
 <span class='terminal'>$ conda install psycopg2</span>
 
@@ -43,7 +68,7 @@ You can also open the folder in <span class='app'>Finder</span>. Copy the full p
 
 If you are only going to use your Postgres database as localhost (on your own machine), security is less important. But if you want to protect your data you must set some level of security. The solution I use is primarily for macOS and UNIX/Linux systems, and is not very advanced. I use a combination of storing my password in my home directory (~) combined with a simple encryption.
 
-Create a file in your home directory (~) called <span class='file'>.netrc</span> that defines your credentials. An [earlier post](#) describes how to use the <span class='app'>Terminal</span> for creating and editing files in detail. In the <span class='app'>Terminal</span> go to your home directory:
+Create a file in your home directory (~) called <span class='file'>.netrc</span> that defines your credentials. An [earlier post](https://karttur.github.io/setup-blog/2017/12/21/setup-blog-tools.html#opening-and-understanding-the-terminal) describes how to use the <span class='app'>Terminal</span> for creating and editing files in detail. In the <span class='app'>Terminal</span> go to your home directory:
 
 <span class='terminal'>$ cd ~</span>
 
@@ -51,7 +76,7 @@ Then start the <span class='app'>Terminal</span> text editor <span class='termin
 
 <span class='terminal'>$ pico .netrc</span>
 
-Enter the two lines below (but with your role/user and password), one for the default user (if you [installed Postgres with Homebrew](#) the default user is the same as your user on the local machine - 'yourUser'), and one for the production user ('prodUser') if you followed my suggestions in the [previous post](#). If you only have the default user, enter the same login and password in both lines.
+Enter the two lines below (but with your role/user and password), one for the default user (if you [installed Postgres with Homebrew](../install-postgres/) the default user is the same as your user on the local machine - 'yourUser'), and one for the production user ('prodUser') if you followed my suggestions in the [previous post](../install-postgres/). If you only have the default user, enter the same login and password in both lines.
 ```
 machine localhost0   login yourUser   password yourPassword
 machine localhost1   login prodUser   password prodPassword
@@ -64,7 +89,7 @@ With this solution your credentials will only be explicitly written out in a hid
 
 ### Set Postgres connection in Python (Eclipse)
 
-Start <span class='app'>Eclipse</span>, and you should come back to the workbench that you created in a [previous post](#). Repeat the steps outlined in that post to create a new PyDev project, with a PyDev package and a sub-package.
+Start <span class='app'>Eclipse</span>, and you should come back to the workbench that you created in a [previous post](../install-eclipse/). Repeat the steps outlined in that post to create a new PyDev project, with a PyDev package and a sub-package.
 
 Create a project (call it what you want):
 
