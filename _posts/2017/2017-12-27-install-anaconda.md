@@ -1,10 +1,10 @@
 ---
 layout: article
 title: Install Anaconda
-modified: 2017-12-27T20:17:25.000Z
+modified: 2019-08-17T20:17:25.000Z
 categories: setup-ide
 previousurl: setup-ide/install-gis
-nexturl: setup-ide/install-eclipse
+nexturl: setup-ide/conda-environ
 excerpt: Install Anaconda Python package on macOS
 tags:
   - Anaconda
@@ -27,7 +27,7 @@ Python is a general purpose high-level programming language, and I use Python to
 
 ### Download and install Anaconda
 
-Anaconda is a free platform for scientific Python. To download Anaconda, visit the [Anaconda homepage](https://www.anaconda.com), and look for the download link. In the download page, find the distribution (e.g. Windows, Linux, macOS) and the Python version (e.g. 2.X or 3.X) that you need. I use Python 2.7, but the day I find the strength I will change to 3.x. Download the graphical installer, unless you feel comfortable with the command line version.
+Anaconda is a free platform for scientific Python. To download Anaconda, visit the [Anaconda homepage](https://www.anaconda.com), and look for the download link. In the download page, find the distribution (e.g. Windows, Linux, macOS) and the Python version (e.g. 2.X or 3.X) that you need. Since I wrote the original post (December 2017) I have switched from Python 2.7 to 3.7. Download the graphical installer, unless you feel comfortable with the command line version.
 
 Open Anaconda installation package (<span class='file'>.pkg</span>) by double clicking. If you are denied installing, you need to bypass the macOS security settings. Go via the mac main menu, click the apple (absolute top left of the computer screen), select <span class='finder'>System Preferences...</span>. In the top row of the <span class='tab'>System Preferences</span> window, click the Security & Privacy icon. In the window that opens, under the <span class='tab'>General</span> tab (usually in front by default), you should see a paragraph towards the bottom:
 ```
@@ -59,7 +59,7 @@ If you installed Anaconda, you should have a pip version included in the Anacond
 
 Or go to the official [pip homepage](https://pip.pypa.io), that includes installation instruction.
 
-In the [next blog post](../install-eclipse/index.html) I will go through installing Eclipse IDE (Integrated Development Environment), and setting Eclipse up for Python Developing (PyDev) using Anaconda Python as the interpreter.
+The next step is either [creating a virtual Python environment](../conda-environ/) (article added in August 2019) or to install and setup [<span class='app'>Eclipse</span>](../install-eclipse) IDE (Integrated Development Environment) for Python Developing (PyDev). There are many advantages with setting up PyDev using a virtual Python environment, so I recommend that you start with the post on [Conda virtual environments](../conda-environ/).
 
 ## Resources
 

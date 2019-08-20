@@ -2,7 +2,7 @@
 layout: article
 date: "2017-12-30 10:06"
 title: "Install postgreSQL and postGIS"
-modified: 2017-12-30
+modified: "2019-08-20 10:06"
 previousurl: setup-ide/install-eclipse
 nexturl: setup-ide/connect-with-psycopg2
 categories: setup-ide
@@ -44,15 +44,15 @@ After having tried all options above, I used the Homebrew alternative for instal
 
 ## Install PostgreSQL using Homebrew
 
-If you do not have Homebrew installed, go the [Homebrew offical homepage](https://brew.sh) and just copy and paste the installation command in a <span class='app'>Terminal</span> window. If you did not have the Xcode command line tool installed, Homebrew will do it for you.
+If you do not have Homebrew installed, follow [this](https://karttur.github.io/setup-theme-blog/blog/install-imagemagick/#installation) post or go the [Homebrew offical homepage](https://brew.sh) and just copy and paste the installation command in a <span class='app'>Terminal</span> window.
 
 To install PostgreSQL using Homebrew, start a <span class='app'>Terminal</span> session. Then update your Homebrew library by executing the <span class='app'>Terminal</span> command:
 
-<span class='terminal'>brew update</span>
+<span class='terminal'>$ brew update</span>
 
 When Homebrew is updated with all the latest 'bottles', just execute the command:
 
-<span class='terminal'>brew install postgres</span>
+<span class='terminal'>$ brew install postgres</span>
 
 Homebrew will first install PostgresQLS's dependencies, and then install the latest version of PostgreSQL.
 
@@ -101,7 +101,115 @@ Then install postGIS, at the <span class='app'>Terminal</span> write:
 
 <span class='terminal'>$ brew install postgis</span>
 
-As when you installed PostgreSQL, the progress of the installation will be reported in the <span class='app'>Terminal</span> window.
+As when you installed PostgreSQL, the progress of the installation will be reported in the <span class='app'>Terminal</span> window. In my case the installation reports quite a list of caveats.
+```
+==> Caveats
+==> expat
+expat is keg-only, which means it was not symlinked into /usr/local,
+because macOS already provides this software and installing another version in
+parallel can cause all kinds of trouble.
+
+If you need to have expat first in your PATH run:
+  echo 'export PATH="/usr/local/opt/expat/bin:$PATH"' >> ~/.bash_profile
+
+For compilers to find expat you may need to set:
+  export LDFLAGS="-L/usr/local/opt/expat/lib"
+  export CPPFLAGS="-I/usr/local/opt/expat/include"
+
+For pkg-config to find expat you may need to set:
+  export PKG_CONFIG_PATH="/usr/local/opt/expat/lib/pkgconfig"
+
+==> libxml2
+libxml2 is keg-only, which means it was not symlinked into /usr/local,
+because macOS already provides this software and installing another version in
+parallel can cause all kinds of trouble.
+
+If you need to have libxml2 first in your PATH run:
+  echo 'export PATH="/usr/local/opt/libxml2/bin:$PATH"' >> ~/.bash_profile
+
+For compilers to find libxml2 you may need to set:
+  export LDFLAGS="-L/usr/local/opt/libxml2/lib"
+  export CPPFLAGS="-I/usr/local/opt/libxml2/include"
+
+For pkg-config to find libxml2 you may need to set:
+  export PKG_CONFIG_PATH="/usr/local/opt/libxml2/lib/pkgconfig"
+
+==> libpq
+libpq is keg-only, which means it was not symlinked into /usr/local,
+because conflicts with postgres formula.
+
+If you need to have libpq first in your PATH run:
+  echo 'export PATH="/usr/local/opt/libpq/bin:$PATH"' >> ~/.bash_profile
+
+For compilers to find libpq you may need to set:
+  export LDFLAGS="-L/usr/local/opt/libpq/lib"
+  export CPPFLAGS="-I/usr/local/opt/libpq/include"
+
+For pkg-config to find libpq you may need to set:
+  export PKG_CONFIG_PATH="/usr/local/opt/libpq/lib/pkgconfig"
+
+==> openblas
+openblas is keg-only, which means it was not symlinked into /usr/local,
+because macOS provides BLAS and LAPACK in the Accelerate framework.
+
+For compilers to find openblas you may need to set:
+  export LDFLAGS="-L/usr/local/opt/openblas/lib"
+  export CPPFLAGS="-I/usr/local/opt/openblas/include"
+
+For pkg-config to find openblas you may need to set:
+  export PKG_CONFIG_PATH="/usr/local/opt/openblas/lib/pkgconfig"
+
+==> python@2
+Pip and setuptools have been installed. To update them
+  pip install --upgrade pip setuptools
+
+You can install Python packages with
+  pip install <package>
+
+They will install into the site-package directory
+  /usr/local/lib/python2.7/site-packages
+
+See: https://docs.brew.sh/Homebrew-and-Python
+==> numpy
+If you use system python (that comes - depending on the OS X version -
+with older versions of numpy, scipy and matplotlib), you may need to
+ensure that the brewed packages come earlier in Python's sys.path with:
+  mkdir -p /Users/thomasgumbricht/Library/Python/2.7/lib/python/site-packages
+  echo 'import sys; sys.path.insert(1, "/usr/local/lib/python3.7/site-packages")' >> /Users/thomasgumbricht/Library/Python/2.7/lib/python/site-packages/homebrew.pth
+==> nss
+nss is keg-only, which means it was not symlinked into /usr/local,
+because Firefox can pick this up instead of the built-in library, resulting in
+random crashes without meaningful explanation.
+
+Please see https://bugzilla.mozilla.org/show_bug.cgi?id=1142646 for details.
+
+If you need to have nss first in your PATH run:
+  echo 'export PATH="/usr/local/opt/nss/bin:$PATH"' >> ~/.bash_profile
+
+For compilers to find nss you may need to set:
+  export LDFLAGS="-L/usr/local/opt/nss/lib"
+  export CPPFLAGS="-I/usr/local/opt/nss/include"
+
+For pkg-config to find nss you may need to set:
+  export PKG_CONFIG_PATH="/usr/local/opt/nss/lib/pkgconfig"
+
+==> qt
+We agreed to the Qt open source license for you.
+If this is unacceptable you should uninstall.
+
+qt is keg-only, which means it was not symlinked into /usr/local,
+because Qt 5 has CMake issues when linked.
+
+If you need to have qt first in your PATH run:
+  echo 'export PATH="/usr/local/opt/qt/bin:$PATH"' >> ~/.bash_profile
+
+For compilers to find qt you may need to set:
+  export LDFLAGS="-L/usr/local/opt/qt/lib"
+  export CPPFLAGS="-I/usr/local/opt/qt/include"
+
+For pkg-config to find qt you may need to set:
+  export PKG_CONFIG_PATH="/usr/local/opt/qt/lib/pkgconfig"
+```
 
 The Postgres server might start up after the installation finishes, try the command:
 
@@ -203,7 +311,7 @@ And then write:
 
 #### Set password and set up roles
 
-Other posts following this, build on the assumption that the db cluster 'postgres' is your production db, and that you have two user: the default user ('yourUser'), and a production user ('prodUser'). There is no problem in doing it in other ways, following the suggestions might just make it easier to remember.
+Other posts following this, build on the assumption that the db cluster 'postgres' is your production db, and that you have two (2) users: the default user ('yourUser'), and a production user ('prodUser'). There is no problem in doing it in other ways, following the suggestions might just make it easier to remember.
 
 Assuming that you are going to use the db cluster 'postgres' for you production, start <span class='terminalapp'>psql</span> for the 'postgres' db cluster at the <span class='app'>Terminal</span> prompt:
 
@@ -244,7 +352,7 @@ There are so far no tables or schemas in the Postgres db cluster, to check that 
 
 ### Install Graphical User Interface
 
-Handling the PostgreSQL database using the <span class='app'>Terminal</span> will become tedious when it grows. Instead you should download a Graphical User Interface (GUI). The primary free alternatives are [pgAdmin](https://www.pgadmin.org), and the light version of [Postico](https://eggerapps.at/postico/). pgAdmin is more comprehensive compared to the (never expiring) trial version of Postico, but Pustico feels more modern.
+Handling the PostgreSQL database using <span class='app'>psql</span> will become tedious when it grows. Instead you should download a Graphical User Interface (GUI). The primary free alternatives are [pgAdmin](https://www.pgadmin.org) and the light version of [Postico](https://eggerapps.at/postico/). pgAdmin is more comprehensive compared to the (never expiring) trial version of Postico, but Postico feels more modern. Getting tired of both these alternative since I wrote the original post in December 2017, I have now started using [TablePlus](https://tableplus.com) instead.
 
 #### Postico
 
@@ -262,9 +370,13 @@ Start <span class='app'>pgAdmin</span>.
 
 In the window that opens, look for the tab <span class='tab'>Quick links</span> and the text/icon 'Add New Server', and click the latter. In the <span class='tab'>Create server</span> window that opens, select the <span class='tab'>General</span> tab (should be the default), add a <span class='textbox'>Name</span> of your choice, set Server Groups to <span class='textbox'>Servers</span>, add any Comment (or leave blank). Change to the <span class='tab'>Connections</span> tab, and fill in: Host name/address: <span class='textbox'>localhost</span>, Port: <span class='textbox'>5432</span>, Maintenance database:  <span class='textbox'>postgres</span>, Username: <span class='textbox'>'prodUser'</span>, Password: <span class='textbox'>'prodPassword'</span>. You can leave <span class='textbox'>Role</span> blank or set it to 'prodUser'.
 
+#### TablePlus
+
+TablePlus is downloaded as a diskimange <span class='file'>.dmg</span>. Just double click and when the diskimage opens, just drag the <span class='app'>TablePlus</span> to the <span class='file'>/Applications</span> folder.
+
 ## Setting up your production database
 
-Assuming that your 'postgres' database cluster is your production environment, make sure it is the selected db (whether in the <span class='app'>Terminal</span>, <span class='app'>Postico</span> or <span class='app'>pgAdmin</span>). And execute the following SQL command:
+Assuming that your 'postgres' database cluster is your production environment, make sure it is the selected db (whether in the <span class='app'>Terminal</span>, <span class='app'>Postico</span>, <span class='app'>pgAdmin</span> or span class='app'>TablePlus</span>). And execute the following SQL command:
 
 ```
 CREATE EXTENSION postgis;
@@ -343,3 +455,5 @@ And if you want to remove (unload) a <span class='file'>.plist</span> file from 
 [pgAdmin](https://www.pgadmin.org)
 
 [Postico](https://eggerapps.at/postico/)
+
+[TablePlus](https://tableplus.com/)

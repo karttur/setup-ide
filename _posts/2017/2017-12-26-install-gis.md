@@ -1,7 +1,7 @@
 ---
 layout: article
 title: 'Install GDAL, QGIS and GRASS'
-modified: 2017-12-26T18:17:25.000Z
+modified: 2019-08-26T18:17:25.000Z
 categories: setup-ide
 previousurl: null
 nexturl: setup-ide/install-anaconda
@@ -32,9 +32,11 @@ Most of my Geo Imagine processing I do using Python and the Geospatial Data Abst
 
 ## Installations
 
+Working with GDAL, QGIS and GRASS on mac osx is not more complex compared to other operating systems. To get the components setup and working together, might, however, be a bit more complex. Historically, William Kyngesburye ([KyngChaos page](http://www.kyngchaos.com/)) has maintained installers and instructions. But then QGIS set up their own installer for some versions, and then returned to letting William Kyngesburye do it. You just have to check out and read the instructions both on the official [QGIS](https://www.qgis.org) site and at [KyngChaos](http://www.kyngchaos.com/).
+
 ### GDAL
 
-If you intend to install both GDAL and QGIS on a mac, the QGIS convenience installer maintained by William Kyngesburye ([KyngChaos page](http://www.kyngchaos.com/software:frameworks)), also contains the complete GDAL package, and you can skip installing GDAL separately and jump directly to the QGIS installation.
+If you intend to install both GDAL and QGIS on a mac, first check out if the QGIS installer maintained by William Kyngesburye ([KyngChaos page](http://www.kyngchaos.com/software:frameworks)) also contains the complete GDAL package. If so you can skip installing GDAL separately and jump directly to the QGIS installation. Otherwise install GDAL from ([KyngChaos](http://www.kyngchaos.com/software:frameworks)).
 
 [GDAL](http://www.gdal.org) is a powerful translator library for creating, modifying and managing geospatial data, and is also at the core of many commercial GIS software packages. GDAL can be downloaded via links on the [GDAL official homepage](http://www.gdal.org). Here I will only cover how to install GDAL on macOS.
 
@@ -44,7 +46,7 @@ GDAL is dependent on several frameworks, including:
 * GEOS
 * SQLite3
 
-The GDAL convenience installer offered on the [KyngChaos page](http://www.kyngchaos.com/software:frameworks) includes all the necessary frameworks (and is also the official installation site for GDAL on macOS). Go ahead and download the convenience installer for the latest version of GDAL (2.1 at the time of writing). The installer comes as a diskimage (.dmg). Open it by double clicking. The diskimage contains two package installer (<span class='file'>.pkg</span>) and several ReadMe files in Rich Textformat (<span class='file'>.rtf</span>). The installer <span class='file'>GDAL Complete.pkg</span>, installs both GDAL and the necessary dependencies.
+The GDAL convenience installer offered on the [KyngChaos page](http://www.kyngchaos.com/software:frameworks) includes all the necessary frameworks (and is also the official installation site for GDAL on macOS). Go ahead and download the convenience installer for the latest version of GDAL (2.4 at the time of writing). The installer comes as a diskimage (.dmg). Open it by double clicking. The diskimage contains two package installer (<span class='file'>.pkg</span>) and several ReadMe files in Rich Textformat (<span class='file'>.rtf</span>). The installer <span class='file'>GDAL Complete.pkg</span>, installs both GDAL and the necessary dependencies.
 
 Go ahead and install the complete GDAL package by double clicking <span class='file'>GDAL Complete.pkg</span>. You will most likely be denied installing GDAL due to the macOS security settings. To allow installation, go via the mac main menu, click the apple (absolute top left of the computer screen), select <span class='finder'>System Preferences...</span>. In the top row of the <span class='tab'>System Preferences</span> window, click the Security & Privacy icon. In the window that open, under the <span class='tab'>General</span> tab (usually in front by default), you should see a paragraph towards the bottom:
 ```

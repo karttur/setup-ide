@@ -3,7 +3,7 @@ layout: article
 title: Setup Eclipse for PyDev
 modified: 2017-12-28T18:17:25.000Z
 categories: setup-ide
-previousurl: setup-ide/install-anaconda
+previousurl: setup-ide/conda-environ
 nexturl: setup-ide/install-postgres
 excerpt: "Install Eclipse IDE and set up Eclipse for Python Development (PyDev) using
   Anaconda as interpreter"
@@ -33,13 +33,21 @@ share: true
 
 ### Download and Install Eclipse
 
-You can either download the default package of Eclipse via the [official homepage](http://www.eclipse.org), or choose a custom Eclipse version from the [package download page](http://www.eclipse.org/downloads/eclipse-packages/).  In the latter case it is enough to select the (small package) <span class='button'>Eclipse IDE for Java Developers</span> (not for EE Developers).
+You can either download the default package of Eclipse via the [official homepage](http://www.eclipse.org), or choose a custom Eclipse version from the [package download page](http://www.eclipse.org/downloads/eclipse-packages/). You will get the option to **Try the Eclipse Installer YYYY‑MM R**, which links to a smaller download package (diskimage for mac osx). If you choose this option you will get to an Eclipse Installer app with all packages options. You can also download a [legacy version](https://www.eclipse.org/downloads/packages/release/), in which case you will again get the same options for selecting different Eclipse packages.
+
+In any case it is enough to select the (small package) <span class='button'>Eclipse IDE for Java Developers</span> (not for EE Developers). Regardless of which version you choose, you need to check out that your Java Development Kit (JDK) goes with the Eclipse version you have chosen (this will become clear further down).
 
 If you download the default package, it will come as a gunzipped tarball (<span class='file'>.tar.gz</span>). It expands to an installer if you double click, first to explode the gunzip, and then to open the tarball. Then double click the <span class='app'>Eclipse Installer</span> and follow the instructions.
 
 If you instead downloaded a package, you will receive a diskimage (<span class='file'>.dmg</span>). Double click the <span class ='file'>.dmg</span> file, and then just drag the <span class='app'>Eclipse.app</span> inside the diskimage to your <span class ='finder'>/Applications</span> folder and you are done.
 
-Start <span class ='app'>Eclipse</span>. Dependent on your operating system and the version of <span class='app'>Eclipse</span>, you might have to install a Java Development Kit (JDK). <span class='app'>Eclipse</span> will (probably) tell you to install JDK 6, that is [available via Apple](https://support.apple.com/kb/DL1572?locale=en_US). This is actually a legacy version and is not the version you need, but other apps might require it. You can skip installing it for now if you do not think you will need it. What you need is the latest JDK version (version 8 at time of writing), which is available from Oracle that maintains Java and JDK. Go to the [Oracle JDK download page](http://www.oracle.com/technetwork/java/javase/downloads/jdk8-downloads-2133151.html), and select the JDK version required by your operating system (Windows, Linux, macOS). Accept the Licence agreement and download. Follow the installation instructions in the downloaded file, and you should be ready to start <span class ='app'>Eclipse</span>.
+If you downloaded the small download app, it will directly create your Eclipse installation in the location of your choosing.
+
+#### Java Development Kit (JDK)
+
+Start <span class ='app'>Eclipse</span>. Dependent on your operating system and the version of <span class='app'>Eclipse</span>, you might have to install a Java Development Kit (JDK). <span class='app'>Eclipse</span> will (probably) tell you to install JDK 6, that is [available via Apple](https://support.apple.com/kb/DL1572?locale=en_US). This is actually a legacy version and is not the version you need, but other apps might require it. You can skip installing it for now if you do not think you will need it. What you need is a later JDK version. At time of writing that means 8, 11 or 12 (9 and 10 are not longer active). Which version of Java JDK to use depends on your Eclipse version. You can always reinstall if it does not work the first time. To download the Java JDK you must register with [oracle.com](https://www.oracle.com/index.html).
+
+Go to the [Oracle Java JDK download page (version 8 in this link)](http://www.oracle.com/technetwork/java/javase/downloads/jdk8-downloads-2133151.html), and select the JDK version required by your operating system (Windows, Linux, macOS). Accept the Licence agreement and download. Follow the installation instructions in the downloaded file, and you should be ready to start <span class ='app'>Eclipse</span>.
 
 ### Setup Eclipse for Python development
 
@@ -57,11 +65,23 @@ With <span class='app'>Eclipse</span> workbench up and running, select from the 
 
 <span class='menu'>Eclipse : preferences</span>
 
-In the <span class='tab'>Preferences</span> window that opens, click the PyDev expansion icon (\>) in the menu to the left. In the expanded sub-list click the expansion icon for <span class='button'>Interpreters</span> and click <span class='button'>Python interpreter</span>. In the window that opens, click the <span class='button'>New</span> button in the upper right corner. The dialog window <span class='tab'>Select Interpreters</span> opens. Give an <span class='textbox'>Interpreter Name</span> that you remember (could be anything) like 'Python 2.7 Anaconda2'. In the <span class='textbox'>Interpreter Executable</span> text box you have to give the link to your Anaconda Python executable. Click the <span class='button'>Browse</span> button and navigate to where you [installed Anaconda](../setting-up-anaconda/index.html), and drill down to the Python executable:
+In the <span class='tab'>Preferences</span> window that opens, click the PyDev expansion icon (\>) in the menu to the left. In the expanded sub-list click the expansion icon for <span class='button'>Interpreters</span> and click <span class='button'>Python interpreter</span>. In the window that opens, click the <span class='button'>Browse for python/pypy exe</span> button in the upper right corner. The dialog window <span class='tab'>Select Interpreters</span> opens.
 
-<span class='file'>'path'/Anaconda2/bin/python</span>
+#### Virtual environment python Interpreter
 
-where 'path' is path you choose for installing Anaconda. Click <span class='button'>Finish/OK</span>, and the dialog window <span class='tab'>Selection Needed</span> appears. Accept the default selection (all listed items), and click <span class='button'>Finish/OK</span> again. All the selected Libraries and their associated Packages will be linked to your project, and show up in the lower frame of the <span class='tab'>Preferences</span> window. When finished, click <span class='button'>Apply and Close</span>.
+If you have setup a [Conda virtual environments](../conda-environ), the preferred method, click <span class='button'>Browse</span> button next to the textbox <span class='textbox'>Interpreter Executable</span>. Navigate to the virtual environment you created (e.g. ../anaconda3/envs/geoimagine001/bin/python3.7) and choose that file. Then edit the textbox <span class='textbox'>Interpreter Name</span> to something like 'Python3.7 geoimagine001'.
+
+#### Anaconda base environment
+
+If you did not setup a virtual Python environment you can use the Anaconda default (or 'base') environment as your Python interpreter. Click the <span class='button'>Browse</span> button and navigate to where you [installed Anaconda](../setting-up-anaconda/index.html), and drill down to the Python executable:
+
+<span class='file'>'path'/Anaconda3/bin/python</span>
+
+where 'path' is path you choose for installing Anaconda.
+
+### Apply the selected interpreter
+
+Regardless of which interpreter you selected, click <span class='button'>Finish/OK</span>, and the dialog window <span class='tab'>Selection Needed</span> appears. Accept the default selection (all listed items), and click <span class='button'>Finish/OK</span> again. All the selected Libraries and their associated Packages will be linked to your project, and show up in the lower frame of the <span class='tab'>Preferences</span> window. When finished, click <span class='button'>Apply and Close</span>.
 
 After the interpreter configuration is finished you will get back to the workbench main window and its panes. They will be updated when you tell <span class='app'>Eclipse</span> that you are starting a PyDev project, do not worry about them yet.
 
@@ -187,7 +207,3 @@ The first time is from when you imported the module (__from myPackage.mySubPacka
 [Eclipse](https://www.eclipse.org/)
 
 [PyDev](http://www.pydev.org/)
-
-[//]: #(http://www.pydev.org/manual_101_project_conf.html)
-
-[//]: #(http://mikegrouchy.com/blog/2012/05/be-pythonic-__init__py.html)
