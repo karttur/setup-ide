@@ -1,0 +1,137 @@
+---
+layout: article
+title: Upgrade to Anaconda3 and Python3
+modified: '2018-06-19 17:53'
+categories: setup-ide
+previousurl: setup-ide/install-postgres
+nexturl: null
+excerpt: Upgrade from Anaconda2 and Python2 to Anaconda3 and Python3
+tags:
+  - Python
+  - Anaconda
+  - Eclipse
+  - upgrade
+image: rainfall-delta_3B43_trmm_2001-2016_mk-z-ts-model@p005
+date: '2018-06-19 17:53'
+comments: true
+share: true
+---
+
+**Contents**
+	\- [Introduction](#introduction)
+	\- [Un-installing conda/Anaconda](#un-installing-condaanaconda)
+	\- [Install anaconda3](#install-anaconda3)
+	\- [Organise and update Eclipse](#organise-and-update-eclipse)
+		\- [Set Anaconda as the Python interpreter](#set-anaconda-as-the-python-interpreter)
+		\- [Import existing projects](#import-existing-projects)
+		\- [Converting from Python2 to Python3](#converting-from-python2-to-python3)
+	\- [Resources](#resources)
+
+## Introduction
+
+In the previous articles you used Anaconda2 and Python 2.7. The support for Python 2.7 is now (2018) being faced out, and it is time to change to Python 3 (3.6).
+
+Regardless if you have Anaconda2 or Anaconda3 installed, you can run both python2 (2.7) and python3 (3.6) under both. You can create environments for both python versions and swap between them. You can also have both Anaconda2 and Anaconda3 installed at the same time. This article, however, describes how to un-install Anaconda2 and then install Anaconda3 and change Eclipse to use Python3 from Anaconda3.
+
+## Un-installing conda/Anaconda
+
+Open a terminal window and type:
+
+<span class='terminal'>$ conda install anaconda-clean</span>
+
+When asked to  <span class='terminal'>Proceed ([y]/n)?</span> answer <span class='terminal'>y</span>
+
+When the installation is complete, enter
+
+<span class='terminal'>$ anaconda-clean --yes</span>
+
+Conda then creates a backup in your home directory, as reported at the prompt
+
+<span class='terminal'>/Users/YourUser/.anaconda_backup/YYYY-MM-DDTHHMMSS</span>
+
+You can remove the backup from the terminal, change directory (<span class='terminal'>cd</span>) to your home:
+
+<span class='terminal'>$ cd ~</span>
+
+Remove the backup by entering
+
+<span class='terminal'>$ rm -rf .anaconda_backup</span>
+
+If you installed Anaconda2 in your home directory (default) you can continue below, if not <span class='terminal'>cd</span> to the directory where you installed Anaconda2.
+
+Remove Anaconda2 by entering
+
+<span class='terminal'>$ rm -rf anaconda2</span>
+
+Return to your home directory and remove (or comment out) the system PATH to Anaconda2 in <span class = 'file'>.bash_profile</span>.
+
+
+<span class='terminal'>$ sudo pico .bash_profile</span>
+
+To comment out just add "#" in front of the PATH to Anaconda2
+
+<span class='terminal'># export PATH="/Path/to/anaconda2/bin:$PATH"</span>
+
+## Install anaconda3
+
+Go to the [anaconda main page](https://anaconda.org), click the Download Anaconda link and get the Python 3 version (3.6 at time of writing).
+
+When the installer has finished downloading, double click the Anaconda3...pkg installer and follow the instructions. For details see [this article](ref).
+
+Open <span class='file'>.bash_profile</span> in pico (as above) to reset the PATH to your Anaconda3 installation. Save the edits and close and reopen all <span class='app'>Terminal</span> windows for the environment PATH to take effect. Check that conda was properly installed by typing at the prompt:
+
+<span class='terminal'>$ conda -V</span>
+
+To get information on the conda environment enter:
+
+<span class='terminal'>$ conda info --envs</span>
+
+The response should be similar to
+
+<span class='terminal'>base      *  /Users/YourUser/anaconda3</span>
+
+To update your Anaconda distribution execute the commands
+
+<span class='terminal'>$ conda update conda</span>
+
+and
+
+<span class='terminal'>$ conda update anaconda</span>
+
+For more details see [previous article](ref).
+
+## Organise and update Eclipse
+
+If you are using Eclipse as your Integrated Development Environment (IDE) you need to update Eclipse to work against Python3 and Anaconda3. You can choose to start Eclipse with a new workspace (directory) or rename your existing (anconda2/python2) workspace (directory) and keep the same workspace. I choose to use the latter, and renamed my old workspace. When starting with Python3 later I will copy or import the python packages and modules manually piece by piece for re-assembling my projects in python3, while at the same time updating the code.
+
+### Set Anaconda as the Python interpreter
+
+With <span class='app'>Eclipse</span> workbench up and running, select from the top menu:
+
+<span class='menu'>Eclipse : preferences</span>
+
+In the <span class='tab'>Preferences</span> window that opens, click the PyDev expansion icon (\>) in the menu to the left. In the expanded sub-list click the expansion icon for <span class='button'>Interpreters</span> and click <span class='button'>Python interpreter</span>. In the window that opens, click the <span class='button'>New</span> button in the upper right corner. The dialog window <span class='tab'>Select Interpreters</span> opens.  In the <span class='textbox'>Interpreter Executable</span> text box you have to give the link to your Anaconda Python executable. Click the <span class='button'>Browse</span> button and navigate to where you [installed Anaconda](../setting-up-anaconda/index.html), and drill down to the Python executable:
+
+<span class='file'>'path'/Anaconda3/bin/python</span>
+
+where 'path' is the path you choose for installing Anaconda. Click <span class='button'>Finish/OK</span>, and the dialog window <span class='tab'>Selection Needed</span> appears. Accept the default selection (all listed items), and click <span class='button'>Finish/OK</span> again. All the selected Libraries and their associated Packages will be linked to your project, and show up in the lower frame of the <span class='tab'>Preferences</span> window. When finished, click <span class='button'>Apply and Close</span>.
+
+### Import existing projects
+
+If you did as me, you can import your old python2 projects directly to Python3. From the Eclipse main menu:
+
+<span class='menu'>File : import</span>
+
+Expand the small icon for general and then select "Projects from Folder or Archive", hit the <span class='button'>next></span> key and in the "Import Source" text box enter the path, pr use the buttons for <span class='button'>Directory</span> or <span class='button'>Archive</span> to navigate to the the project you want to import.
+
+Note that the imported directory will keep its original position. If you want it to be in your default workbench (directory) you must first copy it in place.
+
+### Converting from Python2 to Python3
+
+Some functions need to be recoded when you change from Python2 to Python3, but you will discover that as you try to run your Python2 packages in Python3. All print statements must be put in parenthesis in Python3 and accessing dictionaries is slightly different.
+
+## Resources
+
+[Anaconda](https://www.anaconda.com)
+
+[Setup python with Anaconda](https://machinelearningmastery.com/setup-python-environment-machine-learning-deep-learning-anaconda/) by Jason Brownlee (Machine Learning Mastery).
