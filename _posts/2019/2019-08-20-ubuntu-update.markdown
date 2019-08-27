@@ -492,15 +492,15 @@ determine the version (get the folder name by exectuing the list <span class='te
 
 Compile ImageMagick:
 
-<span class='terminal'>$ ./configure</span> (<span class='terminal'>$ ./configure/</span>)
+<span class='terminal'>$ ./configure</span>
 
 Make the compilation:
 
-<span class='terminal'>$ make</span>(<span class='terminal/'>$ make</span>)
+<span class='terminal'>$ make</span>
 
 Install the application:
 
-<span class='terminal'>$ sudo make install</span>(<span class='terminal'>$ sudo make install/</span>)
+<span class='terminal'>$ sudo make install</span>
 
 <span class='terminal'>$ sudo ldconfig /usr/local/lib/</span>
 
