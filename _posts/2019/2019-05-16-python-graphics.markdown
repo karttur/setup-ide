@@ -3,9 +3,7 @@ layout: "post"
 title: Python graphics for spatial data
 date: "2019-05-16 05:47"
 modified: 2019-05-16 05:47
-categories: setup-ide
-previousurl: setup-ide/install-anaconda
-nexturl: setup-ide/install-postgres
+categories: blog
 excerpt: "Python graphic packages."
 tags:
   - macOS

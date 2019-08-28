@@ -27,7 +27,7 @@ Fig5: Eclipse-installer-product-define
 
 ## Eclipse Installer
 
-In this post you will first setup the [Eclipse Installer](https://www.eclipse.org/downloads/packages/) and then use the installer for setting up a specific Eclipse version. If you intend to use the same Eclipse project across several machines, having the same Eclipse version makes life easier.
+In this post you will first download the [Eclipse Installer](https://www.eclipse.org/downloads/packages/) and then use the installer for setting up a specific Eclipse version. If you intend to use the same Eclipse project across several machines, having the same Eclipse version makes life easier.
 
 ### Download the Eclipse installer
 

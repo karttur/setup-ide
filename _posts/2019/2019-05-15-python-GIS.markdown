@@ -3,9 +3,7 @@ layout: "post"
 title: Replace Mac OSX with Ubuntu in Target Mode
 date: "2019-05-15 08:43"
 modified: 2019-05-15 08:43
-categories: setup-ide
-previousurl: setup-ide/install-anaconda
-nexturl: setup-ide/install-postgres
+categories: blog
 excerpt: "Replace Mac OSX with Ubuntu on an (old) apple machine."
 tags:
   - macOS

@@ -3,8 +3,6 @@ layout: page
 title: Install Anaconda3 and python3
 modified: 2018-10-24T18:17:25.000Z
 categories: blog
-previousurl: setup-ide/setup-db-karttur
-nexturl: null
 excerpt: Install version 3 of Python, Anaconda and QGIS
 tags:
   - Anaconda3

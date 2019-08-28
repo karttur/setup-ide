@@ -1,11 +1,9 @@
 ---
 layout: "post"
 title: Spatial Data Integrated Development Environment for Ubuntu 18.04
-date: "2019-05-16 05:47"
-modified: 2019-05-16 05:47
-categories: setup-ide
-previousurl: setup-ide/install-anaconda
-nexturl: setup-ide/install-postgres
+date: "2019-08-20 05:47"
+modified: 2019-08-20 05:47
+categories: blog
 excerpt: "Install all Ubuntu packages required for running Karttur's GeoImagine Framework"
 tags:
   - Ubuntu
@@ -19,13 +17,13 @@ comments: true
 share: true
 ---
 
-This post goes through the steps for installing all software components required for a Spatial Data Integrated Development Environment (SPIDE) in Linux Operating System (OS) Ubuntu 18.04 (bionic). The installed software match the requirements of [Karttur's GeoImagine Framework](https://karttur.github.io/geoimagine/). The instructions are shorthand and refer extensively to online resources with more elaborate and detailed information. Perhaps the best source for hints and tricks on how to get different software packages to work in Linux is [Linux Hint](https://linuxhint.com).
+This post goes through the steps for installing all software components required for a Spatial Data Integrated Development Environment (SPIDE) in Linux Operating System (OS) Ubuntu 18.04 (bionic). The installed software match the requirements of [Karttur's GeoImagine Framework](https://karttur.github.io/geoimagine/). The instructions are shorthand and refer extensively to online resources with more elaborate and detailed information. Perhaps the best source for hints and tricks on how to get different software packages to work in Linux is [Linux Hint](https://linuxhint.com). The instructions focuses on using the <span class='app'>Terminal</span>, it you prefer to use the Graphical User Interface (GUI), try out the [Ubuntu Software Center](https://help.ubuntu.com/community/UbuntuSoftwareCenter).
 
 This post assumes that you have already installed Ubuntu 18.04 on your machine.
 
 ## Check and update your Ubuntu Installation
 
-To check the version of your Ubuntu installation, open the <span class='app'>Terminal</span> (pressing the keys ctrl+alt+T simultaneously will do that), and enter the command:
+To check the version of your Ubuntu installation, open the <span class='app'>Terminal</span> (pressing the keys [ctrl]+[alt]+[T] simultaneously will do that), and enter the command:
 
 <span class='terminal'>$ sudo lsb_release -a</span>
 
@@ -37,7 +35,7 @@ and then
 
 <span class='terminal'>$ sudo apt upgrade</span>.
 
-To execute both together, including answering <span class ='terminal'>yes</span> if, and when, asked to proceed, instead write:
+To execute both commands together, including answering <span class ='terminal'>yes</span> if, and when, asked to proceed, instead write:
 
 <span class='terminal'>$ sudo apt update -y && sudo apt upgrade -y</span>
 
@@ -49,15 +47,15 @@ The usual manner in which to add packages (applications, or apps) from the termi
 
 The install command searches repositories (online libraries) for the _package_ and then installs it, if found. When you install Ubuntu, the default repository for your version is included. You can see which repositories are included by starting the app <span class='app'>Software & Updates</span>. The official documentation for Ubuntu contains a good page on [Repositories](https://help.ubuntu.com/community/Repositories/), and on [Repositories/Commandline](https://help.ubuntu.com/community/Repositories/CommandLine).
 
-To start an app in Ubuntu, click the [window] key or the [Show Application] icon in the screen, either will open the <span class='textbox'>Type to search ...</span> box, in which you start writing (e.g. "Software & Updates"), when the app you search for appears double click in the usual manner.
+To start an app in Ubuntu, click the [window] key or the [Show Application] icon in the screen, either will open the <span class='textbox'>Type to search ...</span> box, in which you start writing (e.g. "Software & Updates"), when the app you search for appears double click to launch it in the usual manner.
 
 In the main window of <span class='app'>Software & Updates</span> click the tab <span class='tab'>Other Software</span> and you will see the linked repositories. You can directly add, edit or delete repositories in <span class='app'>Software & Updates</span>. It is, however, faster and more safe to use the <span class='app'>Terminal</span>.
 
-The list of repositories in <span class='app'>Software & Updates</span> comes from a text file <span class='file'>~/etc/apt/sources.list</span>. To inspect the file from the <span class='app'>Terminal</span>, open it using the minimalistic text editor <span class='terminalapp'>pico</span> with the command:
+The list of repositories in <span class='app'>Software & Updates</span> comes from a text file <span class='file'>~/etc/apt/sources.list</span> (where the tilde "~" denotes your home directory). To inspect the file from the <span class='app'>Terminal</span>, open it using the minimalistic text editor <span class='terminalapp'>pico</span> with the command:
 
 <span class='terminal'>$ pico /etc/apt/sources.list</span>
 
-You will not be able to edit the file unless you open it as the system administrator using <span class='terminalapp'>sudo</span> and then also giving the correct password:
+You will not be able to edit the file unless you open it as the system administrator using <span class='terminalapp'>sudo</span> and then also give the correct password:
 
 <span class='terminal'>$ sudo pico /etc/apt/sources.list</span>
 
@@ -75,17 +73,17 @@ followed by an update of the system for package installations:
 
 <span class='terminal'>$ sudo apt-get update</span>
 
-If you now check using Graphical User Interface (GUI) of <span class='app'>Software & Updates</span> under the tab <span class='tab'>Other Software</span> you should see the link to **ubuntugis/ppa**
+If you now check the file <span class='file'>sources.list</span>), for example by using <span class='app'>Software & Updates</span> you should see the link to **ubuntugis/ppa** under the tab <span class='tab'>Other Software</span>.
 
 For other alternatives on adding/removing repositories and managing the file <span class='file'>sources.list</span> see the article on [How to Add or Remove PPA in Ubuntu Using GUI and Terminal](https://www.tecmint.com/add-remove-purge-ppa-in-ubuntu/).
 
 ### Snapcraft - The app store for Linux
 
-Snap, or snappy, is an alternative software deployment and package management system for Linux OS created by Canonical. The main page for snap is [snapcraft.io - The app store for Linux](https://snapcraft.io). Linux 18.04 (bionic) is prepared for using snap and you will use snap for some installations later in this post. In case it does not work, please refer to the [official snapcraft page on installing snap on Ubuntu](https://snapcraft.io/docs/installing-snap-on-ubuntu). To learn more about snap, have a look at the page [How to install and use Snap on Ubuntu 18.04](https://codeburst.io/how-to-install-and-use-snap-on-ubuntu-18-04-9fcb6e3b34f9).
+Snap, or snappy, is an alternative software deployment and package management system for Linux OS created by [Canonical](https://canonical.com). The main page for snap is [snapcraft.io - The app store for Linux](https://snapcraft.io). Linux 18.04 (bionic) is prepared for using snap and you will use snap for some installations later in this post. In case it does not work, please refer to the [official snapcraft page on installing snap on Ubuntu](https://snapcraft.io/docs/installing-snap-on-ubuntu). To learn more about snap, have a look at the page [How to install and use Snap on Ubuntu 18.04](https://codeburst.io/how-to-install-and-use-snap-on-ubuntu-18-04-9fcb6e3b34f9).
 
 ## Package installations
 
-You should now have an idea on how to install software (app) packages on your Ubuntu machine. The rest of the post steps through all the packages required to use your Ubuntu machine as a Spatial Data Integrated Development Environment (SPIDE), with the specific aim of later setting up [Karttur's GeoImagine Framework](https://karttur.github.io/geoimagine/). The instructions in this post summarises the instructions in my blogs on [Install and setup spatial data IDE](https://karttur.github.io/setup-ide/), [Setup Jekyll Theme Blog](https://karttur.github.io/setup-theme-blog/), [Set up blog tools: Jekyll and Atom](https://karttur.github.io/setup-blog/) and [Setup GitHub pages](https://karttur.github.io/setup-github/). These other blogs were written from mac osx.
+You should now have an idea on how to install software (app) packages on your Ubuntu machine. The rest of the post steps through all the packages required to use your Ubuntu machine as a Spatial Data Integrated Development Environment (SPIDE), with the specific aim of later setting up [Karttur's GeoImagine Framework](https://karttur.github.io/geoimagine/). The instructions in this post summarises the instructions in my blogs on [Install and setup spatial data IDE](https://karttur.github.io/setup-ide/), [Setup Jekyll Theme Blog](https://karttur.github.io/setup-theme-blog/), [Set up blog tools: Jekyll and Atom](https://karttur.github.io/setup-blog/) and [Setup GitHub pages](https://karttur.github.io/setup-github/). These other blogs were written for mac osx.
 
 ### GIS packages
 
@@ -101,7 +99,7 @@ Install the latest version of the [Geographic Data Abstraction Library (GDAL)](h
 
 If you are using Python 2, replace "python3" with "python2"
 
-Confirm that the installation went through and the version of GDAL installed by typing:
+Confirm that the installation went through and the version of GDAL installed, by typing:
 
 <span class='terminal'>$ gdalinfo \-\-version</span>
 
@@ -155,7 +153,7 @@ In Karttur's GeoImagine Framework, conda is used for [setting up virtual python 
 
 ### Install Eclipse
 
-<span class='app'>Eclipse</span>is a Java based Integrated Development Environment (IDE). It is flexible and extensible and the IDE that I use for developing Karttur's GeoImagine Framework. My instructions installing <span class='app'>Eclipse</span> for mac osx are [here](https://karttur.github.io/setup-ide/setup-ide/install-eclipse//). The latter also contains instructions on how to setup <span class='app'>Eclipse</span> for PyDev and write some basic python programmes. Once you have finished the installation for Ubuntu you can continue with [Setup Eclipse for Python development](https://karttur.github.io/setup-ide/setup-ide/install-eclipse/#setup-eclipse-for-python-development).
+<span class='app'>Eclipse</span>is a Java based Integrated Development Environment (IDE). It is flexible and extensible and the IDE that I use for developing Karttur's GeoImagine Framework. My instructions installing <span class='app'>Eclipse</span> for mac osx are [here](https://karttur.github.io/setup-ide/setup-ide/install-eclipse//). The latter also contains instructions on how to setup <span class='app'>Eclipse</span> for PyDev and how to write some basic python programmes. Once you have finished the installation for Ubuntu you can continue with [Setup Eclipse for Python development](https://karttur.github.io/setup-ide/setup-ide/install-eclipse/#setup-eclipse-for-python-development).
 
 To install Eclipse you first need to install the correct version of Java Development Kit (JDK) - at time of writing this is either 8, 11 or 12. For our purposes it is usually better to have an older version as the Eclipse development is always behind that of JDK.
 
@@ -191,7 +189,7 @@ If you follow this route and aim at using <span class='app'>Eclipse</span> for s
 
 The page [How to install Atom editor in Ubuntu](https://codeforgeek.com/install-atom-editor-ubuntu-14-04/) is recommended, and summarised here.
 
-The PPA **webupd8team** contains goodies, including <span class='app'>Atom</span>. To link to the **webupd8team/atom** ppa enter the terminal command:
+The PPA **webupd8team** provides Ubuntu goodies, including <span class='app'>Atom</span>. To link to the **webupd8team/atom** ppa enter the terminal command:
 
 <span class='terminal'>$ sudo add-apt-repository ppa:webupd8team/atom</span>
 
@@ -207,13 +205,15 @@ Additional instructions for setting up <span class='app'>Atom</span> for use wit
 
 ### Install and setup Jekyll
 
-Jekyll is a simple, extendable and static web-site generator, and the solution I use for publishing my blogs and other information related to e.g. Karttur's GeoImagine Framework. My Jekyll pages are mainly based on the theme [So Simple](https://github.com/mmistakes/so-simple-theme), with some added functions described in my blog on [Setup Jekyll Theme Blog](https://karttur.github.io/setup-theme-blog/).
+Jekyll is a simple, extendable and static web-site generator, and the solution I use for publishing my blogs and other information related to e.g. Karttur's GeoImagine Framework. My Jekyll pages are mainly based on the theme [So Simple](https://github.com/mmistakes/so-simple-theme), with some added functions described in my [Setup Jekyll Theme Blog](https://karttur.github.io/setup-theme-blog/).
 
 Jekyll is built on Ruby, but Ruby is also used for many machine system tasks. To setup Jekyll you need to create a Ruby solution set apart from the machine core system and then build Jekyll on that.
 
 My [Mac osx installation of Jekyll](https://karttur.github.io/setup-blog/2017/12/21/setup-blog-tools.html#install-jekyll-dependencies) was based on the mac osx specific package manager _Homebrew_ and _Ruby Version Manager_ (RVM). For Ubuntu it turned out to be a bit more complicated to install the required Ruby "gems" separated from the system and then get Jekyll to work with these gems.
 
-For this installation (Ubuntu) I started out by following the [Jekyll official installation instructions](https://jekyllrb.com/docs/installation/ubuntu/), but that did not lead to a functional environment. I thus complemented with the hints given by SvennD on [gem: Command not found](https://www.svennd.be/gem-command-not-found/). Alternatively you can follow the more comprehensive post [How to Install Jekyll on Ubuntu 18.04](https://computingforgeeks.com/how-to-install-jekyll-on-ubuntu-18-04/). Here is the sequence of terminal commands that worked for me. Start with installing ruby and ruby-dev:
+For this installation (Ubuntu) I started out by following the [Jekyll official installation instructions](https://jekyllrb.com/docs/installation/ubuntu/), but that did not lead to a functional environment. I thus complemented with the hints given by SvennD on [gem: Command not found](https://www.svennd.be/gem-command-not-found/). Alternatively you can follow the more comprehensive post [How to Install Jekyll on Ubuntu 18.04](https://computingforgeeks.com/how-to-install-jekyll-on-ubuntu-18-04/). Here is the sequence of terminal commands that worked for me.
+
+Start with installing ruby and ruby-dev:
 
 <span class='terminal'>$ sudo apt-get install ruby ruby-dev</span>
 
@@ -227,7 +227,7 @@ You can do that by using the terminal editor <span class='terminalapp'>pico</spa
 
 <span class='terminal'>$ sudo pico .bashrc</span>,
 
-and then add the lines manually followed by save and exit (ctrl+x keys pressed simultaneously).
+and then add the lines manually followed by save and exit ([ctrl]+[x] keys pressed simultaneously).
 
 Or use the terminal command <span class='terminalapp'>echo</span> to send the lines to the end of <span class='file'>.bashrc</span>:
 
@@ -273,7 +273,7 @@ From this point my blog/post on [Set up blog tools: Jekyll and Atom](https://kar
 
 ### GitHub Desktop
 
-<span class='app'>GitHub Desktop</span> is a desktop GUI for managing files in the repository version manager [GitHub](www.github.com). This is were I publish my (Jekyll) blogs, but also the repository of Karttur's GeoImagine Framework.
+<span class='app'>GitHub Desktop</span> provides GUI for managing files in the repository version manager [GitHub](www.github.com). This is were I publish my (Jekyll) blogs, but also the repository of Karttur's GeoImagine Framework.
 
 At time of setting this system up on Ubuntu 18.04, the default version of <span class='app'>GitHub Desktop</span> (v2.1.0, or 63) is not fully compatible and will not start. (Otherwise it can be installed with <span class='terminal'>sudo snap install github-desktop \-\-beta \-\-classic</span>).
 
@@ -307,9 +307,9 @@ And then I got <span class='app'>GitHub Desktop</span> to work properly.
 
 ### PostgreSQL
 
-[PostgreSQL](https://www.postgresql.org) (or postgres for short) is an advanced open source object-relational database system, that can also handle spatial data formats with the extension PostGIS. I use PostgreSQL and PostGIS for handle both processes and data layers when I work with Geo Imagine. My instructions [Install postgreSQL and postGIS](https://karttur.github.io/setup-ide/setup-ide/install-postgres/) for mac osx are initially not useful for Ubuntu, the installations are completely different.
+[PostgreSQL](https://www.postgresql.org) (or postgres for short) is an advanced open source object-relational database system, that can also handle spatial data formats with the extension PostGIS. I use PostgreSQL and PostGIS for handling both processes and data layers when I work with Geo Imagine. My instructions [Install postgreSQL and postGIS](https://karttur.github.io/setup-ide/setup-ide/install-postgres/) for mac osx are initially not useful for Ubuntu, the installations are completely different.
 
-The following <span class='app'>Terminal</span> commands will install PostgreSQL 10 and PostGIS 2.4 un Ubuntu with some additional bling:
+The following <span class='app'>Terminal</span> commands will install PostgreSQL 10 and PostGIS 2.4 on Ubuntu with some additional bling:
 
 <span class='terminal'>$ sudo apt install postgresql-10</span>
 
@@ -335,7 +335,7 @@ You can now access the postgreSQL command line tool <span class='terminalapp'>ps
 
 The prompt will change from <span class='terminal'>postgres@my-computer:$</span> to <span class='terminal'>postgres=#</span>.
 
-Check the roles are defined by the <span class='terminal'>\\du</span> command:
+Check the roles defined by the <span class='terminal'>\\du</span> command:
 
  <span class='terminal'>postgres=# \\du</span>
 
@@ -347,7 +347,7 @@ Check the roles are defined by the <span class='terminal'>\\du</span> command:
 
 ####  Create a new role reflecting your machine user
 
-The role _postgres_ does not have any password and the postgres database is thus open to anyone using the _postrgres_ role. To simplify your access to your postgres database using <span class='terminalapp'>psql</span> you could also create a new user identical to your machine login.
+The role _postgres_ does not have any password and the postgres database is thus open to anyone using the _postgres_ role. To simplify your access to your postgres database using <span class='terminalapp'>psql</span> you could also create a new user identical to your machine login.
 
 To set a password, execute the <span class='terminalapp'>psql</span> command:
 
@@ -508,7 +508,7 @@ If everything worked out, check if the <span class='terminalapp'>magick</span> c
 
 <span class='terminal'>$ magick -version</span>
 
-My blog on [Setup Jekyll Theme Blog](https://karttur.github.io/setup-theme-blog/blog/) contains several blog posts on how to use <span class='terminalapp'>ImageMagick</span>, including for map layouts and time-series animations of satellite images.
+My blog on [Setup Jekyll Theme Blog](https://karttur.github.io/setup-theme-blog/blog/) contains several posts on how to use <span class='terminalapp'>ImageMagick</span>, including for map layouts and time-series animations of satellite images.
 
 ### FFmpeg
 
@@ -520,4 +520,4 @@ The installation uses the default <span class='terminal'>apt install</span> and 
 2. Install <span class='terminal'>$ sudo apt install ffmpeg</span>
 3. Check <span class='terminal'>$ ffmpeg -version</span>
 
-My blog on [Setup Jekyll Theme Blog](https://karttur.github.io/setup-theme-blog/blog/) contains several blog posts on how to use <span class='terminalapp'>FFmpeg</span>, including for time-series animations of satellite images.
+My blog on [Setup Jekyll Theme Blog](https://karttur.github.io/setup-theme-blog/blog/) contains several posts on how to use <span class='terminalapp'>FFmpeg</span>, including for time-series animations of satellite images.

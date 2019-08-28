@@ -4,7 +4,7 @@ title: Postgres setup with Python & xml
 modified: 2018-01-08T18:17:25.000Z
 categories: setup-ide
 previousurl: setup-ide/connect-with-psycopg2
-nexturl: null
+nexturl: setup-ide/anaconda3
 excerpt: XML governed setup of Postgres schemas and tables with Python and postgreSQL
 tags:
   - PostgreSQL
