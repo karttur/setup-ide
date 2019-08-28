@@ -1,5 +1,5 @@
 ---
-layout: "post"
+layout: post
 title: Python graphics for spatial data
 date: "2019-05-16 05:47"
 modified: 2019-05-16 05:47

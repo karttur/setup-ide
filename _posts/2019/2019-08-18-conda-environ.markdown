@@ -5,7 +5,6 @@ modified: '2019-08-18T18:17:25.000Z'
 categories: setup-ide
 previousurl: setup-ide/install-anaconda
 nexturl: setup-ide/install-eclipse
-
 excerpt: "Create Conda environment for Karttur's GeoImagaine project"
 tags:
   - Conda environment

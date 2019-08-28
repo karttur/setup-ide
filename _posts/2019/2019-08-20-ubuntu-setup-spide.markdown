@@ -1,5 +1,5 @@
 ---
-layout: "post"
+layout: post
 title: Spatial Data Integrated Development Environment for Ubuntu 18.04
 date: "2019-08-20 05:47"
 modified: 2019-08-20 05:47

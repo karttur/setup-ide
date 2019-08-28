@@ -3,8 +3,8 @@ layout: article
 title: Upgrade to Anaconda3 and Python3
 modified: '2018-06-19 17:53'
 categories: setup-ide
-previousurl: setup-ide/install-postgres
-nexturl: null
+previousurl: setup-ide/setup-db-karttur
+nexturl: setup-ide/update-eclipse
 excerpt: Upgrade from Anaconda2 and Python2 to Anaconda3 and Python3
 tags:
   - Python
