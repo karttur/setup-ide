@@ -1,8 +1,8 @@
 ---
 layout: post
 title: Spatial Data Integrated Development Environment for Ubuntu 18.04
-date: "2019-08-20 05:47"
-modified: 2019-08-20 05:47
+date: "2019-08-20 15:47"
+modified: 2019-09-06 09:47
 categories: blog
 excerpt: "Install all Ubuntu packages required for running Karttur's GeoImagine Framework"
 tags:
@@ -16,12 +16,51 @@ image: rainfall-delta_3B43_trmm_2001-2016_mk-z-ts-model
 comments: true
 share: true
 ---
+**Contents**
+	- [Introduction](#introduction)
+	- [Prerequisites](#prerequisites)
+	- [Part 1: Ubuntu software management](#part-1-ubuntu-software-management)
+		- [Check and update your Ubuntu Installation](#check-and-update-your-ubuntu-installation)
+		- [Ubuntu installations](#ubuntu-installations)
+			- [Ubuntu Personal Package Archives (PPA)](#ubuntu-personal-package-archives-ppa)
+			- [Snapcraft - The app store for Linux](#snapcraft-the-app-store-for-linux)
+	- [Part II: SPIDE components](#part-ii-spide-components)
+		- [GIS packages](#gis-packages)
+			- [GDAL](#gdal)
+			- [QGIS](#qgis)
+			- [GRASS](#grass)
+		- [Anaconda](#anaconda)
+		- [Eclipse](#eclipse)
+			- [Snap installation](#snap-installation)
+			- [Controlled installations](#controlled-installations)
+		- [PostgreSQL](#postgresql)
+			- [Create a new role reflecting your machine user](#create-a-new-role-reflecting-your-machine-user)
+			- [Postgres GUI](#postgres-gui)
+	- [Part III: Editing and publishing apps](#part-iii-editing-and-publishing-apps)
+		- [Atom](#atom)
+		- [Jekyll](#jekyll)
+			- [Create site and start Jekyll](#create-site-and-start-jekyll)
+		- [GitHub and GitHub Desktop](#github-and-github-desktop)
+	- [Part IV: Media tools](#part-iv-media-tools)
+		- [ImageMagick](#imagemagick)
+		- [FFmpeg](#ffmpeg)
 
-This post goes through the steps for installing all software components required for a Spatial Data Integrated Development Environment (SPIDE) in Linux Operating System (OS) Ubuntu 18.04 (bionic). The installed software match the requirements of [Karttur's GeoImagine Framework](https://karttur.github.io/geoimagine/). The instructions are shorthand and refer extensively to online resources with more elaborate and detailed information. Perhaps the best source for hints and tricks on how to get different software packages to work in Linux is [Linux Hint](https://linuxhint.com). The instructions focuses on using the <span class='app'>Terminal</span>, it you prefer to use the Graphical User Interface (GUI), try out the [Ubuntu Software Center](https://help.ubuntu.com/community/UbuntuSoftwareCenter).
+## Introduction
+
+This post contains four main parts. The first part introduces how to install and manage software in Linux Operating System (OS) Ubuntu 18.04 (bionic).
+The second part goes through the steps for installing all software components required for a Spatial Data Integrated Development Environment (SPIDE). The installed software match the requirements of [Karttur's GeoImagine Framework](https://karttur.github.io/geoimagine/). The third part covers installations of additional software for text editing, handling Git repositories and publishing this blog. In the fourth part you will install command-line tools for image and video processing. These tools are required by processes in Karttur's SPIDE related to exporting map layouts and animations of map time series.
+
+The instructions are shorthand and refer extensively to online resources with more elaborate and detailed information. Perhaps the best source for hints and tricks on how to get different software packages to work in Linux is [Linux Hint](https://linuxhint.com). The instructions focuses on using the <span class='app'>Terminal</span>, it you prefer to use the Graphical User Interface (GUI), try out the [Ubuntu Software Center](https://help.ubuntu.com/community/UbuntuSoftwareCenter).
+
+The instructions summarises the instructions in my blogs on [Install and setup spatial data IDE](https://karttur.github.io/setup-ide/), [Setup Jekyll Theme Blog](https://karttur.github.io/setup-theme-blog/), [Set up blog tools: Jekyll and Atom](https://karttur.github.io/setup-blog/) and [Setup GitHub pages](https://karttur.github.io/setup-github/). These other blogs were written for mac osx.
+
+## Prerequisites
 
 This post assumes that you have already installed Ubuntu 18.04 on your machine.
 
-## Check and update your Ubuntu Installation
+## Part 1: Ubuntu software management
+
+### Check and update your Ubuntu Installation
 
 To check the version of your Ubuntu installation, open the <span class='app'>Terminal</span> (pressing the keys [ctrl]+[alt]+[T] simultaneously will do that), and enter the command:
 
@@ -39,7 +78,7 @@ To execute both commands together, including answering <span class ='terminal'>y
 
 <span class='terminal'>$ sudo apt update -y && sudo apt upgrade -y</span>
 
-## Ubuntu installations
+### Ubuntu installations
 
 The usual manner in which to add packages (applications, or apps) from the terminal is to use the command <span class='terminal'>sudo apt install</span>:
 
@@ -59,7 +98,7 @@ You will not be able to edit the file unless you open it as the system administr
 
 <span class='terminal'>$ sudo pico /etc/apt/sources.list</span>
 
-### Ubuntu Personal Package Archives (PPA)
+#### Ubuntu Personal Package Archives (PPA)
 
 Less commonly used Ubuntu packages, or later versions of the more common, are not available via the default repositories. To access additional packages (or more updated/nightly built etc versions) you need to app, sorry add, the Personal Package Archives (PPA) in which they reside. The general idea and access to PPA are described in the article [How to Add or Remove PPA in Ubuntu Using GUI and Terminal](https://www.tecmint.com/add-remove-purge-ppa-in-ubuntu/).  
 
@@ -77,13 +116,11 @@ If you now check the file <span class='file'>sources.list</span>), for example b
 
 For other alternatives on adding/removing repositories and managing the file <span class='file'>sources.list</span> see the article on [How to Add or Remove PPA in Ubuntu Using GUI and Terminal](https://www.tecmint.com/add-remove-purge-ppa-in-ubuntu/).
 
-### Snapcraft - The app store for Linux
+#### Snapcraft - The app store for Linux
 
 Snap, or snappy, is an alternative software deployment and package management system for Linux OS created by [Canonical](https://canonical.com). The main page for snap is [snapcraft.io - The app store for Linux](https://snapcraft.io). Linux 18.04 (bionic) is prepared for using snap and you will use snap for some installations later in this post. In case it does not work, please refer to the [official snapcraft page on installing snap on Ubuntu](https://snapcraft.io/docs/installing-snap-on-ubuntu). To learn more about snap, have a look at the page [How to install and use Snap on Ubuntu 18.04](https://codeburst.io/how-to-install-and-use-snap-on-ubuntu-18-04-9fcb6e3b34f9).
 
-## Package installations
-
-You should now have an idea on how to install software (app) packages on your Ubuntu machine. The rest of the post steps through all the packages required to use your Ubuntu machine as a Spatial Data Integrated Development Environment (SPIDE), with the specific aim of later setting up [Karttur's GeoImagine Framework](https://karttur.github.io/geoimagine/). The instructions in this post summarises the instructions in my blogs on [Install and setup spatial data IDE](https://karttur.github.io/setup-ide/), [Setup Jekyll Theme Blog](https://karttur.github.io/setup-theme-blog/), [Set up blog tools: Jekyll and Atom](https://karttur.github.io/setup-blog/) and [Setup GitHub pages](https://karttur.github.io/setup-github/). These other blogs were written for mac osx.
+## Part II: SPIDE components
 
 ### GIS packages
 
@@ -91,19 +128,19 @@ In this section you are going to install three GIS software packages: GDAL, QGIS
 
 The latest version of the GIS software packages that you are going to install are available from the UbuntuGIS-Stable PPA (**ubuntugis/ppa**), that you added above. If you visit the [UbuntuGIS-Stable PPA](https://launchpad.net/~ubuntugis/+archive/ubuntu/ppa), you can see all spatial data processing packages available via this PPA.
 
-#### Install GDAL
+#### GDAL
 
 Install the latest version of the [Geographic Data Abstraction Library (GDAL)](https://gdal.org) (2.4.0 at time of writing in August 2019) by the following terminal command:
 
 <span class='terminal'>$ sudo apt -y install gdal-bin python3-gdal</span>
 
-If you are using Python 2, replace "python3" with "python2"
+If you are using Python 2, replace "python3" with "python2".
 
 Confirm that the installation went through and the version of GDAL installed, by typing:
 
 <span class='terminal'>$ gdalinfo \-\-version</span>
 
-#### Install QGIS
+#### QGIS
 
 How to install QGIS depends on how you intend to use it. I use QGIS mainly as a viewer; all actual processing in Karttur's GeoImagine Framework are done using Python, GDAL and GRASS. Hence I do not bother too much about my QGIS version, and I can install it with the standard command as described in the [QGIS Installers page](https://www.qgis.org/en/site/forusers/alldownloads.html#debian-ubuntu):
 
@@ -111,13 +148,13 @@ How to install QGIS depends on how you intend to use it. I use QGIS mainly as a 
 
 At time of writing (August 2019) this installs the latest Long-Term-Supported (LTS) version 3.4 (Madeira), which is what I wanted. If you want to get a particular version it gets rather more complicated, as described by Shahriar Shovon [How to Install and Get Started with QGIS 3 on Ubuntu 18.04](https://linuxhint.com/install-qgis3-geospatial-ubuntu/).
 
-#### Install GRASS
+#### GRASS
 
 The latest GRASS version is available via **ubuntugis/ppa** and you can install it by typing (as outlined on the offical GRASS page on [Download GRASS GIS for Linux](https://grass.osgeo.org/download/software/linux/)):
 
 <span class='terminal'>$ sudo apt-get install grass</span>
 
-### Install Anaconda
+### Anaconda
 
 [Anaconda](https://www.anaconda.com) is a free and open-source Python (and R) distribution for scientific computing that simplify package management and deployment. In Karttur´s GeoImagine Framework Anaconda is the core package manager for linking hundreds of Python packages together. My installation instructions for mac osx is [here](https://karttur.github.io/setup-ide/setup-ide/install-anaconda/).
 
@@ -151,9 +188,9 @@ To list all the packages available with your conda installation:
 
 In Karttur's GeoImagine Framework, conda is used for [setting up virtual python environments](https://karttur.github.io/setup-ide/setup-ide/conda-environ/) that are then used by <span class='app'>Eclipse</span> (installed in the next section).
 
-### Install Eclipse
+### Eclipse
 
-<span class='app'>Eclipse</span>is a Java based Integrated Development Environment (IDE). It is flexible and extensible and the IDE that I use for developing Karttur's GeoImagine Framework. My instructions installing <span class='app'>Eclipse</span> for mac osx are [here](https://karttur.github.io/setup-ide/setup-ide/install-eclipse//). The latter also contains instructions on how to setup <span class='app'>Eclipse</span> for PyDev and how to write some basic python programmes. Once you have finished the installation for Ubuntu you can continue with [Setup Eclipse for Python development](https://karttur.github.io/setup-ide/setup-ide/install-eclipse/#setup-eclipse-for-python-development).
+<span class='app'>Eclipse</span> is a Java based Integrated Development Environment (IDE). It is flexible and extensible and the IDE that I use for developing Karttur's GeoImagine Framework. My instructions installing <span class='app'>Eclipse</span> for mac osx are [here](https://karttur.github.io/setup-ide/setup-ide/install-eclipse//). The latter also contains instructions on how to setup <span class='app'>Eclipse</span> for PyDev and how to write some basic python programmes. Once you have finished the installation for Ubuntu you can continue with [Setup Eclipse for Python development](https://karttur.github.io/setup-ide/setup-ide/install-eclipse/#setup-eclipse-for-python-development).
 
 To install Eclipse you first need to install the correct version of Java Development Kit (JDK) - at time of writing this is either 8, 11 or 12. For our purposes it is usually better to have an older version as the Eclipse development is always behind that of JDK.
 
@@ -183,128 +220,6 @@ Follow the page on [How To Install Eclipse Oxygen IDE On Ubuntu 16.04, 17.10, 18
 
 If you follow this route and aim at using <span class='app'>Eclipse</span> for setting up Karttur's GeoImagine Framework, the recommendation is to install (the smaller package called) <span class='button'>Eclipse IDE for Java Developers</span>.
 
-### Install Atom
-
-<span class='app'>Atom</span> is a free and open-source text and source code editor with support for plug-ins. It is very versatile and extensible and I use it for keeping track of the documentation related to Karttur's GeoImagine Framework.
-
-The page [How to install Atom editor in Ubuntu](https://codeforgeek.com/install-atom-editor-ubuntu-14-04/) is recommended, and summarised here.
-
-The PPA **webupd8team** provides Ubuntu goodies, including <span class='app'>Atom</span>. To link to the **webupd8team/atom** ppa enter the terminal command:
-
-<span class='terminal'>$ sudo add-apt-repository ppa:webupd8team/atom</span>
-
-Then update the system for package installation:
-
-<span class='terminal'>$ sudo apt-get update</span>
-
-Use <span class='terminal'>apt-get</span> to install <span class='app'>Atom</span>:
-
-<span class='terminal'>$ sudo apt-get install atom</span>
-
-Additional instructions for setting up <span class='app'>Atom</span> for use with the Karttur solution are [here](https://karttur.github.io/setup-blog/2017/12/21/setup-blog-tools.html#install-atom).
-
-### Install and setup Jekyll
-
-Jekyll is a simple, extendable and static web-site generator, and the solution I use for publishing my blogs and other information related to e.g. Karttur's GeoImagine Framework. My Jekyll pages are mainly based on the theme [So Simple](https://github.com/mmistakes/so-simple-theme), with some added functions described in my [Setup Jekyll Theme Blog](https://karttur.github.io/setup-theme-blog/).
-
-Jekyll is built on Ruby, but Ruby is also used for many machine system tasks. To setup Jekyll you need to create a Ruby solution set apart from the machine core system and then build Jekyll on that.
-
-My [Mac osx installation of Jekyll](https://karttur.github.io/setup-blog/2017/12/21/setup-blog-tools.html#install-jekyll-dependencies) was based on the mac osx specific package manager _Homebrew_ and _Ruby Version Manager_ (RVM). For Ubuntu it turned out to be a bit more complicated to install the required Ruby "gems" separated from the system and then get Jekyll to work with these gems.
-
-For this installation (Ubuntu) I started out by following the [Jekyll official installation instructions](https://jekyllrb.com/docs/installation/ubuntu/), but that did not lead to a functional environment. I thus complemented with the hints given by SvennD on [gem: Command not found](https://www.svennd.be/gem-command-not-found/). Alternatively you can follow the more comprehensive post [How to Install Jekyll on Ubuntu 18.04](https://computingforgeeks.com/how-to-install-jekyll-on-ubuntu-18-04/). Here is the sequence of terminal commands that worked for me.
-
-Start with installing ruby and ruby-dev:
-
-<span class='terminal'>$ sudo apt-get install ruby ruby-dev</span>
-
-Then you have to add the following lines to the hidden system file <span class='file'>~/.bashrc</span>.
-```
-# Install Ruby Gems to ~/gems
-export GEM_HOME="$HOME/gems"
-export PATH="$HOME/gems/bin:$PATH"
-```
-You can do that by using the terminal editor <span class='terminalapp'>pico</span>
-
-<span class='terminal'>$ sudo pico .bashrc</span>,
-
-and then add the lines manually followed by save and exit ([ctrl]+[x] keys pressed simultaneously).
-
-Or use the terminal command <span class='terminalapp'>echo</span> to send the lines to the end of <span class='file'>.bashrc</span>:
-
-<span class='terminal'>echo '# Install Ruby Gems to ~/gems' >> ~/.bashrc</span>
-
-<span class='terminal'>echo 'export GEM_HOME="$HOME/gems"' >> ~/.bashrc</span>
-
-<span class='terminal'>echo 'export PATH="$HOME/gems/bin:$PATH"' >> ~/.bashrc</span>
-
-Once you have edited <span class='file'>.bashrc</span>, <span class='terminalapp'>source</span> it to make the changes take effect:
-
-<span class='terminal'>$ source ~/.bashrc</span>
-
-Your system should now be ready to receive the Ruby "gems" and put them in the <span class='file'>/gems/</span> folder under your user (separated from any system folder).
-
-<span class='terminal'>$ gem install bundler</span>
-
-<span class='terminal'>$ gem install jekyll</span>
-
-Your <span class='app'>Jekyll</span> installation should now work.
-
-### Create site and start Jekyll
-
-Create a new site from the terminal using Jekyll by typing:
-
-<span class='terminal'>$ jekyll new "new-site-name"</span>
-
-To get to the new site you have to change directory (cd) to it in the terminal:
-
-<span class='terminal'>$ cd "new-site-name"</span>
-
-Jekyll’s built-in lightweight web server will serve content on port 4000. If you have firewall service enabled, allow access to this port:
-
-<span class='terminal'>$ sudo ufw allow 4000</span>
-
-Then start the Jekyll server:
-
-<span class='terminal'>$ bundle exec jekyll serve</span>
-
-With this command, Jekyll takes the setup files and the markdown files it can find, and generates the entire blog, including all blogposts. At the same time Jekyll creates a local server on your computer allowing you to browse the blog. The local url of your blog is written at the prompt (default is http://127.0.0.1:4000/). Copy the url and paste it into your web-browser.
-
-From this point my blog/post on [Set up blog tools: Jekyll and Atom](https://karttur.github.io/setup-blog/2017/12/21/setup-blog-tools.html) details how to use Jekyll. My blog on [Setup Jekyll Theme Blog](https://karttur.github.io/setup-theme-blog/) contains a dozen posts on how to use and customise Jekyll themes, add more bling and process images and videos for publication.
-
-### GitHub Desktop
-
-<span class='app'>GitHub Desktop</span> provides GUI for managing files in the repository version manager [GitHub](www.github.com). This is were I publish my (Jekyll) blogs, but also the repository of Karttur's GeoImagine Framework.
-
-At time of setting this system up on Ubuntu 18.04, the default version of <span class='app'>GitHub Desktop</span> (v2.1.0, or 63) is not fully compatible and will not start. (Otherwise it can be installed with <span class='terminal'>sudo snap install github-desktop \-\-beta \-\-classic</span>).
-
-You can check which versions are avalilable at snapcraft by typing:
-
-<span class='terminal'>snap info github-desktop</span>.
-
-At time of writing this (August 2019) only version 2.1.0 is available (and we need 2.0.4 - to install a [beta] legacy version you could have, in theory, run the command <span class='terminal'>sudo snap install \-\-channel x.y.z/beta \-\-classic github-desktop</span>). To get <span class='app'>GitHub Desktop</span> you must instead download the snap installation file (version 2.0.4 or 62) and run a local installation. Here is how:
-
-If you tried to install github-desktop using the snap command above, but it does not start, remove the installation with the command:
-
-<span class='terminal'>snap remove github-desktop</span>
-
-Then download GitHubDesktop-linux-2.0.4-linux1.snap directly from the [2.0.4 release assets](https://github.com/shiftkey/desktop/releases/tag/release-2.0.4-linux1), and run a local snap installation:
-
-<span class='terminal'>snap install path/to/GitHubDesktop-linux-2.0.4-linux1.snap \-\-classic<span class='terminal'>
-
-where "path/to" should probably be replaced by "~/Downloads", giving the command:
-
-<span class='terminal'>snap install ~/Downloads/GitHubDesktop-linux-2.0.4-linux1.snap \-\-classic<span class='terminal'>
-
-Trying the command most likely leads to an error:
-
-<span class='terminal'>error: cannot find signatures with metadata for snap "..."</span>
-
-This is because snap can not guarantee the security or source of a local file. To bypass the security setting, add the \-\-dangerous flag to the installation:
-
-<span class='terminal'>$ sudo snap install \-\-dangerous GitHubDesktop-linux-2.0.4-linux1.snap \-\-classic</span>
-
-And then I got <span class='app'>GitHub Desktop</span> to work properly.
-
 ### PostgreSQL
 
 [PostgreSQL](https://www.postgresql.org) (or postgres for short) is an advanced open source object-relational database system, that can also handle spatial data formats with the extension PostGIS. I use PostgreSQL and PostGIS for handling both processes and data layers when I work with Geo Imagine. My instructions [Install postgreSQL and postGIS](https://karttur.github.io/setup-ide/setup-ide/install-postgres/) for mac osx are initially not useful for Ubuntu, the installations are completely different.
@@ -321,7 +236,7 @@ The following <span class='app'>Terminal</span> commands will install PostgreSQL
 
 <span class='terminal'>$ sudo apt install postgresql-10-pgrouting</span>
 
-Installing <span class='app'>postgres</span> this way creates a default superuser (role in the <span class='app'>postgres</span> jargon) called _postgres_ alongside three databases: postgres, template0 and template1. The latter will have the role _postgres_ as owner.
+Installing <span class='app'>postgres</span> this way creates a default superuser (role in the <span class='app'>postgres</span> jargon) called _postgres_ alongside three databases: postgres, template0 and template1. The databases will have the role _postgres_ as owner.
 
 In order to access the database you need to switch over to the role _postgres_ in the <span class='app'>Terminal</span> by entering the command:
 
@@ -345,7 +260,7 @@ Check the roles defined by the <span class='terminal'>\\du</span> command:
 
 <span class='terminal'>postgres=# \\l</span>.
 
-####  Create a new role reflecting your machine user
+#### Create a new role reflecting your machine user
 
 The role _postgres_ does not have any password and the postgres database is thus open to anyone using the _postgres_ role. To simplify your access to your postgres database using <span class='terminalapp'>psql</span> you could also create a new user identical to your machine login.
 
@@ -364,7 +279,7 @@ CREATE ROLE username WITH LOGIN PASSWORD 'quoted password' [OPTIONS]
 ```
 where username is the user you want to create, and the password is given with quotes. If you look at the list of users (in the Terminal, after you executed the command <span class='terminal'># \\du</span>), the attributes listed in the central column are typical [OPTIONS]. If you create a role, but give no options, the new role (user) can only read the database, neither create, nor alter nor add anything. Such powers must be explicitly stated as [OPTIONS]. The PostgreSQL documentation contains extensive information on how to use [psql](https://www.postgresql.org/docs/current/static/app-psql.html). And the page [How To Install and Use PostgreSQL on Ubuntu 18.04](https://www.digitalocean.com/community/tutorials/how-to-install-and-use-postgresql-on-ubuntu-18-04) presents a digestible summary.
 
-####  Postgres GUI
+#### Postgres GUI
 
 Handling the PostgreSQL database using the <span class='app'>Terminal</span> will become tedious when it grows. The alternative is to install and use a Graphical User Interface (GUI). My instructions on [Install postgreSQL for mac](https://karttur.github.io/setup-ide/setup-ide/install-postgres/) lists three different GUIs. For Ubuntu OS, only <span class='app'>pgAdmin</span> is available of the three. And it has to be installed as a localhost server.
 
@@ -451,7 +366,133 @@ From your home directory (~) the commands look like this:
 
 <span class='terminal'>$ python ./pgadmin4/pgadmin4/lib/python2.7/site-packages/pgadmin4/pgAdmin4.py</span>
 
-## ImageMagick
+## Part III: Editing and publishing apps
+
+### Atom
+
+<span class='app'>Atom</span> is a free and open-source text and source code editor with support for plug-ins. It is very versatile and extensible and I use it for keeping track of the documentation related to Karttur's GeoImagine Framework.
+
+The page [How to install Atom editor in Ubuntu](https://codeforgeek.com/install-atom-editor-ubuntu-14-04/) is recommended, and summarised here.
+
+The PPA **webupd8team** provides Ubuntu goodies, including <span class='app'>Atom</span>. To link to the **webupd8team/atom** ppa enter the terminal command:
+
+<span class='terminal'>$ sudo add-apt-repository ppa:webupd8team/atom</span>
+
+Then update the system for package installation:
+
+<span class='terminal'>$ sudo apt-get update</span>
+
+Use <span class='terminal'>apt-get</span> to install <span class='app'>Atom</span>:
+
+<span class='terminal'>$ sudo apt-get install atom</span>
+
+Additional instructions for setting up <span class='app'>Atom</span> for use with the Karttur solution are [here](https://karttur.github.io/setup-blog/2017/12/21/setup-blog-tools.html#install-atom).
+
+### Jekyll
+
+Jekyll is a simple, extendable and static web-site generator, and the solution I use for publishing my blogs and other information related to e.g. Karttur's GeoImagine Framework. My Jekyll pages are mainly based on the theme [So Simple](https://github.com/mmistakes/so-simple-theme), with some added functions described in my [Setup Jekyll Theme Blog](https://karttur.github.io/setup-theme-blog/).
+
+Jekyll is built on Ruby, but Ruby is also used for many machine system tasks. To setup Jekyll you need to create a Ruby solution set apart from the machine core system and then build Jekyll on that.
+
+My [Mac osx installation of Jekyll](https://karttur.github.io/setup-blog/2017/12/21/setup-blog-tools.html#install-jekyll-dependencies) was based on the mac osx specific package manager _Homebrew_ and _Ruby Version Manager_ (RVM). For Ubuntu it turned out to be a bit more complicated to install the required Ruby "gems" separated from the system and then get Jekyll to work with these gems.
+
+For this installation (Ubuntu) I started out by following the [Jekyll official installation instructions](https://jekyllrb.com/docs/installation/ubuntu/), but that did not lead to a functional environment. I thus complemented with the hints given by SvennD on [gem: Command not found](https://www.svennd.be/gem-command-not-found/). Alternatively you can follow the more comprehensive post [How to Install Jekyll on Ubuntu 18.04](https://computingforgeeks.com/how-to-install-jekyll-on-ubuntu-18-04/). Here is the sequence of terminal commands that worked for me.
+
+Start with installing ruby and ruby-dev:
+
+<span class='terminal'>$ sudo apt-get install ruby ruby-dev</span>
+
+Then you have to add the following lines to the hidden system file <span class='file'>~/.bashrc</span>.
+```
+# Install Ruby Gems to ~/gems
+export GEM_HOME="$HOME/gems"
+export PATH="$HOME/gems/bin:$PATH"
+```
+You can do that by using the terminal editor <span class='terminalapp'>pico</span>
+
+<span class='terminal'>$ sudo pico .bashrc</span>,
+
+and then add the lines manually followed by save and exit ([ctrl]+[x] keys pressed simultaneously).
+
+Or use the terminal command <span class='terminalapp'>echo</span> to send the lines to the end of <span class='file'>.bashrc</span>:
+
+<span class='terminal'>echo '# Install Ruby Gems to ~/gems' >> ~/.bashrc</span>
+
+<span class='terminal'>echo 'export GEM_HOME="$HOME/gems"' >> ~/.bashrc</span>
+
+<span class='terminal'>echo 'export PATH="$HOME/gems/bin:$PATH"' >> ~/.bashrc</span>
+
+Once you have edited <span class='file'>.bashrc</span>, <span class='terminalapp'>source</span> it to make the changes take effect:
+
+<span class='terminal'>$ source ~/.bashrc</span>
+
+Your system should now be ready to receive the Ruby "gems" and put them in the <span class='file'>/gems/</span> folder under your user (separated from any system folder).
+
+<span class='terminal'>$ gem install bundler</span>
+
+<span class='terminal'>$ gem install jekyll</span>
+
+Your <span class='app'>Jekyll</span> installation should now work.
+
+#### Create site and start Jekyll
+
+Create a new site from the terminal using Jekyll by typing:
+
+<span class='terminal'>$ jekyll new "new-site-name"</span>
+
+To get to the new site you have to change directory (cd) to it in the terminal:
+
+<span class='terminal'>$ cd "new-site-name"</span>
+
+Jekyll’s built-in lightweight web server will serve content on port 4000. If you have firewall service enabled, allow access to this port:
+
+<span class='terminal'>$ sudo ufw allow 4000</span>
+
+Then start the Jekyll server:
+
+<span class='terminal'>$ bundle exec jekyll serve</span>
+
+With this command, Jekyll takes the setup files and the markdown files it can find, and generates the entire blog, including all blogposts. At the same time Jekyll creates a local server on your computer allowing you to browse the blog. The local url of your blog is written at the prompt (default is http://127.0.0.1:4000/). Copy the url and paste it into your web-browser.
+
+From this point my blog/post on [Set up blog tools: Jekyll and Atom](https://karttur.github.io/setup-blog/2017/12/21/setup-blog-tools.html) details how to use Jekyll. My blog on [Setup Jekyll Theme Blog](https://karttur.github.io/setup-theme-blog/) contains a dozen posts on how to use and customise Jekyll themes, add more bling and process images and videos for publication.
+
+### GitHub and GitHub Desktop
+
+<span class='app'>GitHub Desktop</span> provides GUI for managing files in the repository version manager [GitHub](www.github.com). This is were I publish my (Jekyll) blogs, but also the repository of Karttur's GeoImagine Framework.
+
+At time of setting this system up on Ubuntu 18.04, the default version of <span class='app'>GitHub Desktop</span> (v2.1.0, or 63) is not fully compatible and will not start. (Otherwise it can be installed with <span class='terminal'>sudo snap install github-desktop \-\-beta \-\-classic</span>).
+
+You can check which versions are avalilable at snapcraft by typing:
+
+<span class='terminal'>snap info github-desktop</span>.
+
+At time of writing this (August 2019) only version 2.1.0 is available (and we need 2.0.4 - to install a [beta] legacy version you could have, in theory, run the command <span class='terminal'>sudo snap install \-\-channel x.y.z/beta \-\-classic github-desktop</span>). To get <span class='app'>GitHub Desktop</span> you must instead download the snap installation file (version 2.0.4 or 62) and run a local installation. Here is how:
+
+If you tried to install github-desktop using the snap command above, but it does not start, remove the installation with the command:
+
+<span class='terminal'>snap remove github-desktop</span>
+
+Then download GitHubDesktop-linux-2.0.4-linux1.snap directly from the [2.0.4 release assets](https://github.com/shiftkey/desktop/releases/tag/release-2.0.4-linux1), and run a local snap installation:
+
+<span class='terminal'>snap install path/to/GitHubDesktop-linux-2.0.4-linux1.snap \-\-classic<span class='terminal'>
+
+where "path/to" should probably be replaced by "~/Downloads", giving the command:
+
+<span class='terminal'>snap install ~/Downloads/GitHubDesktop-linux-2.0.4-linux1.snap \-\-classic<span class='terminal'>
+
+Trying the command most likely leads to an error:
+
+<span class='terminal'>error: cannot find signatures with metadata for snap "..."</span>
+
+This is because snap can not guarantee the security or source of a local file. To bypass the security setting, add the \-\-dangerous flag to the installation:
+
+<span class='terminal'>$ sudo snap install \-\-dangerous GitHubDesktop-linux-2.0.4-linux1.snap \-\-classic</span>
+
+And then I got <span class='app'>GitHub Desktop</span> to work properly.
+
+## Part IV: Media tools
+
+### ImageMagick
 
 [ImageMagick](https://www.imagemagick.org) is a command-line (<span class='app'>Terminal</span>) tool for creating, editing, composing, and converting images. The [ImageMagic site](https://www.imagemagick.org) lists other options than the command-line for accessing the image manipulation functions. This post only covers installing ImageMagick in Ubuntu. Using ImageMagick is covered in several other of my blogs, starting [with this post](https://karttur.github.io/setup-theme-blog/blog/install-imagemagick/).
 

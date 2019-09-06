@@ -1,10 +1,10 @@
 ---
 layout: post
-title: Replace Mac OSX with Ubuntu in Target Mode
+title: Python Geoinformatics
 date: "2019-05-15 08:43"
 modified: 2019-05-15 08:43
 categories: blog
-excerpt: "Replace Mac OSX with Ubuntu on an (old) apple machine."
+excerpt: "A short review of GIS processing packages in Python."
 tags:
   - macOS
   - replace

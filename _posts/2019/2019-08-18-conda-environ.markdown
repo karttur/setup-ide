@@ -1,6 +1,6 @@
 ---
 layout: article
-title: Conda virtual environments
+title: Conda virtual environments I
 modified: '2019-08-18T18:17:25.000Z'
 categories: setup-ide
 previousurl: setup-ide/install-anaconda
