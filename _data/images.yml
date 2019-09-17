@@ -833,3 +833,38 @@ TablePlus_connect_postgres:
     caption: Setup PostgreSQL connection in TablePlus
     credit: null
     source: null
+
+Eclipse-installer_download:
+    file: Eclipse-installer_download.png
+    author: Unknown
+    caption: Download Eclipse Installer
+    credit: null
+    source: null
+
+Eclipse-installer_icon:
+    file: Eclipse-installer_icon.png
+    author: Unknown
+    caption: Open Eclipse Installer
+    credit: null
+    source: null
+
+Eclipse-installer_select-product:
+    file: Eclipse-installer_select-product.png
+    author: Unknown
+    caption: Select product to install in Eclipse Installer
+    credit: null
+    source: null
+
+eclipse-installer_default-product:
+    file: eclipse-installer_default-product.png
+    author: Unknown
+    caption: By default the Installer suggets the latest product version. To manually select the version expand the menu with the icon in the upper right corner.
+    credit: null
+    source: null
+
+Eclipse-installer-product-define:
+    file: Eclipse-installer-product-define.png
+    author: Unknown
+    caption: Manually select Eclipse product version and components to install.
+    credit: null
+    source: null
