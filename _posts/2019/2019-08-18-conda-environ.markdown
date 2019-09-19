@@ -258,7 +258,7 @@ You can tell conda to put your virtual environment under any path, but by defaul
 If you explore that path you can find the packages installed under
 <span class='file'>../anaconda3/envs/geoimagine001/lib/python3.7/site-packages</span>. (where python3.7 is the Python version I installed, but can differ if you installed another version).
 
-## More latter
+## More later
 
 If you reach here you should now have a <span class='file'>.condarc</span> file listing some default Python packages that should be included in a virtual environment ('geoimagine001') residing on your local machine. If you are going to setup the complete GeoImagine Framework you will define more packages later. But for now it is enough that you have a virtual environment that can be used for [setting up your first PyDev project using <span class='app'>Eclipse</span>](../install-eclipse).
 
