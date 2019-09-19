@@ -13,6 +13,7 @@ comments: true
 share: true
 fig1: TablePlus_connect_postgres
 ---
+<script src="https://karttur.github.io/common/assets/js/karttur/togglediv.js"></script>
 **Contents**
 	- [Postgres database](#postgres-database)
 	- [Source distributions for macOS](#source-distributions-for-macos)
@@ -34,7 +35,7 @@ fig1: TablePlus_connect_postgres
 
 ## Source distributions for macOS
 
-There are (at least) three alternatives for installing PostgreSQL and PostGIS on your local macOS machine:
+There are (at least) three alternatives for installing PostgreSQL and PostGIS on your local Mac OS machine:
 * [PostgreSQL](https://www.postgresql.org/download/) - the official distribution
 * [Homebrew](https://www.codementor.io/devops/tutorial/getting-started-postgresql-server-mac-osx) - using a mac OS app manager
 * [KyngChaos](http://www.kyngchaos.com/software/postgres) - binary installer maintained by William Kyngesburye
@@ -103,6 +104,13 @@ Then install postGIS, at the <span class='app'>Terminal</span> write:
 <span class='terminal'>$ brew install postgis</span>
 
 As when you installed PostgreSQL, the progress of the installation will be reported in the <span class='app'>Terminal</span> window. In my case the installation reports quite a list of caveats.
+
+<button id= "togglePostGIScaveats" onclick="hiddencode('PostGIScaveats')">Hide/Show PostGIS installation caveats</button>
+
+<div id="PostGIScaveats" style="display:none">
+{% capture text-capture %}
+{% raw %}
+
 ```
 ==> Caveats
 ==> expat
@@ -211,6 +219,10 @@ For compilers to find qt you may need to set:
 For pkg-config to find qt you may need to set:
   export PKG_CONFIG_PATH="/usr/local/opt/qt/lib/pkgconfig"
 ```
+{% endraw %}
+{% endcapture %}
+{% include widgets/toggle-code.html  toggle-text=text-capture  %}
+</div>
 
 The Postgres server might start up after the installation finishes, try the command:
 

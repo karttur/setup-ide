@@ -1,11 +1,10 @@
 ---
 layout: article
-title: Conda virtual environments
+title: Conda virtual environments I
 modified: '2019-08-18T18:17:25.000Z'
 categories: setup-ide
 previousurl: setup-ide/install-anaconda
 nexturl: setup-ide/install-eclipse
-
 excerpt: "Create Conda environment for Karttur's GeoImagaine project"
 tags:
   - Conda environment
@@ -260,7 +259,7 @@ If you explore that path you can find the packages installed under
 
 ## More later
 
-If you reach here you should now have a <span class='file'>.condarc</span> file listing some default Python packages that should be included in a virtual environment ('geoimagine001') residing on your local machine. If you are going to setup the complete GeoImagine Framework you will define more packages later. But for now it is enough that you have a virtual environment that can be used for [setting up your first PyDev project using <span class='app'>Eclipse</span>](../install-eclipse).
+If you reach here you should have a <span class='file'>.condarc</span> file listing some default Python packages that should be included in a virtual environment ('geoimagine001') residing on your local machine. If you are going to setup the complete GeoImagine Framework you will define more packages later. But for now it is enough that you have a virtual environment that can be used for the next post: [setting up your first PyDev project using <span class='app'>Eclipse</span>](../install-eclipse).
 
 # Resources
 

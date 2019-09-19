@@ -45,7 +45,7 @@ If you downloaded the small download app, it will directly create your Eclipse i
 
 #### Java Development Kit (JDK)
 
-Start <span class ='app'>Eclipse</span>. Dependent on your operating system and the version of <span class='app'>Eclipse</span>, you might have to install a Java Development Kit (JDK). <span class='app'>Eclipse</span> will (probably) tell you to install JDK 6, that is [available via Apple](https://support.apple.com/kb/DL1572?locale=en_US). This is actually a legacy version and is not the version you need, but other apps might require it. You can skip installing it for now if you do not think you will need it. What you need is a later JDK version. At time of writing that means 8, 11 or 12 (9 and 10 are not longer active). Which version of Java JDK to use depends on your Eclipse version. You can always reinstall if it does not work the first time. To download the Java JDK you must register with [oracle.com](https://www.oracle.com/index.html).
+Start <span class ='app'>Eclipse</span>. Dependent on your operating system and the version of <span class='app'>Eclipse</span>, you might have to install a Java Development Kit (JDK). <span class='app'>Eclipse</span> will (probably) tell you to install JDK 6, that is [available via Apple](https://support.apple.com/kb/DL1572?locale=en_US). This is actually a legacy version and is not the version you need, but other apps might require it. You can skip installing it for now if you do not think you will need it. What you need is a later JDK version. At time of writing that means 8, 11 or 12 (9 and 10 are no longer active). Which version of Java JDK to use depends on your Eclipse version. You can always reinstall if it does not work the first time. To download the Java JDK you must register with [oracle.com](https://www.oracle.com/index.html).
 
 Go to the [Oracle Java JDK download page (version 8 in this link)](http://www.oracle.com/technetwork/java/javase/downloads/jdk8-downloads-2133151.html), and select the JDK version required by your operating system (Windows, Linux, macOS). Accept the Licence agreement and download. Follow the installation instructions in the downloaded file, and you should be ready to start <span class ='app'>Eclipse</span>.
 
@@ -69,15 +69,13 @@ In the <span class='tab'>Preferences</span> window that opens, click the PyDev e
 
 #### Virtual environment python Interpreter
 
-If you have setup a [Conda virtual environments](../conda-environ), the preferred method, click <span class='button'>Browse</span> button next to the textbox <span class='textbox'>Interpreter Executable</span>. Navigate to the virtual environment you created (e.g. ../anaconda3/envs/geoimagine001/bin/python3.7) and choose that file. Then edit the textbox <span class='textbox'>Interpreter Name</span> to something like 'Python3.7 geoimagine001'.
+If you have setup a [Conda virtual environments](../conda-environ), the preferred method, click <span class='button'>Browse</span> button next to the textbox <span class='textbox'>Interpreter Executable</span>. Navigate to the virtual environment you created (e.g. .../anaconda3/envs/geoimagine001/bin/python) and choose that file. Then edit the textbox <span class='textbox'>Interpreter Name</span> to something like 'Python3.x geoimagine001'.
 
 #### Anaconda base environment
 
 If you did not setup a virtual Python environment you can use the Anaconda default (or 'base') environment as your Python interpreter. Click the <span class='button'>Browse</span> button and navigate to where you [installed Anaconda](../setting-up-anaconda/index.html), and drill down to the Python executable:
 
-<span class='file'>'path'/Anaconda3/bin/python</span>
-
-where 'path' is path you choose for installing Anaconda.
+<span class='file'>.../anaconda3/bin/python</span>
 
 ### Apply the selected interpreter
 

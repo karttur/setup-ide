@@ -1,7 +1,7 @@
 ---
 layout: page
-title: Installations and setups
-excerpt: "An archive of installation and setup instructions sorted by date."
+title: Mac OS X Installations and setups
+excerpt: "An archive of Mac OS X installation and setup instructions sorted by date."
 image: tropwetlandmap
 search_omit: true
 ---
