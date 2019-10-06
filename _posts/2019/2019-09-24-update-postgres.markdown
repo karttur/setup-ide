@@ -29,8 +29,11 @@ For some reason my postgres setup had a havoc following an upgrade of my Homebre
 
 Trying to solve the problem I discovered the page [Migrating Homebrew Postgres to a New Version](https://olivierlacan.com/posts/migrating-homebrew-postgres-to-a-new-version/) by Olivier Lacan. It seems to me to be the best source for solving connection problems related to Homebrew updated. It, however, assumes that your original installation Homebrew installation of postgres is intact.
 
-
 In the end I could not solve the problem. The Homebrew update had deleted my active postgreSQL installation (under Cellar etc). Without it, it is not possible to restore or migrate your database. I tried restoring the postgreSQL setup uing a backup (Mac OSX TimeMachone) but secondary connection problems and incomplete installation were reported errors. I found a number of suggested [solutions on stackoverflow](https://stackoverflow.com/questions/13410686/postgres-could-not-connect-to-server). Trying some of them, I got no one to work properly.
+
+## Alternative to homebrew
+
+[Getting Back to an Old PostgreSQL Specific Version](https://dev.to/gaetanm/getting-back-to-an-old-postgressql-specific-version-3o01)
 
 ## Introduction
 
@@ -46,21 +49,82 @@ You can check which Homebrew postgres versions you have installed from the <span
 
 <span class='terminal'>$ ls /usr/local/Cellar/postgresql</span>
 
-Each version of postgres resides in sub-folders and will be listed.
+Each version of postgres resides in sub-folders and will be listed. For example:
+
+<span class='terminal'>10.1	11.5_1</span>
 
 You can also ask Homebrew for which versions are installed:
 
-<span class='terminal'>$ brew list --versions | grep postgres</span>
+<span class='terminal'>$ brew list \-\-versions | grep postgres</span>
+
+The returned list can exceed the number of actual folders, for example:
+
+<span class='terminal'>postgresql 11.5_1 10.1<br>
+postgresql@10 10.10_1</span>
+
+This means that your system is setup with multiple versions under one of your instalaltions.
 
 Your system can contain multiple versions even if there is only a single directory under  <span class='file'>/usr/local/Cellar/postgresql/</span>.
 
 postgres command line tool <span class='terminalapp'>psql</span> to get the active version:
 
- <span class='terminal'>$ psql --version</span>
+ <span class='terminal'>$ psql \-\-version</span>
 
  The prompt should return something like:
 
  <span class='terminal'>psql (PostgreSQL) 11.5</span>
+
+
+#### Stop your postgres services
+
+If you need to change your postgres version, or do other maintaenance  work on postgres involving Homebrew, you should stop the brew service running postgres:
+
+<span class='terminal'>$ brew services stop postgres</span>
+
+
+#### HERE
+
+Before swithiching you ahve to unlink. I had made the mistake of istanlling a sub (@) version replicated the version of my old (deleted) postgres stuff (10.10). Thus I had 2 version of 10.10 one stand alone (postgresql 10.10.1) and one under a heiger postgres version (posgresql@10 10.10.1). I had linknked to the slave (@) version, and needed to unlnik.
+
+$ brew unlink postgresql@10
+
+You can now do a "dry-run" to test what effect --overwrite would have:
+
+<>brew link --overwrite --dry-run postgresql<>
+
+In my case, having previously linked to version @10.10 1, I get the message
+
+<>Warning: Already linked: /usr/local/Cellar/postgresql/10.1<>
+<>To relink: brew unlink postgresql && brew link postgresql<>
+
+
+#### Uninstall postgres
+
+I needed to ununstall my slove (@) version of postgres as it caused confusion (whether for me of Homebrew is unclear). First list you Homebrew installations:
+
+<span class='terminal'>$ brew list</span>
+
+Identify the keg (?) you want unistall (e.g. postgresql@10), and then run:
+
+<span class='terminal'>$ brew uninstall postgresql@10</span>
+
+If you rerun <span class='terminal'>$ brew list</span>, postgresql@10 should no longer be listed. List the postgres versions available with brew:
+
+<span class='terminal'>$ brew list \-\-versions | grep postgres</span>
+
+The version you removed should not occur in the returend list.
+
+#### Finally???
+
+Trying to unlink, or link, instead runoff
+
+brew unlink postgresql && brew link postgresql
+
+But then I got another error, the _readline_ version was to high /for 11-5 I assume), and had to be downgraded.
+
+
+
+<>brew switch readline 7.0.1<>
 
 ### Check the postgres database
 
@@ -96,13 +160,13 @@ I am not an expert on postgres databases, and I feel that from here on it is lik
 
 ### Downgrade postgres (app or server) installation
 
-In general, downgrading is not recommended, but sometimes it might be necessary. Downgrading your postgresql installation udner Homebreww can be done by installing a parallel (downgraded) version.
+In general, downgrading is not recommended, but sometimes it might be necessary. Downgrading your postgresql installation under Homebrew can be done by installing a parallel (downgraded) version.
 
-<span class='file'>$ brew install postgresql@10</span>
+<span class='terminal'>$ brew install postgresql@10</span>
 
-<span class='file'>$ brew services start postgresql@10</span>
+<span class='terminal'>$ brew services start postgresql@10</span>
 
-<span class='file'>$ brew link postgresql@10  --force</span>
+<span class='terminal'>$ brew link postgresql@10  --force</span>
 
 If your existing (higher) postgres version is active, the <span class='terminal'>--force</span> will not take effect and an <span class='terminal'>Error</span> will be reported. Two alternatives are suggested, either to <span class='terminal'>unlink postgresql</span> or
 <span class='terminal'> --overwrite</span> existing links.
@@ -148,7 +212,7 @@ Further trial on shutting down
 $ launchctl unload -w ~/Library/LaunchAgents/homebrew.mxcl.postgresql.plist
 But my plist is somewhere resampled
 
-OK, understand, I forced version 10 and then a new launcagent was CreateErsHeadersMonthlyOkaLinyantiNgami
+OK, understand, I forced version 10 and then a new launchagent was CreateErsHeadersMonthlyOkaLinyantiNgami
 <span class = 'terminal'>$ ls ~/Library/LaunchAgents</span>
 
 The postgres launvhagent will something like
@@ -181,7 +245,7 @@ Install a higher subversion (but not main??) compared to your PG_VERSION
 
 (e.g. brew install psogresql@10)
 
-Remove old symplinks
+Remove old symlinks
 $ brew unlink postgresql
 
 overwrite links withthe version you wnat to have
