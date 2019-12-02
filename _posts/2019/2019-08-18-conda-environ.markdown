@@ -36,11 +36,11 @@ To create a virtual environment from scratch you need to have a <span class='fil
 The <span class='file'>.condarc</span> is not included by default when you [installed conda](../install-anaconda/). To find out if you have a <span class='file'>.condarc</span> file open a <span class='app'>terminal</span> window and type:
  <span class='terminal'>$ conda info</span>
 
- Look for the line <span class='terminal'>user config file:</span> in the results.
+Look for the line <span class='terminal'>user config file:</span> in the results.
 
- You can create the <span class='file'>.condarc</span> file using a text editor (e.g. [<span class='atom'>Atom</span>](https://karttur.github.io/setup-blog/2017/12/21/setup-blog-tools.html)), directly from the command line ( <span class='terminal'>~$ pico .condarc</span>) or by running the command:
+You can create the <span class='file'>.condarc</span> file using a text editor (e.g. [<span class='atom'>Atom</span>](https://karttur.github.io/setup-blog/2017/12/21/setup-blog-tools.html)), directly from the command line ( <span class='terminal'>~$ pico .condarc</span>) or by running the command:
 
- <span class='terminal'>$ conda config</span>
+<span class='terminal'>$ conda config</span>
 
 You can set a lot of parameters and functions in <span class='file'>.condarc</span> (as described [here](https://docs.conda.io/projects/conda/en/latest/user-guide/configuration/use-condarc.html)), but for now you will use it for defining a set of default packages that will always be included when creating a new environment.
 
