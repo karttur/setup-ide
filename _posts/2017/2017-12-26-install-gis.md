@@ -1,7 +1,6 @@
 ---
 layout: article
 title: 'Install GDAL, QGIS and GRASS'
-modified: 2019-08-26T18:17:25.000Z
 categories: setup-ide
 previousurl: null
 nexturl: setup-ide/install-anaconda
@@ -13,6 +12,7 @@ tags:
   - macOS
 image: rainfall-delta_3B43_trmm_2001-2016_mk-z-ts-model@p005
 date: '2017-12-26 20:05'
+modified: 2019-12-03
 comments: true
 share: true
 ---
@@ -92,13 +92,19 @@ GDAL is now ready for use, and if you gave the PATH, the GDAL commands are direc
 
 ### QGIS
 
-[Quantum GIS](https://www.qgis.org/en/site/) is a popular, and powerful, Open Source GIS software. Download QGIS from the [official homepage](https://www.qgis.org/en/site/). If installing for macOS, you will be linked to the [KyngChaos site](http://www.kyngchaos.com/software/qgis) maintained by William Kyngesburye. Download the QGIS diskimage (<span class='file'>.dmg</span>) installation file. Open the <span class='file'>QGIS-'version'.dmg</span> file. Apart from the package installer (<span class='app'>.pkg</span>) for QGIS it also contains <span class='app'>.pkg's</span> for GDAL, NumPy and matplotlib. If you installed GDAL and NumPy above, no need to repeat that. But you need to install matplotlib before installing QGIS. If you are denied installing you have to bypass the macOS security settings as explained in the previous section on [GDAL](#gdal).
+[Quantum GIS](https://www.qgis.org/en/site/) is a popular, and powerful, Open Source GIS software. Download QGIS from the [official download page](https://qgis.org/en/site/forusers/download.html). When updating this (December 2019), the official download page includes a official all-in-one installers for Mac OSX. If your Mac OSX version is not supported you can find alternative options with William Kyngesburye´s [KyngChaos QGIS insallaers](https://www.kyngchaos.com/software/qgis/), as outlined in the sub-section below.
 
 QGIS should now be available in your Applications folder:
 
 <span class='finder'>/Applications/QGIS</span>
 
 I am not a fluent user in QGIS, I mostly use it to view maps, test different color ramps, and create map layouts.
+
+#### KyngChaos
+
+At time of writing this, the latest QGIS versions available from [KyngChaos](https://www.kyngchaos.com/software/qgis/) requires a sequence of instalaltions, including of a particular python version. Read the instructions carefully, and the installation will work fine.
+
+Download the QGIS diskimage (<span class='file'>.dmg</span>) installation file. Open the <span class='file'>QGIS-'version'.dmg</span> file. Apart from the package installer (<span class='app'>.pkg</span>) for QGIS it also contains <span class='app'>.pkg's</span> for GDAL, NumPy and matplotlib. If you installed GDAL and NumPy above, no need to repeat that. But you need to install matplotlib before installing QGIS. If you are denied installing you have to bypass the macOS security settings as explained in the previous section on [GDAL](#gdal).
 
 ### GRASS
 
