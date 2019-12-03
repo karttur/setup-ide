@@ -1,7 +1,6 @@
 ---
 layout: article
 title: Install Anaconda
-modified: 2019-08-17T20:17:25.000Z
 categories: setup-ide
 previousurl: setup-ide/install-gis
 nexturl: setup-ide/conda-environ
@@ -12,6 +11,7 @@ tags:
   - macOS
 image: avg-trmm-3b43v7-precip_3B43_trmm_2001-2016_A
 date: '2017-12-27 19:35'
+modified: 2019-12-03
 comments: true
 share: true
 ---
@@ -29,11 +29,17 @@ Python is a general purpose high-level programming language, and I use Python to
 
 Anaconda is a free platform for scientific Python. To download Anaconda, visit the [Anaconda homepage](https://www.anaconda.com), and look for the download link. In the download page, find the distribution (e.g. Windows, Linux, macOS) and the Python version (e.g. 2.X or 3.X) that you need. Since I wrote the original post (December 2017) I have switched from Python 2.7 to 3.7. Download the graphical installer, unless you feel comfortable with the command line version.
 
+Note, the setup of Karttur's GeoImagine Framework expects Anaconda to be installed under the <span class='file'>Applications</span> folder.
+
+The official instructions for [installing Anaconda on Mac OSX](https://docs.anaconda.com/anaconda/install/mac-os/), or follow the following shorthand instructions.
+
 Open Anaconda installation package (<span class='file'>.pkg</span>) by double clicking. If you are denied installing, you need to bypass the macOS security settings. Go via the mac main menu, click the apple (absolute top left of the computer screen), select <span class='finder'>System Preferences...</span>. In the top row of the <span class='tab'>System Preferences</span> window, click the Security & Privacy icon. In the window that opens, under the <span class='tab'>General</span> tab (usually in front by default), you should see a paragraph towards the bottom:
 ```
 "Anaconda'version'.pkg" was blocked from opening...
 ```
-Click the button <span class='button'>Open Anyway</span>, and try to install again. The installation should come one step further, but you still have to confirm that you want to to go ahead with the installation in a pop-up window. The <span class='file'>.pkg</span> installer will guide you through the installation. Finally you have to give your user password, and the package will install.
+Click the button <span class='button'>Open Anyway</span>, and try to install again. The installation should come one step further, but you still have to confirm that you want to to go ahead with the installation in a pop-up window. The <span class='file'>.pkg</span> installer will guide you through the installation. Remember that if you want to steramline the Anaconda installation for Karttur's GeoImagine Framework you must change the isntalaltion destination to the <span class='file'>Applications</span> folder.
+
+When the installation is finished, it asks if you want to install PyCharm IDE. I have not tested PyCharm IDE, but it seems worthwhile. At present PyCharm is not required for Kartturs´s GeoImagine Framework.
 
 ### Checking, updating and extending Anaconda
 

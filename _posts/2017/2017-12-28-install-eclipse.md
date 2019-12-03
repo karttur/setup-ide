@@ -31,6 +31,14 @@ share: true
 
 [Eclipse](http://www.eclipse.org) is "an open extensible IDE for anything and nothing in particular", where IDE stands for Integrated Development Environment. I use Eclipse for writing my Python scripts, and running my Geo Imagine processing.
 
+### Java Development Kit (JDK)
+
+Dependent on your operating system and the version of <span class='app'>Eclipse</span>, you might have to install a Java Development Kit (JDK). You can go ahead and skip installing JDK at this point, but if your installation of <span class='app'>Eclipse</span> stops with a message like _To use Java command-line tools you need to install a JDK_, then you have to [Install Java Development Kit (JDK)](../install-JDK).
+
+#### Eclipse and JDK compatibility
+
+Some combinations of different versions of Eclipse and JDK are not compatible. Eclipse version 4.9 (2018-09) has issues with JDK version 10 and 11: there is a constant error reporting "An internal error occurred during: "Polling news feeds". In the beginning you might think it is ok to click it away, but it gets very annoying after a while. I have searched for a solution to this problem, but it seems it can not be bypassed without loosing other capabilities.
+
 ### Download and Install Eclipse
 
 You can either download the default package of Eclipse via the [official homepage](http://www.eclipse.org), or choose a custom Eclipse version from the [package download page](http://www.eclipse.org/downloads/eclipse-packages/). You will get the option to **Try the Eclipse Installer YYYY‑MM R**, which links to a smaller download package (diskimage for mac osx). If you choose this option you will get to an Eclipse Installer app with all packages options. You can also download a [legacy version](https://www.eclipse.org/downloads/packages/release/), in which case you will again get the same options for selecting different Eclipse packages.
@@ -42,12 +50,6 @@ If you download the default package, it will come as a gunzipped tarball (<span 
 If you instead downloaded a package, you will receive a diskimage (<span class='file'>.dmg</span>). Double click the <span class ='file'>.dmg</span> file, and then just drag the <span class='app'>Eclipse.app</span> inside the diskimage to your <span class ='finder'>/Applications</span> folder and you are done.
 
 If you downloaded the small download app, it will directly create your Eclipse installation in the location of your choosing.
-
-#### Java Development Kit (JDK)
-
-Start <span class ='app'>Eclipse</span>. Dependent on your operating system and the version of <span class='app'>Eclipse</span>, you might have to install a Java Development Kit (JDK). <span class='app'>Eclipse</span> will (probably) tell you to install JDK 6, that is [available via Apple](https://support.apple.com/kb/DL1572?locale=en_US). This is actually a legacy version and is not the version you need, but other apps might require it. You can skip installing it for now if you do not think you will need it. What you need is a later JDK version. At time of writing that means 8, 11 or 12 (9 and 10 are no longer active). Which version of Java JDK to use depends on your Eclipse version. You can always reinstall if it does not work the first time. To download the Java JDK you must register with [oracle.com](https://www.oracle.com/index.html).
-
-Go to the [Oracle Java JDK download page (version 8 in this link)](http://www.oracle.com/technetwork/java/javase/downloads/jdk8-downloads-2133151.html), and select the JDK version required by your operating system (Windows, Linux, macOS). Accept the Licence agreement and download. Follow the installation instructions in the downloaded file, and you should be ready to start <span class ='app'>Eclipse</span>.
 
 ### Setup Eclipse for Python development
 
