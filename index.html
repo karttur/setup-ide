@@ -1,30 +1,34 @@
 ---
 layout: page
-title: Install and setup spatial data IDE
-excerpt: "Install and setup Anaconda Python, Eclipse IDE for PyDev, and PostgreSQL to work in concert. Set up database architecture using xml. Install GDAL, QGIS and GRASS"
+title: Install and setup SPIDE
+excerpt: "Install and setup Spatial Data Integrated Development Environment (SPIDE)."
 image: ts-upsl-trmm-3b43v7-precip_3B43_trmm_2001-2016_A
 search_omit: true
 ---
 
 These instructions on installing and setting up a Spatial Data Integrated Development
-Environment (SPIDE) is primarly written for Mac OS X. Installations and setups for Linux are
+Environment (SPIDE) are primarly written for Mac OS X. Installations and setups for Linux are
 summarized in the article
-<article><a href="{{ site.url }}/ubuntu-setup-spide/">
-  Spatial Data Integrated Development Environment for Ubuntu 18.04</a></article>
-The installed software match the requirements of
+<article><a href="{{ site.url }}/blog/ubuntu-setup-spide/">
+  SPIDE for Ubuntu 18.04.</a></article>
+<br>The installed software match the requirements of
 <a href="https://karttur.github.io/geoimagine/">
   Karttur's GeoImagine Framework</a>.
 
-<h1>Blog<h1>
+<br><br>The setup instructions cover Anaconda Python, Eclipse IDE for PyDev, and PostgreSQL;
+setting up of database architecture using xml;
+installation of GDAL, QGIS and GRASS.
+
+<h1>SPIDE setup for Mac OSX<h1>
 <ul class="post-list">
-{% for post in site.categories.blog limit:10 %}
+{% for post in site.categories.setup-ide reversed %}
   <li><article><a href="{{ site.url }}{{ post.url }}">{{ post.title }} <span class="entry-date"><time datetime="{{ post.date | date_to_xmlschema }}">{{ post.date | date: "%B %d, %Y" }}</time></span>{% if post.excerpt %} <span class="excerpt">{{ post.excerpt | remove: '\[ ... \]' | remove: '\( ... \)' | markdownify | strip_html | strip_newlines | escape_once }}</span>{% endif %}</a></article></li>
 {% endfor %}
 </ul>
 
-<h1>Articles<h1>
+<h1>Supplements<h1>
 <ul class="post-list">
-{% for post in site.categories.setup-ide limit:10 %}
+{% for post in site.categories.blog reversed %}
   <li><article><a href="{{ site.url }}{{ post.url }}">{{ post.title }} <span class="entry-date"><time datetime="{{ post.date | date_to_xmlschema }}">{{ post.date | date: "%B %d, %Y" }}</time></span>{% if post.excerpt %} <span class="excerpt">{{ post.excerpt | remove: '\[ ... \]' | remove: '\( ... \)' | markdownify | strip_html | strip_newlines | escape_once }}</span>{% endif %}</a></article></li>
 {% endfor %}
 </ul>

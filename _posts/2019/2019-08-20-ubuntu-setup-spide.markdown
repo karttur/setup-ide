@@ -1,10 +1,10 @@
 ---
 layout: post
-title: Spatial Data Integrated Development Environment for Ubuntu 18.04
+title: SPIDE for Ubuntu 18.04
 date: "2019-08-20 15:47"
 modified: 2019-09-06 09:47
 categories: blog
-excerpt: "Install all Ubuntu packages required for running Karttur's GeoImagine Framework"
+excerpt: "Spatial Data Integrated Development Environment for Ubuntu 18.04"
 tags:
   - Ubuntu
   - SPIDE

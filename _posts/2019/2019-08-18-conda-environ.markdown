@@ -15,6 +15,8 @@ share: true
 figure1: eclipse_select_import
 figure2: eclipse_import_project_from_file_system_or_archive
 ---
+<script src="https://karttur.github.io/common/assets/js/karttur/togglediv.js"></script>
+
 # Introduction
 
 With conda, you can create, update, export and import virtual Python environments that have different versions of Python and/or packages installed in them. If you use [<span class='app'>Eclipse</span>](../install-eclipse) as your Integrated Development Environment (IDE) you can easily reset your Python source to a virtual version created in conda. You can also share an environment by exporting and then importing it.
@@ -29,6 +31,36 @@ Karttur's GeoImagine Framework requires a large set for Python packages to work.
 
 To avoid having your complete system corrupted, it is recommended that you build the Python system and packages using a "virtual" environment. In essence this means that you build a system that is working as a stand-alone solution not affecting the core (or 'base') system. This is easily done in conda. This tutorial will take your through the steps of creating a virtual python environment in conda. You will not assemble the complete GeoImaigine Framework Python package library in this post, but rather just set the core packages. Then you can proceed to install [<span class='app'>Eclipse</span>](../install-eclipse) and setup PyDev using the virtual environment created in this post.
 
+## Check your conda installation
+
+Open a <span class='app'>Terminal</span> window, and confirm that Anaconda is installed by typing at the prompt:
+
+<span class='terminal'>$ conda -V</span>
+
+By default, the active environment---the one you are currently using---is shown in parentheses () or brackets [] at the beginning of your command prompt:
+
+<span class='terminal'>(myenv) $</span>
+
+If you do not see this, run:
+
+<span class='terminal'>conda info --envs</span>
+
+To update or manage your conda installation you need to deactivate any customized environment and return to the base environment. The best way to do that is to use the activate command with no environment specified:
+
+<span class='terminal'>$ conda activate</span>
+
+Alternatively you can _deactivate_ the present environment, but if you do that while in _base_, it might crash your conda setup. Thus I do not write out the command for that.
+
+When in the _base_ environment the terminal prompts should look like this:
+
+<span class='terminal'>(base) $</span>
+
+To update your Anaconda distribution, type:
+
+<span class='terminal'>$ conda update conda</span>
+
+<span class='terminal'>$ conda update anaconda</span>
+
 ## conda configuration with .condarc
 
 To create a virtual environment from scratch you need to have a <span class='file'>.condarc</span> configuration file in you personal folder.
@@ -38,7 +70,7 @@ The <span class='file'>.condarc</span> is not included by default when you [inst
 
 Look for the line <span class='terminal'>user config file:</span> in the results.
 
-You can create the <span class='file'>.condarc</span> file using a text editor (e.g. [<span class='atom'>Atom</span>](https://karttur.github.io/setup-blog/2017/12/21/setup-blog-tools.html)), directly from the command line ( <span class='terminal'>~$ pico .condarc</span>) or by running the command:
+If you do not have a class='file'>.condarc</span> file, you can create the <span class='file'>.condarc</span> file using a text editor (e.g. [<span class='atom'>Atom</span>](https://karttur.github.io/setup-blog/2017/12/21/setup-blog-tools.html)), directly from the command line ( <span class='terminal'>~$ pico .condarc</span>) or by running the command:
 
 <span class='terminal'>$ conda config</span>
 
@@ -72,9 +104,16 @@ The advantage with installing the core components in a single command is that co
 
 If you now create a new environment:
 
-<span class='terminal'>$ conda create --name geoimagineXYZ</span>,
+<span class='terminal'>$ conda create ----name geoimagineXYZ</span>,
 
-the rather short list of default packages will create a rather long list of package to install:
+the rather short list of default packages will create a rather long list of package to install.
+
+<button id= "togglecondacreate" onclick="hiddencode('condacreate')">Hide/Show conda create command and response</button>
+
+<div id="condacreate" style="display:none">
+
+{% capture text-capture %}
+{% raw %}
 
 ```
 $ conda create --name geoimagine001
@@ -202,8 +241,12 @@ The following NEW packages will be INSTALLED:
 
 Proceed ([y]/n)?
 ```
+{% endraw %}
+{% endcapture %}
+{% include widgets/toggle-code.html  toggle-text=text-capture  %}
+</div>
 
-Just press <span class='terminal'>y</span> and let conda setup your environment. The terminal response should then be like this:
+Just press <span class='terminal'>y</span> when conda asks <span class='terminal'>Proceed ([y]/n)?</span> and let conda setup your environment. The terminal response should then be like this:
 
 ```
 Proceed ([y]/n)? y
@@ -223,11 +266,11 @@ Executing transaction: done
 
 If something goes wrong you just simply delete the virtual environment:
 
-<span class='terminal'>$ conda remove --name geoimagine001 --all</span>
+<span class='terminal'>$ conda remove ----name geoimagine001 --all</span>
 
 or
 
-<span class='terminal'>$ conda env remove --name geoimagine001</span>
+<span class='terminal'>$ conda env remove ----name geoimagine001</span>
 
 The conda base setup is not affected by either installing or deleting a virtual environment.
 
@@ -267,4 +310,6 @@ If you reach here you should have a <span class='file'>.condarc</span> file list
 
 [Anaconda package lists](https://docs.anaconda.com/anaconda/packages/pkg-docs/)
 
-[Managing environments](https://docs.conda.io/projects/conda/en/latest/user-guide/tasks/manage-environments.html)
+[Conda - Managing environments](https://docs.conda.io/projects/conda/en/latest/user-guide/tasks/manage-environments.html)
+
+[Using the .condarc conda configuration file](https://docs.conda.io/projects/conda/en/latest/user-guide/configuration/use-condarc.html)
