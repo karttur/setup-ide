@@ -868,3 +868,236 @@ Eclipse-installer-product-define:
     caption: Manually select Eclipse product version and components to install.
     credit: null
     source: null
+
+github-framework_karttur_01_openperspective:
+  file: github-framework_karttur_01_openperspective.jpg
+  source: github-framework_karttur_01_openperspective.jpg
+  author: Thomas Gumbricht
+  caption: Open Perspective in Eclipse
+  credit: null
+  source: null
+
+github-framework_karttur_02_select-git-perspective:
+  file: github-framework_karttur_02_select-git-perspective.jpg
+  source: github-framework_karttur_02_select-git-perspective.jpg
+  author: Thomas Gumbricht
+  caption: Select Git view in Eclipse
+  credit: null
+  source: null
+
+github-framework_karttur_03_Git-repo-alternatives:
+  file: github-framework_karttur_03_Git-repo-alternatives.jpg
+  source: github-framework_karttur_03_Git-repo-alternatives.jpg
+  author: Thomas Gumbricht
+  caption: Git repositories alternatives in Eclipse.
+  credit: null
+  source: null
+
+github-framework_karttur_04_Source-Git-repo:
+  file: github-framework_karttur_04_Source-Git-repo.jpg
+  source: github-framework_karttur_04_Source-Git-repo.jpg
+  author: Thomas Gumbricht
+  caption: Select/define Source Git Repository in Eclipse.
+  credit: null
+  source: null
+
+github-framework_karttur_05_Git-branch-select:
+  file: github-framework_karttur_05_Git-branch-select.jpg
+  source: github-framework_karttur_05_Git-branch-select.jpg
+  author: Thomas Gumbricht
+  caption: Select repository branch in Eclipse.
+  credit: null
+  source: null
+
+github-framework_karttur_06_Git-local-dst:
+  file: github-framework_karttur_06_Git-local-dst.jpg
+  source: github-framework_karttur_06_Git-local-dst.jpg
+  author: Thomas Gumbricht
+  caption: Select Local Destination for GutHub repository clone in Eclipse.
+  credit: null
+  source: null
+
+github-framework_karttur_07_Git-repo-proj:
+  file: github-framework_karttur_07_Git-repo-proj.jpg
+  source: github-framework_karttur_07_Git-repo-proj.jpg
+  author: Thomas Gumbricht
+  caption: Added Git Respositories in Eclipse.
+  credit: null
+  source: null
+
+github-framework_karttur_08_eclipse-new-proj:
+  file: github-framework_karttur_08_eclipse-new-proj.jpg
+  source: github-framework_karttur_08_eclipse-new-proj.jpg
+  author: Thomas Gumbricht
+  caption: Add new project form main menu in Eclipse.
+  credit: null
+  source: null
+
+github-framework_karttur_09_eclipse-pydev-proj:
+  file: github-framework_karttur_09_eclipse-pydev-proj.jpg
+  source: github-framework_karttur_09_eclipse-pydev-proj.jpg
+  author: Thomas Gumbricht
+  caption: Add PyDev project in Eclipse.
+  credit: null
+  source: null
+
+github-framework_karttur_10_eclipse-pydev-proj2:
+  file: github-framework_karttur_10_eclipse-pydev-proj2.jpg
+  source: github-framework_karttur_10_eclipse-pydev-proj2.jpg
+  author: Thomas Gumbricht
+  caption: Define PyDev project in Eclipse.
+  credit: null
+  source: null
+
+github-framework_karttur_11_eclipse-proj-menu:
+  file: github-framework_karttur_11_eclipse-proj-menu.jpg
+  source: github-framework_karttur_11_eclipse-proj-menu.jpg
+  author: Thomas Gumbricht
+  caption: Pop-out menu from right-click in the Eclipse Package Explorer view.
+  credit: null
+  source: null
+
+github-framework_karttur_12_config-proj-repo:
+  file: github-framework_karttur_12_config-proj-repo.jpg
+  source: github-framework_karttur_12_config-proj-repo.jpg
+  author: Thomas Gumbricht
+  caption: Configure Git Respository view in Eclipse.
+  credit: null
+  source: null
+
+github-framework_karttur_121_package-explorer:
+  file: github-framework_karttur_121_package-explorer.jpg
+  source: github-framework_karttur_121_package-explorer.jpg
+  author: Thomas Gumbricht
+  caption: GitHub linked project in Eclipse Package Explorer.
+  credit: null
+  source: null
+
+
+github-framework_karttur_13_eclipse-proj-menu:
+  file: github-framework_karttur_13_eclipse-proj-menu.jpg
+  source: github-framework_karttur_13_eclipse-proj-menu.jpg
+  author: Thomas Gumbricht
+  caption: Pop-out menu from right-click in the Eclipse Package Explorer view.
+  credit: null
+  source: null
+
+github-framework_karttur_14_git-staging:
+  file: github-framework_karttur_14_git-staging.jpg
+  source: github-framework_karttur_14_git-staging.jpg
+  author: Thomas Gumbricht
+  caption: Git Staging view in Eclipse.
+  credit: null
+  source: null
+
+github-framework_karttur_15_new-other:
+  file: github-framework_karttur_15_new-other.jpg
+  source: github-framework_karttur_15_new-other.jpg
+  author: Thomas Gumbricht
+  caption: Eclipse menu for New and then "other" (PyDev package for instance)
+  credit: null
+  source: null
+
+github-framework_karttur_16_pydev-package:
+  file: github-framework_karttur_16_pydev-package.jpg
+  source: github-framework_karttur_16_pydev-package.jpg
+  author: Thomas Gumbricht
+  caption: Add PyDev package in Eclipse.
+  credit: null
+  source: null
+
+github-framework_karttur_17_pydev-package2:
+  file: github-framework_karttur_17_pydev-package2.jpg
+  source: github-framework_karttur_17_pydev-package2.jpg
+  author: Thomas Gumbricht
+  caption: Define PyDev package in Eclipse.
+  credit: null
+  source: null
+
+github-framework_karttur_0301_Git-repo-alternatives:
+  file: github-framework_karttur_0301_Git-repo-alternatives.jpg
+  source: github-framework_karttur_0301_Git-repo-alternatives.jpg
+  author: Thomas Gumbricht
+  caption: Git repositories view in Eclipe.
+  credit: null
+  source: null
+
+github-framework_karttur_06a_Git-local-dst:
+  file: github-framework_karttur_06a_Git-local-dst.jpg
+  source: github-framework_karttur_06a_Git-local-dst.jpg
+  author: Thomas Gumbricht
+  caption: Select Local Destination for GutHub repository clone in Eclipse.
+  credit: null
+  source: null
+
+github-framework_karttur_0X_eclipse-perspectives:
+  file: github-framework_karttur_0X_eclipse-perspectives.jpg
+  source: github-framework_karttur_0X_eclipse-perspectives.jpg
+  author: Thomas Gumbricht
+  caption: Submodules.
+  credit: null
+  source: null
+
+github-framework_karttur_0X_menu-eclipse-perspectives:
+  file: github-framework_karttur_0X_menu-eclipse-perspectives.jpg
+  source: github-framework_karttur_0X_menu-eclipse-perspectives.jpg
+  author: Thomas Gumbricht
+  caption: Open Other perspictive via the Eclipse main menu.
+  credit: null
+  source: null
+
+github-framework_karttur_0X_menu-eclipse-perspectives2:
+  file: github-framework_karttur_0X_menu-eclipse-perspectives2.jpg
+  source: github-framework_karttur_0X_menu-eclipse-perspectives2.jpg
+  author: Thomas Gumbricht
+  caption: Select PyDev perspective in Eclipse.
+  credit: null
+  source: null
+
+github-framework_karttur_25_update-submodules:
+  file: github-framework_karttur_25_update-submodules.jpg
+  source: github-framework_karttur_25_update-submodules.jpg
+  author: Thomas Gumbricht
+  caption: Update Submodule in Eclipse.
+  credit: null
+  source: null
+
+github-framework_karttur_101_github-repo-top:
+  file: github-framework_karttur_101_github-repo-top.jpg
+  source: github-framework_karttur_101_github-repo-top.jpg
+  author: Thomas Gumbricht
+  caption: Content of Karttur's GeoImagine Framework repository (top level).
+  credit: null
+  source: null
+
+github-framework_karttur_102_github-repo-geoimagine:
+  file: github-framework_karttur_102_github-repo-geoimagine.jpg
+  source: github-framework_karttur_102_github-repo-geoimagine.jpg
+  author: Thomas Gumbricht
+  caption: Submodules belonging to Karttur's GeoImagine Framework repository (first submodules only).
+  credit: null
+  source: null
+
+github-framework_karttur_103_clone-to-desktop:
+  file: github-framework_karttur_103_clone-to-desktop.jpg
+  source: github-framework_karttur_103_clone-to-desktop.jpg
+  author: Thomas Gumbricht
+  caption: Clone repository from GitHub.com
+  credit: null
+  source: null
+
+github-framework_karttur_104_clone-repo-desktop:
+  file: github-framework_karttur_104_clone-repo-desktop.jpg
+  source: github-framework_karttur_104_clone-repo-desktop.jpg
+  author: Thomas Gumbricht
+  caption: GitHub Desktop menu system, Clone Repository
+  credit: null
+  source: null
+
+github-framework_karttur_105_clone-a-repo-desktop:
+  file: github-framework_karttur_105_clone-a-repo-desktop.jpg
+  source: github-framework_karttur_105_clone-a-repo-desktop.jpg
+  author: Thomas Gumbricht
+  caption: Clone a Repository, GithHub Desktop
+  credit: null
+  source: null

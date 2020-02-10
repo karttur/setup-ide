@@ -1,7 +1,6 @@
 ---
 layout: article
 title: Conda virtual environments I
-modified: '2019-08-18T18:17:25.000Z'
 categories: setup-ide
 previousurl: setup-ide/install-anaconda
 nexturl: setup-ide/install-eclipse
@@ -9,13 +8,26 @@ excerpt: "Create Conda environment for Karttur's GeoImagaine project"
 tags:
   - Conda environment
 image: avg-trmm-3b43v7-precip_3B43_trmm_2001-2016_A
-date: '2019-08-18 T18:17:25.000Z'
+date: '2019-08-18'
+modified: '2020-01-30'
 comments: true
 share: true
 figure1: eclipse_select_import
 figure2: eclipse_import_project_from_file_system_or_archive
 ---
 <script src="https://karttur.github.io/common/assets/js/karttur/togglediv.js"></script>
+
+\- [Introduction](#introduction)
+\- [Prerequisites](#prerequisites)
+\- [Conda virtual environments](#conda-virtual-environments)
+\- [Check your conda installation](#check-your-conda-installation)
+\- [.condarc](#condarc)
+\- [Default packages](#default-packages)
+\- [Create a new environment](#create-a-new-environment)
+\- [Activate your environment](#activate-your-environment)
+\- [Locate your environment](#locate-your-environment)
+\- [More later](#more-later)
+\- [Resources](#resources)
 
 # Introduction
 
@@ -27,9 +39,9 @@ Conda must be installed as described in [this](../install-anaconda/) post.
 
 # Conda virtual environments
 
-Karttur's GeoImagine Framework requires a large set for Python packages to work. You have to install these packages and then link them to the Framework Spatial Data IDE (SPIDE). Many high level packages depend on other, more basic, packages. When installing many packages there is a large risk of forcing conflicting requirements regarding the versions of shared (i.e. more basic) packages. Sequentially installing (high level) packages can easily lead to a corrupt system due to conflicting requirements regarding shared (more basic) packages.
+Karttur's GeoImagine Framework requires a large set of Python packages to work. You have to install these packages and then link them to the Framework Spatial Data IDE (SPIDE). Many high level packages depend on other, more basic, packages. When installing many packages there is a large risk of forcing conflicting requirements regarding the versions of shared (i.e. more basic) packages. Sequentially installing (high level) packages can easily lead to a corrupt system due to conflicting requirements regarding shared packages.
 
-To avoid having your complete system corrupted, it is recommended that you build the Python system and packages using a "virtual" environment. In essence this means that you build a system that is working as a stand-alone solution not affecting the core (or 'base') system. This is easily done in conda. This tutorial will take your through the steps of creating a virtual python environment in conda. You will not assemble the complete GeoImaigine Framework Python package library in this post, but rather just set the core packages. Then you can proceed to install [<span class='app'>Eclipse</span>](../install-eclipse) and setup PyDev using the virtual environment created in this post.
+To avoid having your complete system corrupted, it is recommended that you build the Python system and packages using a "virtual" environment. In essence this means that you build a system that is working as a stand-alone solution not affecting the core (or 'base') system. This is easily done in conda. This tutorial will take you through the steps of creating a virtual python environment in conda. You will not assemble the complete GeoImaigine Framework Python package library in this post, but rather just set the core packages. Then you can proceed to install [<span class='app'>Eclipse</span>](../install-eclipse) and setup PyDev using the virtual environment created in this post. The complete setup of Karttur's GeoImagine Framework is covered in my [GeoImagine blog](https://karttur.github.io/geoimagine/).
 
 ## Check your conda installation
 
@@ -37,15 +49,19 @@ Open a <span class='app'>Terminal</span> window, and confirm that Anaconda is in
 
 <span class='terminal'>$ conda -V</span>
 
-By default, the active environment---the one you are currently using---is shown in parentheses () or brackets [] at the beginning of your command prompt:
+By default, the active environment---the one you are currently using---is shown in parentheses () or brackets [] at the beginning of your command prompt. If you have not installed any virtual environments, the _default_ environment is _base_:
 
-<span class='terminal'>(myenv) $</span>
+<span class='terminal'>(base) $</span>,
+
+if you have defined and activated a virtual environment it will be shown instead:
+
+<span class='terminal'>(myenv) $</span>.
 
 If you do not see this, run:
 
 <span class='terminal'>conda info --envs</span>
 
-To update or manage your conda installation you need to deactivate any customized environment and return to the base environment. The best way to do that is to use the activate command with no environment specified:
+To update or manage your conda installation you need to deactivate any customized environment and return to the base environment. The best way to do that is to use the _activate_ command with no environment specified:
 
 <span class='terminal'>$ conda activate</span>
 
@@ -61,20 +77,20 @@ To update your Anaconda distribution, type:
 
 <span class='terminal'>$ conda update anaconda</span>
 
-## conda configuration with .condarc
+## .condarc
 
 To create a virtual environment from scratch you need to have a <span class='file'>.condarc</span> configuration file in you personal folder.
 
-The <span class='file'>.condarc</span> is not included by default when you [installed conda](../install-anaconda/). To find out if you have a <span class='file'>.condarc</span> file open a <span class='app'>terminal</span> window and type:
+The <span class='file'>.condarc</span> was not included by default when you [installed conda](../install-anaconda/). To find out if you have a <span class='file'>.condarc</span> file open a <span class='app'>terminal</span> window and type:
  <span class='terminal'>$ conda info</span>
 
 Look for the line <span class='terminal'>user config file:</span> in the results.
 
-If you do not have a class='file'>.condarc</span> file, you can create the <span class='file'>.condarc</span> file using a text editor (e.g. [<span class='atom'>Atom</span>](https://karttur.github.io/setup-blog/2017/12/21/setup-blog-tools.html)), directly from the command line ( <span class='terminal'>~$ pico .condarc</span>) or by running the command:
+If you do not have a <span class='file'>.condarc</span> file, you can create it by using a text editor (e.g. [<span class='app'>Atom</span>](https://karttur.github.io/setup-blog/2017/12/21/setup-blog-tools.html)), directly from the command line ( <span class='terminal'>~$ pico .condarc</span>) or by running the command:
 
 <span class='terminal'>$ conda config</span>
 
-You can set a lot of parameters and functions in <span class='file'>.condarc</span> (as described [here](https://docs.conda.io/projects/conda/en/latest/user-guide/configuration/use-condarc.html)), but for now you will use it for defining a set of default packages that will always be included when creating a new environment.
+You can set a lot of parameters and functions in <span class='file'>.condarc</span> (as described [here](https://docs.conda.io/projects/conda/en/latest/user-guide/configuration/use-condarc.html)), but for now you will only use it for defining a set of default packages that will always be included when creating a new environment.
 
 ### Default packages
 

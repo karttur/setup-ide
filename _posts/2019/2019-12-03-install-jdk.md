@@ -1,7 +1,7 @@
 ---
 layout: article
 title: Install Java Development Kit (JDK)
-categories: setup-ide
+categories: blog
 excerpt: "Install Oracles Java Development Kit (JDK)"
 tags:
   - Java Development Kit
@@ -17,7 +17,7 @@ share: true
 
 ## Java Development Kit (JDK).
 
-To use Java command-line tools you need to install a Java Development Kit (JDK). You might get this, or a similar message if your software (or app) requires JDK, but it is not installed on your machine. For instance if you are using [<span class='app'>Eclipse</span>](../install-eclipse).
+To use Java command-line tools you need to install a Java Development Kit (JDK). You might get this, or a similar message if your software (or app) requires JDK, but it is not installed on your machine. For instance if you are using [<span class='app'>Eclipse</span>](../../setup-ide/install-eclipse).
 
 Which version of Java JDK to use depends on your app. You can always reinstall if it does not work the first time. To download the Java JDK you must register with [oracle.com](https://www.oracle.com/index.html).
 

@@ -2,9 +2,9 @@
 layout: article
 date: "2017-12-30 10:06"
 title: "Install postgreSQL and postGIS"
-modified: "2019-08-20 10:06"
+modified: "2020-01-31 10:06"
 previousurl: setup-ide/install-eclipse
-nexturl: setup-ide/connect-with-psycopg2
+nexturl: setup-ide/install-with-conda-env
 categories: setup-ide
 excerpt: "Install PostgreSQL and postGIS, setup postgreSQL database"
 tags: [postgres, postgreSQL, postGIS, Homebrew, pgAdmin 4, Postico, macOS]
@@ -31,11 +31,11 @@ fig1: TablePlus_connect_postgres
 
 ## Postgres database
 
-[PostgreSQL](https://www.postgresql.org) (or postgres for short) is an advanced open source object-relational database system, that can also handle spatial data formats with the extension PostGIS. I use PostgreSQL and PostGIS for handle both processes and data layers when I work with Geo Imagine.
+[PostgreSQL](https://www.postgresql.org) (or postgres for short) is an advanced open source object-relational database system, that can also handle spatial data formats with the extension PostGIS. I use PostgreSQL and PostGIS for handling both processes and data layers when I work with GeoImagine.
 
-## Source distributions for macOS
+## Source distributions for Mac OSX
 
-There are (at least) three alternatives for installing PostgreSQL and PostGIS on your local Mac OS machine:
+There are (at least) three alternatives for installing PostgreSQL and PostGIS on your local Mac OSX machine:
 * [PostgreSQL](https://www.postgresql.org/download/) - the official distribution
 * [Homebrew](https://www.codementor.io/devops/tutorial/getting-started-postgresql-server-mac-osx) - using a mac OS app manager
 * [KyngChaos](http://www.kyngchaos.com/software/postgres) - binary installer maintained by William Kyngesburye
@@ -57,6 +57,33 @@ When Homebrew is updated with all the latest 'bottles', just execute the command
 <span class='terminal'>$ brew install postgres</span>
 
 Homebrew will first install PostgresQLS's dependencies, and then install the latest version of PostgreSQL.
+
+Repeating the installation in January 2020, the installation ended with a warning:
+
+```
+dyld: Library not loaded: /usr/local/opt/openssl/lib/libssl.1.0.0.dylib
+  Referenced from: /usr/local/lib/libpq.5.dylib
+  Reason: image not found
+Warning: The post-install step did not complete successfully
+```
+
+Reading about this particular error online, I first uninstalled postgres:
+
+<span class='terminal'>$ brew uninstall ----ignore-dependencies postgres</span>
+
+followed by
+
+```
+brew update && brew upgrade
+brew uninstall openssl; brew uninstall openssl; brew install https://github.com/tebelorg/Tump/releases/download/v1.0.0/openssl.rb
+```
+
+In my versions, the latter command gives some error messages because openssl 1.0.0 is outdated comapred to alreade installed version (1.1.1). But reinstalling postgreSQL with brew
+
+<span class='terminal'>$ brew install postgres</span>
+
+proceeded without warnings.
+
 
 The tasks performed by Homebrew are reported in the <span class='app'>Terminal</span> window. And when the installation finishes, Homebrew will tell you that you have two options:
 
@@ -365,7 +392,7 @@ There are so far no tables or schemas in the Postgres db cluster, to check that 
 
 ### Install Graphical User Interface
 
-Handling the PostgreSQL database using <span class='app'>psql</span> will become tedious when it grows. Instead you should download a Graphical User Interface (GUI). The primary free alternatives are [pgAdmin](https://www.pgadmin.org) and the light version of [Postico](https://eggerapps.at/postico/). pgAdmin is more comprehensive compared to the (never expiring) trial version of Postico, but Postico feels more modern. Getting tired of both these alternative since I wrote the original post in December 2017, I have now (August 2019) started using [TablePlus](https://tableplus.com) instead.
+Handling the PostgreSQL database using <span class='app'>psql</span> will become tedious when it grows. Instead you should download a Graphical User Interface (GUI). The primary free alternatives are [pgAdmin](https://www.pgadmin.org), the light version of [Postico](https://eggerapps.at/postico/) and [TablePlus](https://tableplus.com). pgAdmin is more comprehensive compared to the (never expiring) trial version of Postico, but Postico feels more modern. Getting tired of both these alternative since I wrote the original post in December 2017, I have switched to using [TablePlus](https://tableplus.com).
 
 #### Postico
 
@@ -394,7 +421,7 @@ TablePlus is downloaded as a diskimange <span class='file'>.dmg</span>. Just dou
 
 ## Setting up your production database
 
-Assuming that your 'postgres' database cluster is your production environment, make sure it is the selected db (whether in the <span class='app'>Terminal</span>, <span class='app'>Postico</span>, <span class='app'>pgAdmin</span> or span class='app'>TablePlus</span>). And execute the following SQL command:
+Assuming that your 'postgres' database cluster is your production environment, make sure it is the selected db (whether in the <span class='app'>Terminal</span>, <span class='app'>Postico</span>, <span class='app'>pgAdmin</span> or <span class='app'>TablePlus</span>). And execute the following SQL command:
 
 ```
 CREATE EXTENSION postgis;
@@ -408,12 +435,6 @@ CREATE EXTENSION
 ```
 
 regardless of your environment.
-
-To check if the extensions are in place using <span class='app'>pgAdmin</span> click the small '+' signs to expand the contents of the <span class='tab'>Browse</span> pane:
-
-<span class='menu'>'Servers', 'postgres','Databases','postgres','Extensions'</span>
-
-You then see the extensions, and both postgis and postgis_topology should be included.
 
 ## Homebrew postgres load agent
 

@@ -1,7 +1,6 @@
 ---
 layout: article
 title: Setup Eclipse for PyDev
-modified: 2019-08-17 T18:17:25.000Z
 categories: setup-ide
 previousurl: setup-ide/conda-environ
 nexturl: setup-ide/install-postgres
@@ -15,17 +14,18 @@ tags:
   - macOS
 image: rainfall-delta_3B43_trmm_2001-2016_mk-z-ts-model
 date: '2017-12-28 20:27'
+modified: 2019-08-17
 comments: true
 share: true
 ---
 
 **Contents**
-  - [Eclipse](#eclipse)
-  - [Download and Install Eclipse](#download-and-install-eclipse)
-  - [Setup Eclipse for Python development](#setup-eclipse-for-python-development)
-  - [Set Anaconda as the Python interpreter](#set-anaconda-as-the-python-interpreter)
-  - [Create PyDev project](#create-pydev-project)
-  - [Create PyDev Package](#create-pydev-package)
+  \- [Eclipse](#eclipse)
+  \- [Download and Install Eclipse](#download-and-install-eclipse)
+  \- [Setup Eclipse for Python development](#setup-eclipse-for-python-development)
+  \- [Set Anaconda as the Python interpreter](#set-anaconda-as-the-python-interpreter)
+  \- [Create PyDev project](#create-pydev-project)
+  \- [Create PyDev Package](#create-pydev-package)
 
 ## Eclipse
 
@@ -33,11 +33,11 @@ share: true
 
 ### Java Development Kit (JDK)
 
-Dependent on your operating system and the version of <span class='app'>Eclipse</span>, you might have to install a Java Development Kit (JDK). You can go ahead and skip installing JDK at this point, but if your installation of <span class='app'>Eclipse</span> stops with a message like _To use Java command-line tools you need to install a JDK_, then you have to [Install Java Development Kit (JDK)](../install-JDK).
+Dependent on your operating system and the version of <span class='app'>Eclipse</span>, you might have to install a Java Development Kit (JDK). You can go ahead and skip installing JDK at this point, but if your installation of <span class='app'>Eclipse</span> stops with a message like _To use Java command-line tools you need to install a JDK_, then have a look at the [post on Install Java Development Kit (JDK)](../../blog/install-JDK).
 
 #### Eclipse and JDK compatibility
 
-Some combinations of different versions of Eclipse and JDK are not compatible. Eclipse version 4.9 (2018-09) has issues with JDK version 10 and 11: there is a constant error reporting "An internal error occurred during: "Polling news feeds". In the beginning you might think it is ok to click it away, but it gets very annoying after a while. I have searched for a solution to this problem, but it seems it can not be bypassed without loosing other capabilities.
+Some combinations of different versions of Eclipse and JDK are not compatible. Eclipse version 4.9 (2018-09) has issues with JDK version 10 and 11: there is a constant error reporting "An internal error occurred during: Polling news feeds". In the beginning you might think it is ok to click it away, but it gets very annoying after a while. I have searched for an alternative solution to this problem, but it seems it can not be bypassed without loosing other capabilities. You just have to choose another combination of JDK and Eclipse.
 
 ### Download and Install Eclipse
 
@@ -47,7 +47,7 @@ In any case it is enough to select the (small package) <span class='button'>Ecli
 
 If you download the default package, it will come as a gunzipped tarball (<span class='file'>.tar.gz</span>). It expands to an installer if you double click, first to explode the gunzip, and then to open the tarball. Then double click the <span class='app'>Eclipse Installer</span> and follow the instructions.
 
-If you instead downloaded a package, you will receive a diskimage (<span class='file'>.dmg</span>). Double click the <span class ='file'>.dmg</span> file, and then just drag the <span class='app'>Eclipse.app</span> inside the diskimage to your <span class ='finder'>/Applications</span> folder and you are done.
+If you instead downloaded a package, you will receive a diskimage (<span class='file'>.dmg</span>). Double click the <span class ='file'>.dmg</span> file, and then just drag the <span class='file'>Eclipse.app</span> inside the diskimage to where you want it to reside. <span class='app'>Eclipse</span> is a stand alone application, so you can put it anywhere. For instance under <span class='file'>./documents/"version"</span> which also allows you to have multiple <span class='app'>Eclipse</span> versions installed simultaneously.
 
 If you downloaded the small download app, it will directly create your Eclipse installation in the location of your choosing.
 

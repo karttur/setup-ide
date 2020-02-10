@@ -3,9 +3,7 @@ layout: "post"
 title: Update or duplicate Eclipse installation
 date: "2019-05-13 18:36"
 modified: 2019-05-13 18:36
-categories: setup-ide
-previousurl: setup-ide/anaconda3
-nexturl: conda-environ
+categories: blog
 excerpt: "Update Eclipse IDE and set up Eclipse for Python Development (PyDev) using
   Anaconda as interpreter"
 tags:

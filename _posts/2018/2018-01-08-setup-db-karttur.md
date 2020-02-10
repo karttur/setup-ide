@@ -1,10 +1,9 @@
 ---
 layout: article
 title: Postgres setup with Python & xml
-modified: 2018-01-08T18:17:25.000Z
-categories: setup-ide
-previousurl: setup-ide/connect-with-psycopg2
-nexturl: setup-ide/anaconda3
+categories: blog
+previousurl: blog/connect-with-psycopg2
+nexturl: null
 excerpt: XML governed setup of Postgres schemas and tables with Python and postgreSQL
 tags:
   - PostgreSQL
@@ -14,6 +13,7 @@ tags:
   - psycopg2
 image: ols-sl-trmm-3b43v7-precip_3B43_trmm_2001-2016_A
 date: '2018-01-08 19:38'
+modified: 2020-01-30
 comments: true
 share: true
 ---
@@ -38,11 +38,13 @@ share: true
 
 ## Introduction
 
-This post describes the automatic setup of schemas and tables for a PostgreSQL (or Postgres for short) database (db) from Python. The Python processes described are generic and available as a Python package (<span class='package'>db_setup</span>) on [GitHub.com](#). Schemas and tables are defined in xml (eXtensible Markup Language) files, and by editing the xml contents, any schema and table architecture can be setup. The included xml files are for setting up Karttur's Geo Imagine processing framework.
+This post describes the automatic setup of schemas and tables for a PostgreSQL (or Postgres for short) database (db) from Python. Since it was published (in January 2018) it has become redundant if you clone or download Karttur´s GeoImagine Framework from the [GitHub.com](https://github.com/karttur/kt-gi-test01/).
 
-The intention of this blog is that you can either use it for setting up your own architecture of schemas and tables, or just use it for setting up Karttur's Geo Imagine processing framework. In the former case, you must create your own xml files defining the architecture, in the latter case you can use the xml files on [GitHub.com](#) as they are.
+However, the Python processes described are generic, and available as a Python package (<span class='package'>db_setup</span>) on [GitHub.com](https://github.com/karttur/geoimagine-setup_db/). Schemas and tables are defined in xml (eXtensible Markup Language) files, and by editing the xml contents, any schema and table architecture can be setup. The included xml files are for setting up Karttur's Geo Imagine processing framework.
 
-You can also choose to either follow the instructions to understand how the Python package <span class='package'>db_setup</span> works, or download the package from [GitHub.com](#). The package is, however, custom built for the Python and PostgreSQL setup as stated in the next section (Prerequisites).
+The intention of this blog is that you can either use it for setting up your own architecture of schemas and tables, or just use it for setting up Karttur's Geo Imagine processing framework. In the former case, you must create your own xml files defining the architecture, in the latter case you can use the xml files on [GitHub.com](https://github.com/karttur/geoimagine-setup_db/tree/master/doc) as they are.
+
+You can also choose to either follow the instructions to understand how the Python package <span class='package'>db_setup</span> works, or download the package from [GitHub.com](https://github.com/karttur/geoimagine-setup_db/). The package is, however, custom built for the Python and PostgreSQL setup as stated in the next section (Prerequisites).
 
 ## Prerequisites
 
@@ -112,7 +114,7 @@ The function <span class='pydef'>SetupSchemasTables</span> expects 3 variables:
 
 #### xml files defining the schemas and tables
 
-In the [GitHub.com](#) repository the 'projFPN' is in a folder <span class='file'>doc</span> under the <span class='package'>db_setup_karttur</span> package itself. You can create that folder from <span class='app'>Eclipse</span>. Make sure that the package <span class='package'>db_setup_karttur</span> is selected, and go via the menu:
+In the [GitHub.com](https://github.com/karttur/geoimagine-setup_db/) repository the 'projFPN' is in a folder <span class='file'>doc</span> under the <span class='package'>setup_db</span> package itself. You can also create that folder from <span class='app'>Eclipse</span>. Make sure that the package <span class='package'>db_setup_karttur</span> is selected, and go via the menu:
 
 <span class='menu'>File : New : Folder</span>
 
@@ -127,9 +129,9 @@ xmlsql/general_schema_v80_sql.xml
 xmlsql/general_processes_v80_sql.xml
 ```
 
-The <span class='pydef'>SetupSchemasTables</span> function ignores rows with no text and rows starting with '#'. If you look at the paths to the xml files, they all start with <span class='file'>xmlsql/</span>. The function <span class='pydef'>SetupSchemasTables</span> interpretes this as a relative path, and thus expects the xml files to be in a sub-folder under the <span class='file'>doc</span> folder. You must thus create a sub-folder <span class='file'>xmlsql</span> under the folder <span class='file'>doc</span>.
+The <span class='pydef'>SetupSchemasTables</span> function ignores rows with no text and rows starting with '#'. If you look at the paths to the xml files, they all start with <span class='file'>xmlsql/</span>. The function <span class='pydef'>SetupSchemasTables</span> interpretes this as a relative path, and thus expects the xml files to be in a sub-folder under the <span class='file'>doc</span> folder. If you cloned or downloaded the [setup_db repo on GitHub](https://github.com/karttur/geoimagine-setup_db/) the complete file and folder structure are already in place. If you want to copy and paste into your own structure, create a sub-folder <span class='file'>xmlsql</span> under the folder <span class='file'>doc</span>.
 
-The first xml file linked in <span class='file'>db_karttur_setup_YYYYMMDD_0.txt</span> is <span class='file'>general_schema_v80_sql.xml</span>, and defines the schema to be created. It **must** be the first xml file in the list.
+The first xml file linked in <span class='file'>db_karttur_setup_YYYYMMDD_0.txt</span> is <span class='file'>general_schema_v80_sql.xml</span> ([link to file on GitHub.com](https://github.com/karttur/geoimagine-setup_db/tree/master/doc)), and defines the schema to be created. It **must** be the first xml file in the list.
 
 ```
 <?xml version='1.0' encoding='utf-8'?>

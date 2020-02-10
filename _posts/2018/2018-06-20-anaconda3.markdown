@@ -1,8 +1,7 @@
 ---
 layout: article
 title: Upgrade to Anaconda3 and Python3
-modified: '2018-06-19 17:53'
-categories: setup-ide
+categories: blog
 previousurl: setup-ide/setup-db-karttur
 nexturl: setup-ide/update-eclipse
 excerpt: Upgrade from Anaconda2 and Python2 to Anaconda3 and Python3
@@ -13,6 +12,7 @@ tags:
   - upgrade
 image: rainfall-delta_3B43_trmm_2001-2016_mk-z-ts-model@p005
 date: '2018-06-19 17:53'
+modified: '2020-01-31 17:53'
 comments: true
 share: true
 ---
@@ -29,7 +29,7 @@ share: true
 
 ## Introduction
 
-In the previous articles you used Anaconda2 and Python 2.7. The support for Python 2.7 is now (2018) being faced out, and it is time to change to Python 3 (3.6).
+This post describes how to migrate from Anaconda2 to Anaconda3. It was originally written in June 2018, but as Python2 (and thus Anaconda2) are being phased out the post is becoming redundant.
 
 Regardless if you have Anaconda2 or Anaconda3 installed, you can run both python2 (2.7) and python3 (3.6) under both. You can create environments for both python versions and swap between them. You can also have both Anaconda2 and Anaconda3 installed at the same time. This article, however, describes how to un-install Anaconda2 and then install Anaconda3 and change Eclipse to use Python3 from Anaconda3.
 

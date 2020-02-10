@@ -3,9 +3,7 @@ layout: "post"
 title: Update postgreSQL
 date: "2019-09-24 18:36"
 modified: 2019-09-24 18:36
-categories: setup-ide
-previousurl: setup-ide/anaconda3
-nexturl: conda-environ
+categories: blog
 excerpt: "Upgrade and/or hamromize postgreSQL versions between your system and homebrew"
 tags:
   - postgreSQL

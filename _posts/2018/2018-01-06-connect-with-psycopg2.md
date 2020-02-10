@@ -1,8 +1,7 @@
 ---
 layout: article
 title: 'Connect Python and PostgreSQL using psycopg2'
-modified: 2019-08-20T17:17:25.000Z
-categories: setup-ide
+categories: blog
 previousurl: setup-ide/install-postgres
 nexturl: setup-ide/setup-db-karttur
 excerpt: 'Install psycopg2, create connection to Postgres and createdb'
@@ -13,6 +12,7 @@ tags:
   - macOS
 image: rainfall-delta_3B43_trmm_2001-2016_mk-z-ts-model@p005
 date: '2018-01-06 17:53'
+modified: 2020-01-31
 comments: true
 share: true
 ---
@@ -20,7 +20,9 @@ share: true
 
 ## Introduction
 
-In earlier posts I described how to [install Eclipse IDE](../install-eclipse/) for Python development after [installing Anaconda Python](../install-anaconda/) as the Python interpreter, and then I [installed PostgreSQL and PostGIS](../install-postgres/). This post describes how to connect Python with the Postgres server and create a new database in Postgres using Python.
+This post on how to _Install psycopg2, create connection to Postgres and createdb_ is not needed if you clone or download Karttur´s GeoImagine Framework from the [GitHub.com](https://github.com/karttur/kt-gi-test01/). This post, however, contains the details on how to create a more secure database connection. And it also covers both general and detailed instructions that are useful for other setups with _psycopg2_ as well as when updates are required.
+
+In earlier posts I described how to [install Eclipse IDE](../../setup-ide/install-eclipse/) for Python development after [installing Anaconda Python](../install-anaconda/) as the Python interpreter, and then I [installed PostgreSQL and PostGIS](../install-postgres/). This post describes how to connect Python with the Postgres server and create a new database in Postgres using Python.
 
 ## Environments and packages
 
@@ -28,9 +30,11 @@ The Anaconda Python distribution contains a lot of Python packages (a package is
 
 ### Psycopg2 as a package in a virtual environments
 
-If you followed the post on [Conda virtual environments](../conda-environ) you should have a virtual environment for Python (e.g. geoimagine001) installed on your local machine. And it should include psycopg2 as this package was added to the list of default packages to install with any new virtual environment.
+If you followed the post on [Conda virtual environments](../conda-environ) you should have a virtual environment for Python (e.g. geoimagine001) setup on your local machine. And it should include psycopg2 as this package was added to the [list of default packages to install with any new virtual environment](../conda-environ/#default-packages).
 
 ### Add psycopg2 to a virtual environment
+
+if you did setup a virtual python environment as described in the previous section, you can just skip this section.
 
 You can install new packages into your environment in the usual way that <span class='terminalapp'>conda</span> packages are installed. Make sure that the environment into which you want to install a package (psycopg2 in this case) is the active environment:
 
@@ -44,9 +48,14 @@ or tell <span class='terminalapp'>conda</span> under which environment to instal
 
 <span class='terminal'>(base) ...$ conda install --name geoimagine001 -c anaconda psycopg2</span>
 
-Once the installation is finished you should see the installed packages under the <span class='file'>site-packages</span> path.
+Once the installation is finished you should see the installed packages under the <span class='file'>site-packages</span> path. On my machine that is:
+```
+/Applications/anaconda3/envs/geoimagine001/lib/python3.6/site-packages/psycopg2
+```
 
 ### Add psycopg2 to the Anaconda base
+
+This section describes how to add psycopg2 to your conda base environment. If you have a virtual environment as describes above, you can also skip this section.
 
 If you installed Anaconda and set up <span class='app'>Eclipse</span> as described in the earlier posts, the Python distribution that <span class='app'>Eclipse</span> uses is under:
 

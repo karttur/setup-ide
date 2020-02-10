@@ -4,19 +4,19 @@
   url: /about/
   include: 'N'
 
-- title: Fount
-  url: /
+- title: Karttur
+  url: https://karttur.github.io/
   include: 'N'
 
-- title: Karttur on GitHub
-  url: /../../../overview/
+- title: Fount
+  url: /
   include: 'N'
 
 - title: MacOSX-setup
   url: /setup-ide/
   include: 'N'
 
-- title: Blog
+- title: Supplement
   url: /blog/
   include: 'N'
 
