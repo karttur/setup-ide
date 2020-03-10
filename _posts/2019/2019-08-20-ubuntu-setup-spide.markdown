@@ -2,7 +2,7 @@
 layout: post
 title: SPIDE for Ubuntu 18.04
 date: "2019-08-20 15:47"
-modified: 2019-09-06 09:47
+modified: 2020-02-17 09:47
 categories: blog
 excerpt: "Spatial Data Integrated Development Environment for Ubuntu 18.04"
 tags:
@@ -15,6 +15,11 @@ tags:
 image: rainfall-delta_3B43_trmm_2001-2016_mk-z-ts-model
 comments: true
 share: true
+Fig1: setupide-ubuntu_software-updates-ppa-gis
+Fig2: setupide-ubuntu_eclipse-installer01
+Fig3: setupide-ubuntu_eclipse-installer02
+Fig4: setupide-ubuntu_eclipse-welcome
+Fig5: setupide-ubuntu_eclipse-marketplace
 ---
 **Contents**
 	- [Introduction](#introduction)
@@ -52,7 +57,7 @@ The second part goes through the steps for installing all software components re
 
 The instructions are shorthand and refer extensively to online resources with more elaborate and detailed information. Perhaps the best source for hints and tricks on how to get different software packages to work in Linux is [Linux Hint](https://linuxhint.com). The instructions focuses on using the <span class='app'>Terminal</span>, it you prefer to use the Graphical User Interface (GUI), try out the [Ubuntu Software Center](https://help.ubuntu.com/community/UbuntuSoftwareCenter).
 
-The instructions summarises the instructions in my blogs on [Install and setup spatial data IDE](https://karttur.github.io/setup-ide/), [Setup Jekyll Theme Blog](https://karttur.github.io/setup-theme-blog/), [Set up blog tools: Jekyll and Atom](https://karttur.github.io/setup-blog/) and [Setup GitHub pages](https://karttur.github.io/setup-github/). These other blogs were written for mac osx.
+The instructions summarises my other blogs on [Install and setup spatial data IDE](https://karttur.github.io/setup-ide/), [Setup Jekyll Theme Blog](https://karttur.github.io/setup-theme-blog/), [Set up blog tools: Jekyll and Atom](https://karttur.github.io/setup-blog/) and [Setup GitHub pages](https://karttur.github.io/setup-github/). These other blogs were written for mac osx.
 
 ## Prerequisites
 
@@ -112,7 +117,12 @@ followed by an update of the system for package installations:
 
 <span class='terminal'>$ sudo apt-get update</span>
 
-If you now check the file <span class='file'>sources.list</span>), for example by using <span class='app'>Software & Updates</span> you should see the link to **ubuntugis/ppa** under the tab <span class='tab'>Other Software</span>.
+If you now check the file <span class='file'>sources.list</span>, for example by using <span class='app'>Software & Updates</span> you should see the link to **ubuntugis/ppa** under the tab <span class='tab'>Other Software</span>.
+
+<figure>
+<img src="{{ site.commonurl }}/images/{{ site.data.images[page.Fig1].file }}">
+<figcaption> {{ site.data.images[page.Fig1].caption }} </figcaption>
+</figure>
 
 For other alternatives on adding/removing repositories and managing the file <span class='file'>sources.list</span> see the article on [How to Add or Remove PPA in Ubuntu Using GUI and Terminal](https://www.tecmint.com/add-remove-purge-ppa-in-ubuntu/).
 
@@ -190,17 +200,15 @@ In Karttur's GeoImagine Framework, conda is used for [setting up virtual python 
 
 ### Eclipse
 
-<span class='app'>Eclipse</span> is a Java based Integrated Development Environment (IDE). It is flexible and extensible and the IDE that I use for developing Karttur's GeoImagine Framework. My instructions installing <span class='app'>Eclipse</span> for mac osx are [here](https://karttur.github.io/setup-ide/setup-ide/install-eclipse//). The latter also contains instructions on how to setup <span class='app'>Eclipse</span> for PyDev and how to write some basic python programmes. Once you have finished the installation for Ubuntu you can continue with [Setup Eclipse for Python development](https://karttur.github.io/setup-ide/setup-ide/install-eclipse/#setup-eclipse-for-python-development).
+<span class='app'>Eclipse</span> is a Java based Integrated Development Environment (IDE). It is flexible and extensible and the IDE that I use for developing Karttur's GeoImagine Framework. Instructions for Mac OSX ["Setup Eclipse for PyDev"](https://karttur.github.io/setup-ide/setup-ide/install-eclipse//) are more extensive compared to the shorthand notes below. Including on how to setup <span class='app'>Eclipse</span> for PyDev and how to write some basic python programmes. Once you have finished the installation for Ubuntu below you can thus learn more by checking [Setup Eclipse for Python development](https://karttur.github.io/setup-ide/setup-ide/install-eclipse/#setup-eclipse-for-python-development).
 
-To install Eclipse you first need to install the correct version of Java Development Kit (JDK) - at time of writing this is either 8, 11 or 12. For our purposes it is usually better to have an older version as the Eclipse development is always behind that of JDK.
+There are (at least) two ways to go about the <span class='app'>Eclipse</span> installation: either via the <span class='app'>Eclipse Installer</span> or using <span class='terminalapp'>snap</span>. <span class='terminalapp'>snap</span> is easier, but the package installer gives more control. I recommend to use the package installer.
 
-There are (at least) two ways to go about the installation: either using <span class='terminalapp'>snap</span> or download a package installer.
+But before you can proceed you need to install Java Development Kit.
 
-#### Snap installation
+#### Java Development Kit (JDK)
 
-Installing <span class='app'>Eclipse</span> with <span class='terminalapp'>snap</span> is outlined the page [How to Install the Latest Eclipse IDE on Ubuntu 18.04](https://linuxize.com/post/how-to-install-the-latest-eclipse-ide-on-ubuntu-18-04/).
-
-Before installing <span class='app'>Eclipse</span> install the latest version of JDK:
+At time of writing this the available versions of Java Development Kit (JDK) are 8, 11 and 12. For our purposes it is usually better to have an older version as the Eclipse development is always behind that of JDK. Start by trying the default JDK defined with <span class='terminalapp'>apt install</span>
 
 <span class='terminal'>$ sudo apt install default-jre</span>
 
@@ -208,21 +216,55 @@ Check out the Java installation by typing:
 
 <span class='terminal'>$ java -version</span>
 
-Then install the LTS ("stable") version of Eclipse using snap:
+#### Eclipse Installer
+
+You can either download the default package of Eclipse via the [official homepage](http://www.eclipse.org), or choose a custom Eclipse version from the [package download page](http://www.eclipse.org/downloads/eclipse-packages/). You will get the option to **Try the Eclipse Installer YYYY‑MM R**, which links to a smaller download package. If you choose this option you will get to an Eclipse Installer app with all packages options. You can also download a [legacy version](https://www.eclipse.org/downloads/packages/release/), in which case you will again get the same options for selecting different Eclipse packages.
+
+Once dowloaded and installed start the <span class='app'>Eclipse Installer</span>. Choose the alternative _Eclipse IDE for Java Developers_.
+
+<figure>
+<img src="{{ site.commonurl }}/images/{{ site.data.images[page.Fig2].file }}">
+<figcaption> {{ site.data.images[page.Fig2].caption }} </figcaption>
+</figure>
+
+The system should automatically detect your JDK (as in the figure below). If not you have to search for your JDK installation. You also have to set the target directory for your Eclipse installation. Eclipse is completely stand-alone (it does not depend on any other software) and you can have any number of versions installed. Once you have your JDK identified and the installation folder set, click <span class='button'>INSTALL</span>.
+
+<figure>
+<img src="{{ site.commonurl }}/images/{{ site.data.images[page.Fig3].file }}">
+<figcaption> {{ site.data.images[page.Fig3].caption }} </figcaption>
+</figure>
+
+More detailed instructions for setting up <span class='app'>Eclipse</span> is available on the page [How To Install Eclipse Oxygen IDE On Ubuntu 16.04, 17.10, 18.04](https://websiteforstudents.com/how-to-install-eclipse-oxygen-ide-on-ubuntu-167-04-17-10-18-04/).
+
+#### Snap installation
+
+Installing <span class='app'>Eclipse</span> with <span class='terminalapp'>snap</span> is outlined the page [How to Install the Latest Eclipse IDE on Ubuntu 18.04](https://linuxize.com/post/how-to-install-the-latest-eclipse-ide-on-ubuntu-18-04/). It boils down to the following command:
 
 <span class='terminal'>$ sudo snap install \-\-classic eclipse</span>
 
 This worked well for me in August 2019.
 
-#### Controlled installations
+#### Install PyDev IDE
 
-Follow the page on [How To Install Eclipse Oxygen IDE On Ubuntu 16.04, 17.10, 18.04](https://websiteforstudents.com/how-to-install-eclipse-oxygen-ide-on-ubuntu-167-04-17-10-18-04/) to get more control over your installation, including versions and packages to install.
+Start <span class='app'>Eclipse</span>. Accept, or change, the default working directory and you should reach the Welcome page.
 
-If you follow this route and aim at using <span class='app'>Eclipse</span> for setting up Karttur's GeoImagine Framework, the recommendation is to install (the smaller package called) <span class='button'>Eclipse IDE for Java Developers</span>.
+<figure>
+<img src="{{ site.commonurl }}/images/{{ site.data.images[page.Fig4].file }}">
+<figcaption> {{ site.data.images[page.Fig4].caption }} </figcaption>
+</figure>
+
+In the welcome page, choose _Launch the Eclipse Marketplace_ (last row in left column in the figure above). Once in the _Markeplace_ type "pydev" in the <span class='textbox'>Find</span> box and hit the <span class='button'>Go</span> button. One of the results, most likely the topmost, should be _PyDev - Python IDE for Eclipse X.Y.Z_ (as in the figure below). Select it, and click <spna class='button'>Install</span>.
+
+<figure>
+<img src="{{ site.commonurl }}/images/{{ site.data.images[page.Fig5].file }}">
+<figcaption> {{ site.data.images[page.Fig5].caption }} </figcaption>
+</figure>
+
+When the installation finishes you will be asked to restart and the next time you start <span class='app'>Eclipse</span> your setup will be ready for PyDev coding.
 
 ### PostgreSQL
 
-[PostgreSQL](https://www.postgresql.org) (or postgres for short) is an advanced open source object-relational database system, that can also handle spatial data formats with the extension PostGIS. I use PostgreSQL and PostGIS for handling both processes and data layers when I work with Geo Imagine. My instructions [Install postgreSQL and postGIS](https://karttur.github.io/setup-ide/setup-ide/install-postgres/) for mac osx are initially not useful for Ubuntu, the installations are completely different.
+[PostgreSQL](https://www.postgresql.org) (or postgres for short) is an advanced open source object-relational database system, that can also handle spatial data formats with the extension PostGIS. I use PostgreSQL and PostGIS for handling both processes and data layers when I work with Geo Imagine. My instructions [Install postgreSQL and postGIS](https://karttur.github.io/setup-ide/setup-ide/install-postgres/) for Mac OSX are initially not useful for Ubuntu, the installations are completely different.
 
 The following <span class='app'>Terminal</span> commands will install PostgreSQL 10 and PostGIS 2.4 on Ubuntu with some additional bling:
 
@@ -262,6 +304,8 @@ Check the roles defined by the <span class='terminal'>\\du</span> command:
 
 #### Create a new role reflecting your machine user
 
+In this section you will set users (roles in the postgres jargon) and passwords. Remember to note these roles and passwords, and then the next section outlines how to store them.
+
 The role _postgres_ does not have any password and the postgres database is thus open to anyone using the _postgres_ role. To simplify your access to your postgres database using <span class='terminalapp'>psql</span> you could also create a new user identical to your machine login.
 
 To set a password, execute the <span class='terminalapp'>psql</span> command:
@@ -270,7 +314,7 @@ To set a password, execute the <span class='terminalapp'>psql</span> command:
 
 You must repeat the password twice. If you want to use standard SQL syntax, you can instead write:
 
-<span class='terminal'># ALTER USER \'yourUser\' WITH PASSWORD \'quoted password\';</span>
+<span class='terminal'># ALTER USER yourUser WITH PASSWORD \'quoted password\';</span>
 
 The basic <span class='terminalapp'>psql</span> command for creating a role is
 
@@ -279,9 +323,52 @@ CREATE ROLE username WITH LOGIN PASSWORD 'quoted password' [OPTIONS]
 ```
 where username is the user you want to create, and the password is given with quotes. If you look at the list of users (in the Terminal, after you executed the command <span class='terminal'># \\du</span>), the attributes listed in the central column are typical [OPTIONS]. If you create a role, but give no options, the new role (user) can only read the database, neither create, nor alter nor add anything. Such powers must be explicitly stated as [OPTIONS]. The PostgreSQL documentation contains extensive information on how to use [psql](https://www.postgresql.org/docs/current/static/app-psql.html). And the page [How To Install and Use PostgreSQL on Ubuntu 18.04](https://www.digitalocean.com/community/tutorials/how-to-install-and-use-postgresql-on-ubuntu-18-04) presents a digestible summary.
 
+When I set up my postgres db cluster, I set a complex password and keep my own user ('yourUser'). Then I create a second production user ('prodUser') that I use when interacting with Postgres from other applications. I use the <span class='terminalapp'>psql</span> command <span class='terminal'>CREATE USER</span>, that is merely a wrapper to <span class='terminal'>CREATE ROLE</span>, but by default allows the created role(user) to be used for session log in:
+
+<span class='terminal'># CREATE USER prodUser WITH LOGIN PASSWORD \'quoted password\' SUPERUSER CREATEDB CREATEROLE;</span>
+
+In this and the following posts I will call the role (user) and password created here 'prodUser' and 'prodPassword'.
+
+After creating the user you should see 'prodUser' if you list all users:
+
+<span class='terminal'>#\\du</span>
+
+There are so far no tables or schemas in the Postgres db cluster, to check that out you can try the command:
+
+<span class='terminal'># \\dt</span>
+
+<span class='terminalapp'>psql</span> can be used for creating and managing Postgres databases, but you are instead going to install a Graphical User Interface (GUI), and in the next post you will connect Postgres to Python and then use Python for managing the database. Quit <span class='terminalapp'>psql</span>:
+
+<span class='terminal'># \\q</span>
+
+#### Secure storing of roles passwords
+
+If you are only going to use your Postgres database as localhost (on your own machine), security is less important. But if you want to protect your data you must set some level of security. The solution I use is primarily for macOS and UNIX/Linux systems, and is not very advanced. I use a combination of storing my password in my home directory (~) combined with a simple encryption.
+
+Create a file in your home directory (~) called <span class='file'>.netrc</span> that defines your credentials. An [earlier post](https://karttur.github.io/setup-blog/2017/12/21/setup-blog-tools.html#opening-and-understanding-the-terminal) describes how to use the <span class='app'>Terminal</span> for creating and editing files in detail. In the <span class='app'>Terminal</span> go to your home directory:
+
+<span class='terminal'>$ cd ~</span>
+
+Then start the <span class='app'>Terminal</span> text editor <span class='terminalapp'>pico</span> for editing/creating the file:
+
+<span class='terminal'>$ pico .netrc</span>
+
+Enter the two lines below (but with your role/user and password), one for the default user (which should be 'psotgres' if you followed the instructions above), and one for the production user ('prodUser') that you just defined. If you only have the default user, enter the same login and password in both lines.
+```
+machine localhost0   login yourUser   password yourPassword
+machine localhost1   login prodUser   password prodPassword
+```
+Exit <span class='terminalapp'>pico</span> (ctrl-X) and save the file (click Y when asked to save). You probably have to change the read and write permissions for <span class='file'>.netrc</span>, which you do by executing the following Terminal command:
+
+<span class='terminal'>$ chmod og-rw .netrc</span>
+
+With this solution your credentials will only be explicitly written out in a hidden file and you can always have a look in the file <span class='file'>.netrc</span> if you forget your user(s) and password(s).
+
 #### Postgres GUI
 
-Handling the PostgreSQL database using the <span class='app'>Terminal</span> will become tedious when it grows. The alternative is to install and use a Graphical User Interface (GUI). My instructions on [Install postgreSQL for mac](https://karttur.github.io/setup-ide/setup-ide/install-postgres/) lists three different GUIs. For Ubuntu OS, only <span class='app'>pgAdmin</span> is available of the three. And it has to be installed as a localhost server.
+Handling the PostgreSQL database using the <span class='app'>Terminal</span> will become tedious when it grows. The alternative is to install and use a Graphical User Interface (GUI). My instructions on [Install postgreSQL for mac](https://karttur.github.io/setup-ide/setup-ide/install-postgres/) lists three different GUIs. When originally writing this post (August 2019) only [<span class='app'>pgAdmin</span>]() was available for Linux. But since then a beta version of [<span class='app'>TablePlus</span>]() has also become available.
+
+##### pgAdmin
 
 I tested a set of different instructions, but all instructions including the standard installation with <span class='terminal'>$ sudo apt-get install pgadmin4</span> failed. The one instruction I found that worked was on Linux Hint by Fahmida Yesmin [Install PgAdmin4 on Ubuntu](https://linuxhint.com/install-pgadmin4-ubuntu/). This instruction was written in 2017, and you need to download a later version of the pgAdmin python installation file (in my case I downloaded version 4.9 instead of 2.1 as given in the original post).
 
@@ -365,6 +452,8 @@ From your home directory (~) the commands look like this:
 <span class='terminal'>$ source ./pgadmin4/pgadmin4/bin/activate</span>
 
 <span class='terminal'>$ python ./pgadmin4/pgadmin4/lib/python2.7/site-packages/pgadmin4/pgAdmin4.py</span>
+
+##### TablePlus
 
 ## Part III: Editing and publishing apps
 

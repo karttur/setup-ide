@@ -1101,3 +1101,43 @@ github-framework_karttur_105_clone-a-repo-desktop:
   caption: Clone a Repository, GithHub Desktop
   credit: null
   source: null
+
+setupide-ubuntu_software-updates-ppa-gis:
+  file: setupide-ubuntu_software-updates-ppa-gis.png
+  source: setupide-ubuntu_software-updates-ppa-gis.png
+  author: Thomas Gumbricht
+  caption: Software & Update, with the PPA for GIS added
+  credit: null
+  source: null
+
+setupide-ubuntu_eclipse-installer01:
+  file: setupide-ubuntu_eclipse-installer01.png
+  source: setupide-ubuntu_eclipse-installer01.png
+  author: Thomas Gumbricht
+  caption: Eclipse Installer selection
+  credit: null
+  source: null
+
+setupide-ubuntu_eclipse-installer02:
+  file: setupide-ubuntu_eclipse-installer02.png
+  source: setupide-ubuntu_eclipse-installer02.png
+  author: Thomas Gumbricht
+  caption: Eclipse Installer Java link
+  credit: null
+  source: null
+
+setupide-ubuntu_eclipse-welcome:
+  file: setupide-ubuntu_eclipse-welcome.png
+  source: setupide-ubuntu_eclipse-welcome.png
+  author: Thomas Gumbricht
+  caption: Eclipse Welcome window
+  credit: null
+  source: null
+
+setupide-ubuntu_eclipse-marketplace:
+  file: setupide-ubuntu_eclipse-marketplace.png
+  source: setupide-ubuntu_eclipse-marketplace.png
+  author: Thomas Gumbricht
+  caption: Eclipse Marketplace, install PyDev
+  credit: null
+  source: null

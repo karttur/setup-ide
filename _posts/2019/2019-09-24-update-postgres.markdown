@@ -72,7 +72,6 @@ postgres command line tool <span class='terminalapp'>psql</span> to get the acti
 
  <span class='terminal'>psql (PostgreSQL) 11.5</span>
 
-
 #### Stop your postgres services
 
 If you need to change your postgres version, or do other maintaenance  work on postgres involving Homebrew, you should stop the brew service running postgres:
@@ -94,7 +93,6 @@ In my case, having previously linked to version @10.10 1, I get the message
 
 <>Warning: Already linked: /usr/local/Cellar/postgresql/10.1<>
 <>To relink: brew unlink postgresql && brew link postgresql<>
-
 
 #### Uninstall postgres
 

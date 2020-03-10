@@ -2,7 +2,7 @@
 layout: article
 date: "2017-12-30 10:06"
 title: "Install postgreSQL and postGIS"
-modified: "2020-01-31 10:06"
+modified: "2020-02-17 10:06"
 previousurl: setup-ide/install-eclipse
 nexturl: setup-ide/install-with-conda-env
 categories: setup-ide
@@ -311,7 +311,7 @@ Quit <span class='terminalapp'>psql</span> by typing
 
 <span class='terminal'># \\q</span>
 
-When you hit return ou will get back to the ordinary command line prompt <span class='terminal'>$</span>.
+When you hit return you will get back to the ordinary command line prompt <span class='terminal'>$</span>.
 
 ## PostgreSQL configuration
 
@@ -351,6 +351,8 @@ And then write:
 
 #### Set password and set up roles
 
+In this section you will set users (roles in the postgres jargon) and passwords. Remember to note these roles and passwords, and then the next section outlines how to store them.
+
 Other posts following this, build on the assumption that the db cluster 'postgres' is your production db, and that you have two (2) users: the default user ('yourUser'), and a production user ('prodUser'). There is no problem in doing it in other ways, following the suggestions might just make it easier to remember.
 
 Assuming that you are going to use the db cluster 'postgres' for you production, start <span class='terminalapp'>psql</span> for the 'postgres' db cluster at the <span class='app'>Terminal</span> prompt:
@@ -363,7 +365,7 @@ The default user added by Homebrew ('yourUser') does not have a password, to set
 
 You must repeat the password twice. If you want to use standard SQL syntax, you can instead write:
 
-<span class='terminal'># ALTER USER \'yourUser\' WITH PASSWORD \'quoted password\';</span>
+<span class='terminal'># ALTER USER yourUser WITH PASSWORD \'quoted password\';</span>
 
 The basic <span class='terminalapp'>psql</span> command for creating a role is
 
@@ -389,6 +391,29 @@ There are so far no tables or schemas in the Postgres db cluster, to check that 
 <span class='terminalapp'>psql</span> can be used for creating and managing Postgres databases, but you are instead going to install a Graphical User Interface (GUI), and in the next post you will connect Postgres to Python and then use Python for managing the database. Quit <span class='terminalapp'>psql</span>:
 
 <span class='terminal'># \\q</span>
+
+#### Secure storing of roles passwords
+
+If you are only going to use your Postgres database as localhost (on your own machine), security is less important. But if you want to protect your data you must set some level of security. The solution I use is primarily for macOS and UNIX/Linux systems, and is not very advanced. I use a combination of storing my password in my home directory (~) combined with a simple encryption.
+
+Create a file in your home directory (~) called <span class='file'>.netrc</span> that defines your credentials. An [earlier post](https://karttur.github.io/setup-blog/2017/12/21/setup-blog-tools.html#opening-and-understanding-the-terminal) describes how to use the <span class='app'>Terminal</span> for creating and editing files in detail. In the <span class='app'>Terminal</span> go to your home directory:
+
+<span class='terminal'>$ cd ~</span>
+
+Then start the <span class='app'>Terminal</span> text editor <span class='terminalapp'>pico</span> for editing/creating the file:
+
+<span class='terminal'>$ pico .netrc</span>
+
+Enter the two lines below (but with your role/user and password), one for the default user (if you [installed Postgres with Homebrew](../install-postgres/) the default user is the same as your user on the local machine - 'yourUser'), and one for the production user ('prodUser') if you followed my suggestions in the [previous post](../install-postgres/). If you only have the default user, enter the same login and password in both lines.
+```
+machine localhost0   login yourUser   password yourPassword
+machine localhost1   login prodUser   password prodPassword
+```
+Exit <span class='terminalapp'>pico</span> (ctrl-X) and save the file (click Y when asked to save). You probably have to change the read and write permissions for <span class='file'>.netrc</span>, which you do by executing the following Terminal command:
+
+<span class='terminal'>$ chmod og-rw .netrc</span>
+
+With this solution your credentials will only be explicitly written out in a hidden file.
 
 ### Install Graphical User Interface
 
