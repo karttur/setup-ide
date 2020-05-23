@@ -298,6 +298,8 @@ Check the roles defined by the <span class='terminal'>\\du</span> command:
 
  and you should see _postgres_ as a single user.
 
+ If the prompt gets stuck, for example showing <span class='terminal'>(END)</span>, try _quitting_ by typing the <span class='terminal'>\\q</span> command. Even if you do not see the response in the terminal window when typing, try it anyway.
+
  To see which databases are installed in postgres, use the <span class='terminal'>\\l</span> command:
 
 <span class='terminal'>postgres=# \\l</span>.
@@ -316,14 +318,18 @@ You must repeat the password twice. If you want to use standard SQL syntax, you 
 
 <span class='terminal'># ALTER USER yourUser WITH PASSWORD \'quoted password\';</span>
 
-The basic <span class='terminalapp'>psql</span> command for creating a role is
+The basic command for creating a role is:
 
 ```
 CREATE ROLE username WITH LOGIN PASSWORD 'quoted password' [OPTIONS]
 ```
 where username is the user you want to create, and the password is given with quotes. If you look at the list of users (in the Terminal, after you executed the command <span class='terminal'># \\du</span>), the attributes listed in the central column are typical [OPTIONS]. If you create a role, but give no options, the new role (user) can only read the database, neither create, nor alter nor add anything. Such powers must be explicitly stated as [OPTIONS]. The PostgreSQL documentation contains extensive information on how to use [psql](https://www.postgresql.org/docs/current/static/app-psql.html). And the page [How To Install and Use PostgreSQL on Ubuntu 18.04](https://www.digitalocean.com/community/tutorials/how-to-install-and-use-postgresql-on-ubuntu-18-04) presents a digestible summary.
 
-When I set up my postgres db cluster, I set a complex password and keep my own user ('yourUser'). Then I create a second production user ('prodUser') that I use when interacting with Postgres from other applications. I use the <span class='terminalapp'>psql</span> command <span class='terminal'>CREATE USER</span>, that is merely a wrapper to <span class='terminal'>CREATE ROLE</span>, but by default allows the created role(user) to be used for session log in:
+When I set up my postgres db cluster, I set a complex password and keep my own user ('yourUser'). To avoid having to use the command <span class='terminal'> sudo -i -u postgres</span> to login with <span class='terminalapp'>psql</span>, set 'yourUser' identical to you machine login (your standard user). I use the command <span class='terminal'>CREATE USER</span>, that is merely a wrapper to <span class='terminal'>CREATE ROLE</span>, but by default allows the created role(user) to be used for session log in:
+
+<span class='terminal'># CREATE USER yourUser WITH LOGIN PASSWORD \'quoted password\' SUPERUSER CREATEDB CREATEROLE;</span>
+
+Then I create a second, production user ('prodUser') that I use when interacting with Postgres from other applications. That is, from Karttur´s GeoImagine Framework:
 
 <span class='terminal'># CREATE USER prodUser WITH LOGIN PASSWORD \'quoted password\' SUPERUSER CREATEDB CREATEROLE;</span>
 
@@ -341,6 +347,12 @@ There are so far no tables or schemas in the Postgres db cluster, to check that 
 
 <span class='terminal'># \\q</span>
 
+#### Change password
+
+If you need to change the password, the command for that is:
+
+<span class='terminal'># ALTER USER user_name WITH PASSWORD \'quoted new password\';</span>
+
 #### Secure storing of roles passwords
 
 If you are only going to use your Postgres database as localhost (on your own machine), security is less important. But if you want to protect your data you must set some level of security. The solution I use is primarily for macOS and UNIX/Linux systems, and is not very advanced. I use a combination of storing my password in my home directory (~) combined with a simple encryption.
@@ -355,8 +367,8 @@ Then start the <span class='app'>Terminal</span> text editor <span class='termin
 
 Enter the two lines below (but with your role/user and password), one for the default user (which should be 'psotgres' if you followed the instructions above), and one for the production user ('prodUser') that you just defined. If you only have the default user, enter the same login and password in both lines.
 ```
-machine localhost0   login yourUser   password yourPassword
-machine localhost1   login prodUser   password prodPassword
+machine localhost0 login yourUser password yourPassword
+machine localhost1 login prodUser password prodPassword
 ```
 Exit <span class='terminalapp'>pico</span> (ctrl-X) and save the file (click Y when asked to save). You probably have to change the read and write permissions for <span class='file'>.netrc</span>, which you do by executing the following Terminal command:
 
@@ -366,7 +378,28 @@ With this solution your credentials will only be explicitly written out in a hid
 
 #### Postgres GUI
 
-Handling the PostgreSQL database using the <span class='app'>Terminal</span> will become tedious when it grows. The alternative is to install and use a Graphical User Interface (GUI). My instructions on [Install postgreSQL for mac](https://karttur.github.io/setup-ide/setup-ide/install-postgres/) lists three different GUIs. When originally writing this post (August 2019) only [<span class='app'>pgAdmin</span>]() was available for Linux. But since then a beta version of [<span class='app'>TablePlus</span>]() has also become available.
+Handling the PostgreSQL database using the <span class='app'>Terminal</span> will become tedious when it grows. The alternative is to install and use a Graphical User Interface (GUI). My instructions on [Install postgreSQL for mac](https://karttur.github.io/setup-ide/setup-ide/install-postgres/) lists three different GUIs. When originally writing this post (August 2019) only [<span class='app'>pgAdmin</span>]() was available for Linux. But since then an early version of [<span class='app'>TablePlus</span>](https://tableplus.com/blog/2019/10/tableplus-linux-installation.html) has also become available. TablePlus is much easier to install.
+
+##### TablePlus
+
+At time of writing this (March 2020) [<span class='app'>TablePlus</span>](https://tableplus.com/blog/2019/10/tableplus-linux-installation.html) is available in an alpha version for linux (ubuntu). The commands below are directly from the TablePlus instructions.
+
+Add TablePlus gpg key
+
+<span class='terminal'>$ wget \-O \- \-q http://deb.tableplus.com/apt.tableplus.com.gpg.key | sudo apt-key add \- </span>
+
+Add TablePlus repo
+
+<span class='terminal'>$ sudo add-apt-repository \"deb [arch=amd64] https://deb.tableplus.com/debian tableplus main\"</span>
+
+Install
+
+<span class='terminal'>$ sudo apt update
+sudo apt install tableplus</span>
+
+Then run a general update for your system, that will also affect the TablePlus installation:
+
+<span class='terminal'>$ sudo apt update && sudo apt upgrade</span>
 
 ##### pgAdmin
 
@@ -452,8 +485,6 @@ From your home directory (~) the commands look like this:
 <span class='terminal'>$ source ./pgadmin4/pgadmin4/bin/activate</span>
 
 <span class='terminal'>$ python ./pgadmin4/pgadmin4/lib/python2.7/site-packages/pgadmin4/pgAdmin4.py</span>
-
-##### TablePlus
 
 ## Part III: Editing and publishing apps
 
