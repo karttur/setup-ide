@@ -14,9 +14,24 @@ tags:
   - macOS
 image: rainfall-delta_3B43_trmm_2001-2016_mk-z-ts-model
 date: '2017-12-28 20:27'
-modified: 2019-08-17
+modified: 2020-06-11
 comments: true
 share: true
+figure1: eclipse_installer_dmg-opened
+figure2: eclipse_installer_accpet-open
+figure3: eclipse_installer_choose
+figure4: eclipse_installer_install
+figure5: eclipse_launch_v2020-03
+figure6: eclipse_set_workspace
+figure7: eclipse_welcome
+figure8: eclipse_marketplace_pydev
+figure9: eclipse_marketplace_confirm-selected
+figure10: eclipse_marketplace_review-license
+figure12: eclipse_preferences_pydev-interpreter
+figure13: eclipse_pydev_select-interpreter
+figure14: eclipse_default-gui
+figure15: eclipse_select_perspective
+figure16: eclipse_pydev_perspective
 ---
 
 **Contents**
@@ -29,7 +44,7 @@ share: true
 
 ## Eclipse
 
-[Eclipse](http://www.eclipse.org) is "an open extensible IDE for anything and nothing in particular", where IDE stands for Integrated Development Environment. I use Eclipse for writing my Python scripts, and running my Geo Imagine processing.
+[Eclipse](http://www.eclipse.org) is "an open extensible IDE for anything and nothing in particular", where IDE stands for Integrated Development Environment. I use Eclipse for writing my Python scripts, and running Karttur´s Geo Imagine processing.
 
 ### Java Development Kit (JDK)
 
@@ -41,25 +56,85 @@ Some combinations of different versions of Eclipse and JDK are not compatible. E
 
 ### Download and Install Eclipse
 
-You can either download the default package of Eclipse via the [official homepage](http://www.eclipse.org), or choose a custom Eclipse version from the [package download page](http://www.eclipse.org/downloads/eclipse-packages/). You will get the option to **Try the Eclipse Installer YYYY‑MM R**, which links to a smaller download package (diskimage for mac osx). If you choose this option you will get to an Eclipse Installer app with all packages options. You can also download a [legacy version](https://www.eclipse.org/downloads/packages/release/), in which case you will again get the same options for selecting different Eclipse packages.
+You can either download the default package of Eclipse via the [official homepage](http://www.eclipse.org), or choose a custom Eclipse version from the [package download page](http://www.eclipse.org/downloads/eclipse-packages/). The <span class='button'>Download</span> button on the official main page will redirect you to the [downloads](https://www.eclipse.org/downloads/) page and if you download you will get a smaller installating app. In Mac OSX that equals a disk image <span class='file'>dmg</span> file. If tou go to the [package download page](http://www.eclipse.org/downloads/eclipse-packages/) you will get the options option to **Try the Eclipse Installer YYYY‑MM R**, which links to the same download package. You can also download a [legacy version](https://www.eclipse.org/downloads/packages/release/), in which case you will again get the same options for selecting different Eclipse packages.
 
-In any case it is enough to select the (small package) <span class='button'>Eclipse IDE for Java Developers</span> (not for EE Developers). Regardless of which version you choose, you need to check out that your Java Development Kit (JDK) goes with the Eclipse version you have chosen (this will become clear further down).
+if you downloaded the Eclipse installer package, just open it (in Mac OSX just double click the <span class='file'>dmg</span>) file.
 
-If you download the default package, it will come as a gunzipped tarball (<span class='file'>.tar.gz</span>). It expands to an installer if you double click, first to explode the gunzip, and then to open the tarball. Then double click the <span class='app'>Eclipse Installer</span> and follow the instructions.
+<figure>
+<img src="{{ site.commonurl }}/images/{{ site.data.images[page.figure1].file }}">
+<figcaption> {{ site.data.images[page.figure1].caption }} </figcaption>
+</figure>
 
-If you instead downloaded a package, you will receive a diskimage (<span class='file'>.dmg</span>). Double click the <span class ='file'>.dmg</span> file, and then just drag the <span class='file'>Eclipse.app</span> inside the diskimage to where you want it to reside. <span class='app'>Eclipse</span> is a stand alone application, so you can put it anywhere. For instance under <span class='file'>./documents/"version"</span> which also allows you to have multiple <span class='app'>Eclipse</span> versions installed simultaneously.
+You might get a warning that the app is downloaded form the internet, just click that you accept or open the app in any case.
+
+<figure>
+<img src="{{ site.commonurl }}/images/{{ site.data.images[page.figure2].file }}">
+<figcaption> {{ site.data.images[page.figure2].caption }} </figcaption>
+</figure>
+
+Regardless of how you choose to access Eclipse, it is enough to install the (small package) <span class='button'>Eclipse IDE for Java Developers</span> (not for EE Developers).
+
+<figure>
+<img src="{{ site.commonurl }}/images/{{ site.data.images[page.figure3].file }}">
+<figcaption> {{ site.data.images[page.figure3].caption }} </figcaption>
+</figure>
 
 If you downloaded the small download app, it will directly create your Eclipse installation in the location of your choosing.
 
+<figure>
+<img src="{{ site.commonurl }}/images/{{ site.data.images[page.figure4].file }}">
+<figcaption> {{ site.data.images[page.figure4].caption }} </figcaption>
+</figure>
+
+If you instead downloaded Eclipse (**not** the Eclipse Installer) as a package, you will receive another diskimage (<span class='file'>.dmg</span>). Double click the <span class ='file'>.dmg</span> file, and then just drag the <span class='file'>Eclipse.app</span> inside the diskimage to where you want it to reside.
+
+<span class='app'>Eclipse</span> is a stand alone application, so you can put it anywhere. For instance under <span class='file'>./documents/"version"</span> which also allows you to have multiple <span class='app'>Eclipse</span> versions installed simultaneously.
+
 ### Setup Eclipse for Python development
 
-Start <span class ='app'>Eclipse</span> (<span class='finder'>/Applications/Eclipse)</span>. If this is the the first time you start <span class='app'>Eclipse</span>, the <span class='app'>Eclipse</span> <span class='tab'>Launcher</span> window will pop-up and prompt you to <span class='button'>Select a Directory</span> as workspace. You can accept the suggested default, or navigate to another place where you want to save the <span class='app'>Eclipse</span> workspace. Click <span class='button'>Launch</span> to continue. The next window is the <span class ='tab'>Eclipse Welcome</span>. It will present 10 or so alternatives (icons with text). From these you need to select:
+Launch <span class ='app'>Eclipse</span>.
 
-<span class='tab'>Launch the Eclipse Marketplace</span>
+<figure>
+<img src="{{ site.commonurl }}/images/{{ site.data.images[page.figure5].file }}">
+<figcaption> {{ site.data.images[page.figure5].caption }} </figcaption>
+</figure>
 
-<span class='tab'>Eclipse Marketplace</span> opens in a separate window. The marketplace contains items for extending and customise <span class='app'>Eclipse</span>. You need to add the Python development (PyDev) environment. Write 'PyDev'in the search box and click the <span class='button'>Go</span> button to start searching. One of the top (or only) alternatives should be the 'PyDev - Python IDE ...' for the version of <span class='app'>Eclipse</span> you just installed. Install the PyDev - Python IDE by clicking the <span class='button'>Install</span> button next to it. In the next window that appears (<span class='tab'>Confirm Selected Features</span>), <span class='button'>Confirm</span> the default selection (all suggested items). In the then next window, <span class='textbox'>accept the terms of the licence agreement</span>, and click <span class='button'>Finish</span>. Restart <span class='app'>Eclipse</span> to invoke the software updates.
+If this is the the first time you start <span class='app'>Eclipse</span>, the <span class='app'>Eclipse</span> <span class='tab'>Launcher</span> window will pop-up and prompt you to <span class='button'>Select a Directory</span> as workspace. You can accept the suggested default, or navigate to another place where you want to save the <span class='app'>Eclipse</span> workspace. As the different versions of <span class='app'>Eclipse</span> are not fully compatible, I have chosen to have different workspaces for different versions. With the workspace name set according to the version (e.g. "2020-03" for the version installed here).
 
-When you get to the Welcome screen the second time, after installing the PyDev - Python IDE, click the small workbench icon in the upper right corner.
+<figure>
+<img src="{{ site.commonurl }}/images/{{ site.data.images[page.figure6].file }}">
+<figcaption> {{ site.data.images[page.figure6].caption }} </figcaption>
+</figure>
+
+Click <span class='button'>Launch</span> to continue. The next window is the <span class ='tab'>Eclipse Welcome</span>. It will present 10 or so alternatives (icons with text). From these you need to select <span class='tab'>Launch the Eclipse Marketplace</span>.
+
+<figure>
+<img src="{{ site.commonurl }}/images/{{ site.data.images[page.figure7].file }}">
+<figcaption> {{ site.data.images[page.figure7].caption }} </figcaption>
+</figure>
+
+<span class='tab'>Eclipse Marketplace</span> opens in a separate window. The marketplace contains items for extending and customise <span class='app'>Eclipse</span>. You need to add the Python development (PyDev) environment. Write 'PyDev'in the search box and click the <span class='button'>Go</span> button to start searching. One of the top (or only) alternatives should be the 'PyDev - Python IDE ...' for the version of <span class='app'>Eclipse</span> you just installed.
+
+<figure>
+<img src="{{ site.commonurl }}/images/{{ site.data.images[page.figure8].file }}">
+<figcaption> {{ site.data.images[page.figure8].caption }} </figcaption>
+</figure>
+
+Install the PyDev - Python IDE by clicking the <span class='button'>Install</span> button next to it. In the next window that appears (<span class='tab'>Confirm Selected Features</span>), <span class='button'>Confirm</span> the default selection (all suggested items).
+
+<figure>
+<img src="{{ site.commonurl }}/images/{{ site.data.images[page.figure9].file }}">
+<figcaption> {{ site.data.images[page.figure9].caption }} </figcaption>
+</figure>
+
+In the then next window, <span class='textbox'>accept the terms of the licence agreement</span>, and click <span class='button'>Finish</span>.
+
+<figure>
+<img src="{{ site.commonurl }}/images/{{ site.data.images[page.figure10].file }}">
+<figcaption> {{ site.data.images[page.figure10].caption }} </figcaption>
+</figure>
+
+Restart <span class='app'>Eclipse</span> to invoke the software updates. When you get to the Welcome screen the second time, after installing the PyDev - Python IDE, click the small workbench icon in the upper right corner.
 
 ### Set Anaconda as the Python interpreter
 
@@ -67,11 +142,23 @@ With <span class='app'>Eclipse</span> workbench up and running, select from the 
 
 <span class='menu'>Eclipse : preferences</span>
 
-In the <span class='tab'>Preferences</span> window that opens, click the PyDev expansion icon (\>) in the menu to the left. In the expanded sub-list click the expansion icon for <span class='button'>Interpreters</span> and click <span class='button'>Python interpreter</span>. In the window that opens, click the <span class='button'>Browse for python/pypy exe</span> button in the upper right corner. The dialog window <span class='tab'>Select Interpreters</span> opens.
+In the <span class='tab'>Preferences</span> window that opens, click the PyDev expansion icon (\>) in the menu to the left. In the expanded sub-list click the expansion icon for <span class='button'>Interpreters</span> and click <span class='button'>Python interpreter</span>.
+
+<figure>
+<img src="{{ site.commonurl }}/images/{{ site.data.images[page.figure12].file }}">
+<figcaption> {{ site.data.images[page.figure12].caption }} </figcaption>
+</figure>
+
+In the window that opens, click the <span class='button'>Browse for python/pypy exe</span> button in the upper right corner. The dialog window <span class='tab'>Select Interpreters</span> opens.
 
 #### Virtual environment python Interpreter
 
 If you have setup a [Conda virtual environments](../conda-environ), the preferred method, click <span class='button'>Browse</span> button next to the textbox <span class='textbox'>Interpreter Executable</span>. Navigate to the virtual environment you created (e.g. .../anaconda3/envs/geoimagine001/bin/python) and choose that file. Then edit the textbox <span class='textbox'>Interpreter Name</span> to something like 'Python3.x geoimagine001'.
+
+<figure>
+<img src="{{ site.commonurl }}/images/{{ site.data.images[page.figure13].file }}">
+<figcaption> {{ site.data.images[page.figure13].caption }} </figcaption>
+</figure>
 
 #### Anaconda base environment
 
@@ -83,7 +170,31 @@ If you did not setup a virtual Python environment you can use the Anaconda defau
 
 Regardless of which interpreter you selected, click <span class='button'>Finish/OK</span>, and the dialog window <span class='tab'>Selection Needed</span> appears. Accept the default selection (all listed items), and click <span class='button'>Finish/OK</span> again. All the selected Libraries and their associated Packages will be linked to your project, and show up in the lower frame of the <span class='tab'>Preferences</span> window. When finished, click <span class='button'>Apply and Close</span>.
 
-After the interpreter configuration is finished you will get back to the workbench main window and its panes. They will be updated when you tell <span class='app'>Eclipse</span> that you are starting a PyDev project, do not worry about them yet.
+After the interpreter configuration is finished you will get back to the workbench main window and its panes.
+
+<figure>
+<img src="{{ site.commonurl }}/images/{{ site.data.images[page.figure14].file }}">
+<figcaption> {{ site.data.images[page.figure14].caption }} </figcaption>
+</figure>
+
+The default Graphical User Interface (GUI) is for Java. You can either change it to PyDev manually or let <span class='app'>Eclipse</span> automatically detect that you want to run PyDev once you start building your project.
+
+![open perspective](../../images/eclipse_open_perspective.png)
+{: .pull-right}
+To manually set the GUI environment to PyDev, click the small icon for _Open perspective_.
+In the dialog window that opens, select _PyDev_.
+
+<figure>
+<img src="{{ site.commonurl }}/images/{{ site.data.images[page.figure15].file }}">
+<figcaption> {{ site.data.images[page.figure15].caption }} </figcaption>
+</figure>
+
+The GUI will change to PyDev perspective and also add a small icon for this perspective in the top right corner.
+
+<figure>
+<img src="{{ site.commonurl }}/images/{{ site.data.images[page.figure16].file }}">
+<figcaption> {{ site.data.images[page.figure16].caption }} </figcaption>
+</figure>
 
 ### Create PyDev project
 

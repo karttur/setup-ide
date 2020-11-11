@@ -1141,3 +1141,131 @@ setupide-ubuntu_eclipse-marketplace:
   caption: Eclipse Marketplace, install PyDev
   credit: null
   source: null
+
+eclipse_installer_dmg-opened:
+  file: eclipse_installer_dmg-opened.png
+  source: eclipse_installer_dmg-opened.png
+  author: Thomas Gumbricht
+  caption: Eclipse Installer Diskimage content
+  credit: null
+  source: null
+
+eclipse_installer_accpet-open:
+  file: eclipse_installer_accpet-open.png
+  source: eclipse_installer_accpet-open.png
+  author: Thomas Gumbricht
+  caption: Eclipse Installer accept opening
+  credit: null
+  source: null
+
+eclipse_installer_choose:
+  file: eclipse_installer_choose.png
+  source: eclipse_installer_choose.png
+  author: Thomas Gumbricht
+  caption: Eclipse Installer choose installation
+  credit: null
+  source: null
+
+eclipse_installer_install:
+  file: eclipse_installer_install.png
+  source: eclipse_installer_install.png
+  author: Thomas Gumbricht
+  caption: Eclipse Installer installation paths
+  credit: null
+  source: null
+
+eclipse_launch_v2020-03:
+  file: eclipse_launch_v2020-03.png
+  source: eclipse_launch_v2020-03.png
+  author: Thomas Gumbricht
+  caption: Eclipse launch
+  credit: null
+  source: null
+
+eclipse_set_workspace:
+  file: eclipse_set_workspace.png
+  source: eclipse_set_workspace.png
+  author: Thomas Gumbricht
+  caption: Eclipse select workspace
+  credit: null
+  source: null
+
+eclipse_welcome:
+  file: eclipse_welcome.png
+  source: eclipse_welcome.png
+  author: Thomas Gumbricht
+  caption: Eclipse welcome page
+  credit: null
+  source: null
+
+eclipse_marketplace_pydev:
+  file: eclipse_marketplace_pydev.png
+  source: eclipse_marketplace_pydev.png
+  author: Thomas Gumbricht
+  caption: Eclipse marketplace, install pydev
+  credit: null
+  source: null
+
+eclipse_marketplace_confirm-selected:
+  file: eclipse_marketplace_confirm-selected.png
+  source: eclipse_marketplace_confirm-selected.png
+  author: Thomas Gumbricht
+  caption: Eclipse marketplace, confirm selected features
+  credit: null
+  source: null
+
+eclipse_marketplace_review-license:
+  file: eclipse_marketplace_review-license.png
+  source: eclipse_marketplace_review-license.png
+  author: Thomas Gumbricht
+  caption: Eclipse marketplace, review licenses
+  credit: null
+  source: null
+
+eclipse_preferences_panel-expand:
+  file: eclipse_preferences_panel-expand.png
+  source: eclipse_preferences_panel-expand.png
+  author: Thomas Gumbricht
+  caption: Eclipse preferences, expand to python interpreter
+  credit: null
+  source: null
+
+eclipse_preferences_pydev-interpreter:
+  file: eclipse_preferences_pydev-interpreter.png
+  source: eclipse_preferences_pydev-interpreter.png
+  author: Thomas Gumbricht
+  caption: Eclipse preferences, python interpreter
+  credit: null
+  source: null
+
+eclipse_pydev_select-interpreter:
+  file: eclipse_pydev_select-interpreter.png
+  source: eclipse_pydev_select-interpreter.png
+  author: Thomas Gumbricht
+  caption: Eclipse, select pydev interpreter
+  credit: null
+  source: null
+
+eclipse_default-gui:
+  file: eclipse_default-gui.png
+  source: eclipse_default-gui.png
+  author: Thomas Gumbricht
+  caption: Eclipse, default Graphical User Interface (GUI)
+  credit: null
+  source: null
+
+eclipse_select_perspective:
+  file: eclipse_select_perspective.png
+  source: eclipse_select_perspective.png
+  author: Thomas Gumbricht
+  caption: Eclipse, change to PyDev perspective
+  credit: null
+  source: null
+
+eclipse_pydev_perspective:
+  file: eclipse_pydev_perspective.png
+  source: eclipse_pydev_perspective.png
+  author: Thomas Gumbricht
+  caption: Eclipse, PyDev perspective
+  credit: null
+  source: null

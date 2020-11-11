@@ -12,7 +12,7 @@ tags:
   - macOS
 image: rainfall-delta_3B43_trmm_2001-2016_mk-z-ts-model@p005
 date: '2017-12-26 20:05'
-modified: 2020-01-30
+modified: 2020-10-06
 comments: true
 share: true
 ---
@@ -129,9 +129,13 @@ or
 <span class='finder'>/Applications/QGIS3.4.app/Contents/Resources/grass7</span>
 or similar.
 
-GRASS can be downloaded via the [offical homepage](https://grass.osgeo.org), but for macOS it might be easier to use the [KyngChaos](http://www.kyngchaos.com/software/grass) binaries. Updating this page in January 2020, I also discovered that you can [install GRASS using HomeBrew](https://grasswiki.osgeo.org/wiki/Compiling_on_MacOSX_using_homebrew). How to [install and use HomeBrew - the missing package manager for OS X](https://brew.sh) is covered in [this post in my repo on Setup Jekyll Theme Blog](https://karttur.github.io/setup-theme-blog/blog/install-imagemagick/#installation). But it the end I did not manage to get the Homebrew installation up and running, detailed at the very end of this post. The binary installation worked though.
+Later versions of GRASS (7.2 and higher) can be downloaded via the [offical homepage](https://grass.osgeo.org). Another page for accessing GRASS 7 binaries is [Michael Barton’s GRASS page.](http://grassmac.wikidot.com). GRASS version 6 is the last version maintained by [KyngChaos](http://www.kyngchaos.com/software/grass). Updating this page in January 2020, I also discovered that you can [install GRASS using HomeBrew](https://grasswiki.osgeo.org/wiki/Compiling_on_MacOSX_using_homebrew). How to [install and use HomeBrew - the missing package manager for OS X](https://brew.sh) is covered in [this post in my repo on Setup Jekyll Theme Blog](https://karttur.github.io/setup-theme-blog/blog/install-imagemagick/#installation). But it the end I did not manage to get the Homebrew installation up and running, detailed at the very end of this post.
 
-#### Binary installation
+In January 2020 I did install the GRASS 7.2.2 binary package from the [official download page](http://grass.osgeo.org/download/mac/). After some initial trouble with some dependencies - as detailed below. GRASS 7.2.2 worked fine with raster layers, but failed to processes vector data (missing link to sqlite lib). I then instead installed GRASS 7.8.3 (latest stable version in October 2020), and then all worked fine.
+
+#### 7.2.2 Binary installation
+
+**With GRASS version 7.8.3 being the latest stable version as of September 2020, these instructions are redundant.**
 
 To install GRASS as a binary (not with HomeBrew) on Mac OS X you must first install GDAL and the dependencies listed above, plus some additional dependencies. In January 2020 I got GRASS 7.2 started after installing the following dependencies:
 
@@ -177,6 +181,129 @@ When you start GRASS for the first time you will only get to the start screen, b
 <figcaption> GRASS startup screen.
 </figcaption>
 </figure>
+
+#### 7.8.3 Binary installation
+
+
+As of GRASS version 7.8, the binary application installation contains all required dependecies. The troubles of matching the suite of dependencies outlined above are thus removed. Details on these fully bundled versions and the installation are outlined on the [GRASS GIS for Mac pages](http://grassmac.wikidot.com), where you can also [download](http://grassmac.wikidot.com/downloads) the binary files.
+
+When I installed GRASS version 7.8.3 in October 2020 I just downloaded the binary file, opened the disk image (<span class='file'>dmg</span> file) and dragged the binary GRASS application file to my <span class='file'>Applications</span> directory. And magically it all worked.
+
+#### GRASS addons requirements
+
+GRASS comes with an impressive amount of installed modules, but you can also install [addons](https://grass.osgeo.org/grass78/manuals/addons/). To install and compile addons on a Mac OSX machine, you must have [Xcode]() installed. You can get the latest version of Xcode from the app store. For previous versions you need to go to the (Apple developer download page](https://developer.apple.com/download/more/).
+
+I had problems with accessing the installed Xcode version,
+
+Solutions 78:
+
+[https://grasswiki.osgeo.org/wiki/MacOSX_GRASS_errors](https://grasswiki.osgeo.org/wiki/MacOSX_GRASS_errors).
+
+Maybe because I had installed Xcode command line tools prior to installing Xcode.app. The Xcode commandline tool is not updated via App Store. To check if it is up to date:
+
+
+
+Check and manage your Xcode installation with [xcode-select](https://macops.ca/developer-binaries-on-os-x-xcode-select-and-xcrun/). The most widely suggested solution for non-functioning compilation seems to be:
+
+<span class='terminal'>$ xcode-select --install</span>
+
+If that works out properly, you should be fine. But if you already had the command line tool installed, you get the response.
+```
+xcode-select: error: command line tools are already installed, use "Software Update" to install updates
+```
+
+Test to list the required softwareupdates as suggested:
+
+<span class='terminal'>$ softwareupdate -l</span>
+
+softwareupdate might not be smart enough to find needed updated????
+
+Check (print) the path of the active Xcode developer directory:
+
+<span class='terminal'>$ xcode-select -p</span>
+
+```/Applications/Xcode.app/Contents/Developer
+```
+
+To set the path to the path of the active Xcode developer directory:
+
+<span class='terminal'> sudo xcode-select -s /Applications/Xcode.app/Contents/Developer</span>
+
+or
+
+<span class='terminal'> sudo xcode-select -s /Library/Developer/CommandLineTools</span>
+
+
+
+
+I still did not get the GRASS command g.extension to compile the addons.
+
+<span class='terminal'> clang: warning: no such sysroot directory: '/Developer/SDKs/MacOSX10.14.sdk' [-Wmissing-sysroot]</span>
+
+In my case I did not have SDK version _MacOSX10.14.sdk_ but _MacOSX10.15.sdk_
+
+Now I hav to try som eohter route. I then tried to the folloqing command:
+
+<span class='terminal'> open /Library/Developer/CommandLineTools/Packages/macOS_SDK_headers_for_macOS_10.14.pkg
+
+open /Library/Developer/CommandLineTools/Packages/macOS_SDK_headers_for_macOS_10.14.pkg
+
+That opened the Mac OSX standard instalaltion dialog. And I just accpected the default setting and instaleld.
+
+Or just download the dmg xcode command line installer. You need to be a registered developer. [https://developer.apple.com/download/more/](https://developer.apple.com/download/more/)
+
+##### Check clang
+
+<span class='terminal'>$  clang --version</span>
+
+```
+Apple clang version 11.0.0 (clang-1100.0.33.17)
+Target: x86_64-apple-darwin18.7.0
+Thread model: posix
+InstalledDir: /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin
+(base) Thomass-Air:~ thomasgumbricht$ clang --version
+Apple clang version 11.0.0 (clang-1100.0.33.17)
+Target: x86_64-apple-darwin18.7.0
+Thread model: posix
+InstalledDir: /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin
+```
+
+or if you
+
+```
+Apple clang version 11.0.0 (clang-1100.0.33.17)
+Target: x86_64-apple-darwin18.7.0
+Thread model: posix
+InstalledDir: /Library/Developer/CommandLineTools/usr/bin
+```
+
+<span class='terminal'>$ echo | clang -v -E -</span>
+
+```
+Apple clang version 11.0.0 (clang-1100.0.33.17)
+Target: x86_64-apple-darwin18.7.0
+Thread model: posix
+InstalledDir: /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin
+ "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/clang" -cc1 -triple x86_64-apple-macosx10.14.0 -Wdeprecated-objc-isa-usage -Werror=deprecated-objc-isa-usage -E -disable-free -disable-llvm-verifier -discard-value-names -main-file-name - -mrelocation-model pic -pic-level 2 -mthread-model posix -mdisable-fp-elim -fno-strict-return -masm-verbose -munwind-tables -target-cpu penryn -dwarf-column-info -debugger-tuning=lldb -ggnu-pubnames -target-linker-version 530 -v -resource-dir /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/clang/11.0.0 -Wno-framework-include-private-from-public -Wno-atimport-in-framework-header -Wno-extra-semi-stmt -Wno-quoted-include-in-framework-header -fdebug-compilation-dir /Users/thomasgumbricht -ferror-limit 19 -fmessage-length 171 -stack-protector 1 -mdarwin-stkchk-strong-link -fblocks -fencode-extended-block-signature -fregister-global-dtors-with-atexit -fobjc-runtime=macosx-10.14.0 -fmax-type-align=16 -fdiagnostics-show-option -fcolor-diagnostics -o - -x c -
+clang -cc1 version 11.0.0 (clang-1100.0.33.17) default target x86_64-apple-darwin18.7.0
+#include "..." search starts here:
+#include <...> search starts here:
+ /usr/local/include
+ /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/clang/11.0.0/include
+ /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/include
+ /usr/include
+ /System/Library/Frameworks (framework directory)
+ /Library/Frameworks (framework directory)
+End of search list.
+# 1 "<stdin>"
+# 1 "<built-in>" 1
+# 1 "<built-in>" 3
+# 362 "<built-in>" 3
+# 1 "<command line>" 1
+# 1 "<built-in>" 2
+# 1 "<stdin>" 2
+```
+
 
 #### Homebrew installation
 

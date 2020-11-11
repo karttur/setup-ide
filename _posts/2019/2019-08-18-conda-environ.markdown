@@ -290,6 +290,16 @@ or
 
 The conda base setup is not affected by either installing or deleting a virtual environment.
 
+## Create a new environment with specified python version
+
+If you now create a new environment with a specified python environment:
+
+<span class='terminal'>$ conda create --n geoimagine_py37_01 python=3.7</span>
+
+or
+
+<span class='terminal'>$ conda create --no-default-packages --n ortho_py38 python=3.8 numpy pandas scikit-learn</span>
+
 ## Activate your environment
 
 To list available environments type:
