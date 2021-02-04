@@ -58,7 +58,17 @@ When Homebrew is updated with all the latest 'bottles', just execute the command
 
 Homebrew will first install PostgresQLS's dependencies, and then install the latest version of PostgreSQL.
 
-Repeating the installation in January 2020, the installation ended with a warning:
+### Errors
+
+Incompatibilities between different versions of postgres itself, and between postgres and different dependencies can cause problems. All major updates most be threaded with care. I have had recurring problems with openssl versions.
+
+[Updating and upgrading Homebrew (<span class='terminalapp'>brew update && upgrade</span>) caused a major breakdown, forcing a complete removal and reinstallation of Homebrew, postgres and all other applications running under <span class='terminalapp'>brew</span>](https://karttur.github.io/setup-ide/blog/postgres-error-reinstall/).
+
+Repeating the installation in January 2020, I managed to fix the installation, but this solution is now **OBSOLETE**. <span class='terminalapp'>brew</span> no longer allow installation using an url. And with a fresh installation Postgres 13 is compatibile wth openssl1.1 and the isntalaltion should proceed without the above tweaks.
+
+If you really need openssl1.1, the post on []((https://karttur.github.io/setup-ide/blog/postgres-error-reinstall/) outlines how to get it.
+
+Here is the error you get if your postgres installation requires openssl1.0 but is not avaiable:
 
 ```
 dyld: Library not loaded: /usr/local/opt/openssl/lib/libssl.1.0.0.dylib
@@ -78,12 +88,21 @@ brew update && brew upgrade
 brew uninstall openssl; brew uninstall openssl; brew install https://github.com/tebelorg/Tump/releases/download/v1.0.0/openssl.rb
 ```
 
-In my versions, the latter command gives some error messages because openssl 1.0.0 is outdated comapred to alreade installed version (1.1.1). But reinstalling postgreSQL with brew
+In my versions, the latter command gives some error messages because openssl 1.0.0 is outdated compared to already installed version (1.1.1). But reinstalling postgreSQL with brew
 
 <span class='terminal'>$ brew install postgres</span>
 
 proceeded without warnings.
 
+As mentioned above, the above route for installing openss1.0 no longer works, if you really need openssl1.0 instead try the commands:
+
+<span class='terminal'>$ brew install rbenv/tap/openssl@1.0</span>
+
+followed by
+
+<span class='terminal'>$ brew reinstall openssl@1.0</span>
+
+### Completing the PostgreSQL setup
 
 The tasks performed by Homebrew are reported in the <span class='app'>Terminal</span> window. And when the installation finishes, Homebrew will tell you that you have two options:
 
