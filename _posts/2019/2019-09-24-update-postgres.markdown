@@ -4,7 +4,7 @@ title: Update postgreSQL
 date: "2019-09-24 18:36"
 modified: 2019-09-24 18:36
 categories: blog
-excerpt: "Upgrade and/or hamromize postgreSQL versions between your system and homebrew"
+excerpt: "Upgrade and/or harmonize postgreSQL versions between your system and homebrew"
 tags:
   - postgreSQL
   - upgrade
@@ -22,7 +22,7 @@ Fig4: eclipse-installer_default-product
 Fig5: Eclipse-installer-product-define
 ---
 
-For some reason my postgres setup had a havoc following an upgrade of my Homebrew installation that I, involuntarily, happened to start. One of the consequences was that my postgres server could not start, and I could not access the GeoImagine Framework database. I tries several suggestions that I found in various fora online. Until I discovered that the postgres version I had been using was missing and had been replaced by the latest version. The database as such was intact. But I also needed the postgres version associated with the database, and that was gone. I could restore the postgres installation from my backups (Mac OSX TimeMachine), but I could not manage to restore the connection to the actual database. Thus I gave up.
+For some reason my postgres setup had a havoc following an upgrade of my Homebrew installation that I, involuntarily, happened to start. One of the consequences was that my postgres server could not start, and I could not access the GeoImagine Framework database. I tried several suggestions that I found in various fora online. Until I discovered that the postgres version I had been using was missing and had been replaced by the latest version. The database as such was intact. But I also needed the postgres version associated with the database, and that was gone. I could restore the postgres installation from my backups (Mac OSX TimeMachine), but I could not manage to restore the connection to the actual database. Thus I gave up.
 
 
 Trying to solve the problem I discovered the page [Migrating Homebrew Postgres to a New Version](https://olivierlacan.com/posts/migrating-homebrew-postgres-to-a-new-version/) by Olivier Lacan. It seems to me to be the best source for solving connection problems related to Homebrew updated. It, however, assumes that your original installation Homebrew installation of postgres is intact.
@@ -342,9 +342,6 @@ It should repond with an errors
 if the pid is still around force remove it
 
 rm /usr/local/var/postgres/postmaster.pid extracted
-
-
-
 
 #### Upgrading
 
