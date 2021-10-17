@@ -12,7 +12,7 @@ tags:
   - macOS
 image: rainfall-delta_3B43_trmm_2001-2016_mk-z-ts-model@p005
 date: '2017-12-26 20:05'
-modified: 2020-11-11
+modified: '2021-10-15'
 comments: true
 share: true
 ---
@@ -28,15 +28,15 @@ share: true
 ## Geospatial data processing engines
 Working with geospatial data requires a Geographic Information System (GIS). There are several commercial packages available, but I only use Open Source (OS) GIS. The Open Source Geospatial Foundation [OSGeo](http://www.osgeo.org) site contains a lot of OS alternatives.
 
-Most of my Geo Imagine processing I do using Python and the Geospatial Data Abstraction Library [(GDAL)](http://www.gdal.org). For specific tasks I use Geographic Resources Analysis Support System [(GRASS)](https://grass.osgeo.org) and for viewing maps, setting colors and creating map layouts I use Quantum GIS [(QGIS)](https://www.qgis.org/en/site/). QGIS actually contains GRASS, and if you prefer a graphical user interface (GUI) you can use GRASS under QGIS. That is, however, not covered in this blog; it is covered in the QGIS manual [Module: GRASS](https://docs.qgis.org/3.4/en/docs/training_manual/grass/index.html).
+Most of my GeoImagine processing I do using Python and the Geospatial Data Abstraction Library [(GDAL)](http://www.gdal.org). For specific tasks I use Geographic Resources Analysis Support System [(GRASS)](https://grass.osgeo.org) and for viewing maps, setting colors and creating map layouts I use Quantum GIS [(QGIS)](https://www.qgis.org/en/site/). QGIS actually contains GRASS and SAGA GIS, and if you prefer a graphical user interface (GUI) you can use GRASS under QGIS. That is, however, not covered in this blog; it is covered in the QGIS manual [Module: GRASS](https://docs.qgis.org/3.4/en/docs/training_manual/grass/index.html).
 
 ## Installations
 
-Working with GDAL, QGIS and GRASS on Mac OS X is not more complex compared to other operating systems. To get the components setup and working together, might, however, be a bit more complex. Historically, William Kyngesburye ([KyngChaos page](http://www.kyngchaos.com/)) has maintained installers and instructions. But then QGIS set up their own installer for some versions, and then returned to letting William Kyngesburye do it. You just have to check out and read the instructions both on the official [QGIS](https://www.qgis.org) site and at [KyngChaos](http://www.kyngchaos.com/) to make sure how to do at this point in time (when you read this).
+Working with GDAL, QGIS and GRASS on MacOS is not more complex compared to other operating systems. To get the components setup and working together, might, however, be a bit more complex. Historically, William Kyngesburye ([KyngChaos page](http://www.kyngchaos.com/)) has maintained installers and instructions. But then QGIS set up their own installer for some versions, and then returned to letting William Kyngesburye do it. You just have to check out and read the instructions both on the official [QGIS](https://www.qgis.org) site and at [KyngChaos](http://www.kyngchaos.com/) to make sure how to do at this point in time (when you read this).
 
 ### GDAL
 
-If you intend to install both GDAL and QGIS on a mac, first check out if the QGIS installer maintained by William Kyngesburye ([KyngChaos page](http://www.kyngchaos.com/software:frameworks)) also contains the complete GDAL package. If so, you can skip installing GDAL separately and jump directly to the QGIS installation. Otherwise install GDAL from ([KyngChaos](http://www.kyngchaos.com/software:frameworks)). If you are installing a stand alone binary version of GRASS below, you might need several versions of GDAL. There is no problem installing parallel versions of GDAl.
+If you intend to install both GDAL and QGIS on a mac, first check out if the QGIS installer maintained by William Kyngesburye ([KyngChaos page](http://www.kyngchaos.com/software:frameworks)) also contains the complete GDAL package. If so, you can skip installing GDAL separately and jump directly to the QGIS installation. Otherwise install GDAL from ([KyngChaos](http://www.kyngchaos.com/software:frameworks)). If you are installing a stand alone binary version of GRASS below, you might need several versions of GDAL. There is no problem installing parallel versions of GDAL.
 
 [GDAL](http://www.gdal.org) is a powerful translator library for creating, modifying and managing geospatial data, and is also at the core of many commercial GIS software packages. GDAL can be downloaded via links on the [GDAL official homepage](http://www.gdal.org). Here I will only cover how to install GDAL on macOS.
 
@@ -46,7 +46,11 @@ GDAL is dependent on several frameworks, including:
 * GEOS
 * SQLite3
 
-The GDAL convenience installer offered on the [KyngChaos page](http://www.kyngchaos.com/software:frameworks) includes all the necessary frameworks (and is, or was, also the official installation site for GDAL on macOS). Go ahead and download the convenience installer for the latest version of GDAL (2.4 when updating in August 2019). The installer comes as a diskimage (.dmg). Open it by double clicking. The diskimage contains two package installer (<span class='file'>.pkg</span>) and several ReadMe files in Rich Textformat (<span class='file'>.rtf</span>). The installer <span class='file'>GDAL Complete.pkg</span>, installs both GDAL and the necessary dependencies.
+The GDAL convenience installer offered on the [KyngChaos page](http://www.kyngchaos.com/software:frameworks) includes all the necessary frameworks (and is, or was, also the official installation site for GDAL on macOS). Go ahead and download the convenience installer for the latest version of GDAL (3.2 when updating in October 2021). The installer comes as a diskimage (.dmg). Open it by double clicking. The diskimage contains two package installer (<span class='file'>.pkg</span>) and several ReadMe files in Rich Textformat (<span class='file'>.rtf</span>).
+
+For version 3.2 you first have to install a predefined version of Python - that will be installed as an Application (under the application fodler).
+
+The installer <span class='file'>GDAL Complete.pkg</span>, installs both GDAL and the necessary dependencies.
 
 Go ahead and install the complete GDAL package by double clicking <span class='file'>GDAL Complete.pkg</span>. You will most likely be denied installing GDAL due to the macOS security settings. To allow installation, go via the mac main menu, click the apple (absolute top left of the computer screen), select <span class='finder'>System Preferences...</span>.
 
@@ -133,7 +137,7 @@ Later versions of GRASS (7.2 and higher) can be downloaded via the [offical home
 
 In January 2020 I did install the GRASS 7.2.2 binary package from the [official download page](http://grass.osgeo.org/download/mac/). After some initial trouble with some dependencies - as detailed below. GRASS 7.2.2 worked fine with raster layers, but failed to processes vector data (missing link to sqlite lib).
 
-In October 2020 I istalled GRASS 7.8.3 (latest stable version in October 2020) whihc is a ompletely stand alone package not having any dependencies. It worked beasutifully.
+In October 2020 I installed GRASS 7.8.3 (latest stable version in October 2020) from the [official download page](http://grass.osgeo.org/download/mac/) that is a completely stand alone package not having any dependencies. It worked beautifully. In October 2021 I upgraded to GRASS 7.8.5, which also worked flawless.
 
 #### 7.2.2 Binary installation (redundant)
 
@@ -190,10 +194,13 @@ As of GRASS version 7.8, the binary application installation contains all requir
 
 When I installed GRASS version 7.8.3 in October 2020 I just downloaded the binary file, opened the disk image (<span class='file'>dmg</span> file) and dragged the binary GRASS application file to my <span class='file'>Applications</span> directory. And magically it all worked.
 
+# STOP HERE
+
+If your installation using the binary diskimage, and it all went through, you are fine. Skip the rest of this post. I only keep it as a backup if I ever need to revert to another kind of installation.
+
 #### GRASS addons requirements
 
-GRASS comes with an impressive amount of installed modules, but you can also install [addons](https://grass.osgeo.org/grass78/manuals/addons/). To install and compile addons on a Mac OSX machine, you must have [Xcode](https://developer.apple.com/xcode/) installed. Either the full version or the command line version. If you do not need the full version the command version works fine. If you encounter errors relating to Xcode and GRASS, please look at [https://grasswiki.osgeo.org/wiki/MacOSX_GRASS_errors](https://grasswiki.osgeo.org/wiki/MacOSX_GRASS_errors).
-
+GRASS comes with an impressive amount of installed modules, but you can also install [addons](https://grass.osgeo.org/grass78/manuals/addons/). To install and compile addons on a MacOS machine, you must have [Xcode](https://developer.apple.com/xcode/) installed. Either the full version or the command line version. If you do not need the full version the command version works fine. If you encounter errors relating to Xcode and GRASS, please look at [https://grasswiki.osgeo.org/wiki/MacOSX_GRASS_errors](https://grasswiki.osgeo.org/wiki/MacOSX_GRASS_errors).
 
 Check and manage your Xcode installation with [xcode-select](https://macops.ca/developer-binaries-on-os-x-xcode-select-and-xcrun/).
 

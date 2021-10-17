@@ -23,7 +23,8 @@ Which version of Java JDK to use depends on your app. You can always reinstall i
 
 From the list of the different [JDK versions available for download](https://www.oracle.com/technetwork/java/javase/downloads/index.html), please chose one that fits your needs. This is easier said than done, and might require a trial and error approach The safest bet is to download the Long Term Support (LTS) version offered.
 
-Go to the [Oracle Java JDK download page (version 11 in this link)](https://www.oracle.com/technetwork/java/javase/downloads/jdk11-downloads-5066655.html), and select the JDK version required by your operating system (Windows, Linux, macOS). Accept the Licence agreement and download. Follow the installation instructions in the downloaded file.
+
+Go to the [Oracle Java JDK download page (version 17 in this link)](https://www.oracle.com/java/technologies/downloads/#jdk17-mac), and select the JDK version required by your operating system (Windows, Linux, macOS). Accept the Licence agreement and download. Follow the installation instructions in the downloaded file.
 
 ## Resources
 

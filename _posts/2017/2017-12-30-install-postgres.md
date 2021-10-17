@@ -64,9 +64,9 @@ Incompatibilities between different versions of postgres itself, and between pos
 
 [Updating and upgrading Homebrew (<span class='terminalapp'>brew update && upgrade</span>) caused a major breakdown, forcing a complete removal and reinstallation of Homebrew, postgres and all other applications running under <span class='terminalapp'>brew</span>](https://karttur.github.io/setup-ide/blog/postgres-error-reinstall/).
 
-Repeating the installation in January 2020, I managed to fix the installation, but this solution is now **OBSOLETE**. <span class='terminalapp'>brew</span> no longer allow installation using an url. And with a fresh installation Postgres 13 is compatibile wth openssl1.1 and the isntalaltion should proceed without the above tweaks.
+Repeating the installation in January 2020, I managed to fix the installation, but this solution is now **OBSOLETE**. <span class='terminalapp'>brew</span> no longer allow installation using an url. And with a fresh installation Postgres 13 is compatibile wth openssl1.1 and the installation should proceed without the above tweaks.
 
-If you really need openssl1.1, the post on []((https://karttur.github.io/setup-ide/blog/postgres-error-reinstall/) outlines how to get it.
+If you really need openssl1.1, the post on [postgres error reinstall]((https://karttur.github.io/setup-ide/blog/postgres-error-reinstall/) outlines how to get it.
 
 Here is the error you get if your postgres installation requires openssl1.0 but is not avaiable:
 
@@ -456,7 +456,7 @@ In the window that opens, look for the tab <span class='tab'>Quick links</span> 
 
 #### TablePlus
 
-TablePlus is downloaded as a diskimange <span class='file'>.dmg</span>. Just double click and when the diskimage opens, just drag the <span class='app'>TablePlus</span> to the <span class='file'>/Applications</span> folder. Connect TablePlus to PostgreSQL as shown in figure 1.
+[TablePlus](https://tableplus.com) is downloaded as a diskimange <span class='file'>.dmg</span>. Just double click and when the diskimage opens, just drag the <span class='app'>TablePlus</span> to the <span class='file'>/Applications</span> folder. Connect TablePlus to PostgreSQL as shown in figure 1.
 
 <figure>
   <img src="{{ site.commonurl }}/images/{{ site.data.images[page.fig1].file }}" alt="image">

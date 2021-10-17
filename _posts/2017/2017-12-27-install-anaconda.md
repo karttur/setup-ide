@@ -23,17 +23,17 @@ share: true
 	- [Resources](#resources)
 
 ## Anaconda Python Environment
-Python is a general purpose high-level programming language, and I use Python to do most of my Geo Imagine. Most modern operating systems include one or more Python installations, and it can be difficult to keep track of Python installations and versions on your system. To bypass that problem, and also to get more control, as well as a complete and extendable Python installation, [Anaconda](https://anaconda.org) is the solution.
+Python is a general purpose high-level programming language, and I use Python to do most of my GeoImagine. Most modern operating systems include one or more Python installations, and it can be difficult to keep track of Python installations and versions on your system. To bypass that problem, and also to get more control, as well as a complete and extendable Python installation, [Anaconda](https://anaconda.org) is the solution.
 
 ### Download and install Anaconda
 
-Anaconda is a free platform for scientific Python. To download Anaconda, visit the [Anaconda homepage](https://www.anaconda.com), and look for the download link. In the download page, find the distribution (e.g. Windows, Linux, macOS) and the Python version (e.g. 2.X or 3.X) that you need. Since I wrote the original post (December 2017) I have switched from Python 2.7 to 3.7. Download the graphical installer, unless you feel comfortable with the command line version.
+Anaconda is a free platform for scientific Python. To download Anaconda, visit the [Anaconda homepage](https://www.anaconda.com), and look for the download link. In the download page, find the distribution (e.g. Windows, Linux, macOS) and the Python version (e.g. 2.X or 3.X) that you need. Since I wrote the original post (December 2017) I have switched from Python 2.7 to 3.8. Download the graphical installer, unless you feel comfortable with the command line version.
 
 Note, the default location of the Anaconda installation for Karttur's GeoImagine Framework is directly under the <span class='file'>Applications</span> folder.
 
 Follow the official instructions for [installing Anaconda on Mac OS X](https://docs.anaconda.com/anaconda/install/mac-os/), or the shorthand instructions below.
 
-Open the Anaconda installation package (<span class='file'>.pkg</span>) by double clicking. If you are denied installing, you need to bypass the macOS security settings. The [previous post](http://localhost:4000/setup-ide/install-gis/#gdal) contains a more detailed manual, with figures, on how to manoeuvre to get the installation past the security system. Go via the mac main menu, click the apple (absolute top left of the computer screen), select <span class='finder'>System Preferences...</span>. In the top row of the <span class='tab'>System Preferences</span> window, click the Security & Privacy icon. In the window that opens, under the <span class='tab'>General</span> tab (usually in front by default), you should see a paragraph towards the bottom:
+Open the Anaconda installation package (<span class='file'>.pkg</span>) by double clicking. If you are denied installing, you need to bypass the MacOS security settings. The [previous post](http://localhost:4000/setup-ide/install-gis/#gdal) contains a more detailed manual, with figures, on how to manoeuvre to get the installation past the security system. Go via the mac main menu, click the apple (absolute top left of the computer screen), select <span class='finder'>System Preferences...</span>. In the top row of the <span class='tab'>System Preferences</span> window, click the Security & Privacy icon. In the window that opens, under the <span class='tab'>General</span> tab (usually in front by default), you should see a paragraph towards the bottom:
 ```
 "Anaconda'version'.pkg" was blocked from opening...
 ```

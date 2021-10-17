@@ -95,6 +95,15 @@ You will need <span class='terminalapp'>Curl</span> fro downloading installation
 
 <span class='terminal'>$ sudo apt-get install curl</span>
 
+
+#### Install GCC
+
+<>sudo apt install build-essential<>
+
+Verify that the GCC compiler is successfully installed by running the following command that prints the GCC version:
+
+<>gcc \-\-version<>
+
 ### Ubuntu installations
 
 The usual manner in which to add packages (applications, or apps) from the terminal is to use the command <span class='terminal'>sudo apt install</span>:
